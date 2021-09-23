@@ -17,8 +17,8 @@ import java.util.List;
 public class FaskesModel implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Integer id_faskes;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_faskes;
 
     @NotNull
     @Column(name="name",nullable = false)

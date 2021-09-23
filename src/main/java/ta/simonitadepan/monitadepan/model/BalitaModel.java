@@ -14,8 +14,8 @@ import java.util.Date;
 public class BalitaModel {
 
     @Id
-    @GeneratedValue
-    private Integer id_balita;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_balita;
 
     @NotNull
     @Column(name = "name",nullable = false)
@@ -30,7 +30,7 @@ public class BalitaModel {
     private int gender;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_pengguna",referencedColumnName = "id_pengguna",nullable = false)
+    @JoinColumn(name = "id_pegguna",referencedColumnName = "id_pengguna",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private UserModel id_pengguna;
