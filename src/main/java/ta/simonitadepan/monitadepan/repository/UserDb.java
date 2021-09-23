@@ -5,4 +5,7 @@ import ta.simonitadepan.monitadepan.model.UserModel;
 
 public interface UserDb extends JpaRepository<UserModel, String> {
     UserModel findByUsername(String username);
+
+    UserModel findByEmail(String email);
+    UserModel findByResetPasswordToken(String token);
 }
