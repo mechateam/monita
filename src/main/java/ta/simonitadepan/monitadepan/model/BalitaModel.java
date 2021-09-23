@@ -35,11 +35,11 @@ public class BalitaModel {
     @JsonIgnore
     private UserModel id_pengguna;
 
-    public Integer getId_balita() {
+    public Long getId_balita() {
         return id_balita;
     }
 
-    public void setId_balita(Integer id_balita) {
+    public void setId_balita(Long id_balita) {
         this.id_balita = id_balita;
     }
 

@@ -19,7 +19,7 @@ const precacheAssets = [
     'js/bootstrap.bundle.min.js',
     'js/pwa.js',
     'element-hero-blocks.html',
-    'page-login.html',
+    'login.html',
     'manifest.json',
     'page-home.html',
     'pages.html',

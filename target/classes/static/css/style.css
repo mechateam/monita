@@ -7073,6 +7073,16 @@ input[type=color].form-control.is-valid, input[type=color].form-control:valid {
 .user-info-card .user-profile img {
   border-radius: 50%;
 }
+.font-simonita-title{
+  font-family: 'Rubik';
+  font-weight: 700;
+  color: #338A94;
+}
+
+.font-simonita{
+  font-family: 'Rubik';
+}
+
 .user-info-card .user-profile form .form-control {
   position: absolute;
   width: 30px;

@@ -47,11 +47,11 @@ public class FaskesModel implements Serializable {
     @JsonIgnore
     private List<UserModel> listUser;
 
-    public Integer getId_faskes() {
+    public Long getId_faskes() {
         return id_faskes;
     }
 
-    public void setId_faskes(Integer id_faskes) {
+    public void setId_faskes(Long id_faskes) {
         this.id_faskes = id_faskes;
     }
 

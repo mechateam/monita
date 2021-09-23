@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+  <object th:include="fragments/fragment :: head"></object>
+</head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+    <!-- Internet Connection Status -->
+    <!-- # This code for showing internet connection status -->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Back Button -->
+    <div class="login-back-button"><a th:href="@{/login}">
+        <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+        </svg></a></div>
+    <!-- Login Wrapper Area -->
+    <div class="login-wrapper d-flex align-items-center justify-content-center">
+      <div class="custom-container">
+        <div class="text-center px-4"><h2 class="font-simonita-title" >SIMONITA</h2></div>
+        <!-- Register Form -->
+        <div class="register-form mt-4">
+          <h6 class="mb-3 text-center">Daftar akun anda untuk menggunakan SIMONITA.</h6>
+          <form th:action="@{/user/register}" th:object="${user}" oninput="address.value = alamat1.value + ' ,'+kelurahan.value + ' ,'+ kecamatan.value + ' ,'+
+           kota.value + ' ,'+ provinsi.value" method="POST">
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Nama Lengkap" name="name">
+            </div>
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Email address" name="email">
+            </div>
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Username" name="username">
+            </div>
+            <div class="form-group text-start mb-3 position-relative">
+              <input name="password" class="form-control" id="psw-input" type="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" required>
+              <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></div>
+            </div>
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Nomor Telepon" name="phone">
+            </div>
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Username" name="username">
+            </div>
+            <div class="form-group mb-3">
+              <select name="gender" class="form-control">
+                <option selected value =""> -- Pilih Jenis Kelamin -- </option>
+                <option th:value=0 th:text="Perempuan"></option>
+                <option th:value=1 th:text="Laki-Laki"></option>
+              </select>
+            </div>
+            <div class="form-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Alamat" name="alamat1">
+            </div>
+            <div class="input-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Kelurahan" name="kelurahan">
+              <input class="form-control" type="text" placeholder="Kecamatan" name="kecamatan">
+            </div>
+            <div class="input-group text-start mb-3">
+              <input class="form-control" type="text" placeholder="Kota/Kabupaten" name="kota">
+              <input class="form-control" type="text" placeholder="Provinsi" name="provinsi">
+            </div>
+            <input type="hidden" name="address">
+            <select name="id_faskes" class="form-control">
+              <option selected value =""> -- Pilih Faskes -- </option>
+              <option th:each="faskes: ${listFaskes}" th:value="${faskes.id_faskes}" th:text="${faskes.name}"></option>
+            </select>
+            <div class="mb-3" id="pswmeter"></div>
+            <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+          </form>
+        </div>
+        <!-- Login Meta -->
+        <div class="login-meta-data text-center">
+          <p class="mt-3 mb-0">Sudah memiliki akun? <a class="stretched-link" th:href="@{/login}">Login</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- All JavaScript Files -->
+    <object th:include="fragments/fragment :: js"></object>
+  <script>
+    var input = document.getElementById('psw-input');
+    input.oninvalid=function (ev) {
+      ev.target.setCustomValidity('Minimal 8 huruf dan 1 angka');
+    }
+
+  </script>
+  </body>
+</html>
