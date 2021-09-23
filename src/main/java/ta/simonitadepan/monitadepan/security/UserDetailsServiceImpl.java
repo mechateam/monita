@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
+@Service("userDetailsService")
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
@@ -25,6 +25,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserModel user = userDb.findByUsername(username);
+        System.out.println("username adalah" + user.getUsername());
+        System.out.println("hashnya adalah "+ user.getPassword());
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 

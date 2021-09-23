@@ -16,9 +16,16 @@ public class UserServiceImpl implements UserService {
     UserDb userDb;
 
     @Override
+    public UserModel getUserByUsername(String username){
+        return userDb.findByUsername(username);
+    }
+
+    @Override
     public void addUser(UserModel user) {
+        System.out.println("password sblm di encrypt "+ user.getPassword());
         String pass = encrypt(user.getPassword());
         user.setPassword(pass);
+        System.out.println("password sblm di encrypt "+ user.getPassword());
         userDb.save(user);
     }
 
@@ -28,4 +35,32 @@ public class UserServiceImpl implements UserService {
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
     }
+
+    @Override
+    public String updateResetPasswordToken(String token, String email) {
+        UserModel user = userDb.findByEmail(email);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            userDb.save(user);
+            return "token_success";
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public UserModel getByResetPasswordToken(String token) {
+        return userDb.findByResetPasswordToken(token);
+    }
+
+    @Override
+    public void updatePassword(UserModel user, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+
+        user.setResetPasswordToken(null);
+        userDb.save(user);
+    }
 }
+

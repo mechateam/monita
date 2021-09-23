@@ -19,19 +19,21 @@
         <!-- Register Form -->
         <div class="register-form mt-4">
           <h6 class="mb-3 text-center">Silahkan login untuk menggunakan SIMONITA.</h6>
-          <form action="page-home.html">
+          <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
+          <small th:if="${param.error}" class="text-center">Terdapat kesalahan input username atau password</small>
+          <form th:action="@{/login}" method="POST">
             <div class="form-group">
-              <input class="form-control" type="text" placeholder="Username">
+              <input class="form-control" type="text" placeholder="Username" name="username">
             </div>
             <div class="form-group position-relative">
-              <input class="form-control" id="psw-input" type="password" placeholder="Kata Sandi">
+              <input class="form-control input" id="psw-input" type="password" placeholder="Kata Sandi" name="password">
               <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></div>
             </div>
             <button class="btn btn-primary w-100" type="submit">Masuk</button>
           </form>
         </div>
         <!-- Login Meta -->
-        <div class="login-meta-data text-center"><a class="stretched-link forgot-password d-block mt-3 mb-1" href="page-forget-password.html">Forgot Password?</a>
+        <div class="login-meta-data text-center"><a class="stretched-link forgot-password d-block mt-3 mb-1" th:href="@{/user/forgot_password}">Forgot Password?</a>
           <p class="mb-0">Belum memiliki akun? <a class="stretched-link" th:href="@{/user/register}">Buat akun disini!</a></p>
         </div>
       </div>
