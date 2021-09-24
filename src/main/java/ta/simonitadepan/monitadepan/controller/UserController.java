@@ -171,4 +171,7 @@ public class UserController {
         Transport.send(msg);
     }
 
+    @GetMapping("/profil")
+    public String getProfilPage(Model model){return "page-profil";}
+
 }
