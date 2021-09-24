@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-html/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-html/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/service-worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/service-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service-worker.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -95,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+            <state relative-caret-position="-25">
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="479">
+              <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -176,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/UserDetailsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/resources/application-production.properties" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -186,6 +175,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/static/asset-html/service-worker.js" />
         <option value="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -272,7 +262,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="asset-html" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="monita-depan" type="b2602c69:ProjectViewProjectNode" />
@@ -352,7 +342,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31463000" />
+    <option name="totallyTimeSpent" value="31707000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -690,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/fragment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -744,7 +727,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service-worker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -757,11 +740,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+        <state relative-caret-position="-25">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
         </state>
       </provider>
     </entry>
