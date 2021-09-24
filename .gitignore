@@ -87,3 +87,5 @@ local.properties
 target/
 
 /bin
+
+application.properties
