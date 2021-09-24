@@ -81,13 +81,13 @@ public class UserController {
 
 
     @GetMapping("/reset_password")
-    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model, RedirectAttributes redir) {
         UserModel user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
         if (user == null) {
-            model.addAttribute("message", "Invalid Token");
-            return "message";
+            redir.addAttribute("message", "Invalid Token");
+            return "redirect:/login";
         }
 
         return "page-reset-password";

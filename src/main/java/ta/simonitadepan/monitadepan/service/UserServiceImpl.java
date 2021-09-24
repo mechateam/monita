@@ -50,6 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel getByResetPasswordToken(String token) {
+        if (token == null){
+            return null;
+        }
         return userDb.findByResetPasswordToken(token);
     }
 
