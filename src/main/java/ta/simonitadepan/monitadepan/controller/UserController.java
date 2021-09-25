@@ -81,13 +81,13 @@ public class UserController {
 
 
     @GetMapping("/reset_password")
-    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model, RedirectAttributes redir) {
         UserModel user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
         if (user == null) {
-            model.addAttribute("message", "Invalid Token");
-            return "message";
+            redir.addAttribute("message", "Invalid Token");
+            return "redirect:/login";
         }
 
         return "page-reset-password";
@@ -132,9 +132,6 @@ public class UserController {
     }
 
 
-
-
-
     public static String getSiteURL(HttpServletRequest request) {
         String siteURL = request.getRequestURL().toString();
         return siteURL.replace(request.getServletPath(), "");
@@ -174,4 +171,32 @@ public class UserController {
     @GetMapping("/profil")
     public String getProfilPage(Model model){return "page-profil";}
 
+    @GetMapping("/profil/{username}")
+    public String getDetailPage(@PathVariable String username, Model model){
+        UserModel user = userService.getUserByUsername(username);
+        model.addAttribute("user", user);
+        return "detail-profil";
+    }
+
+    @GetMapping("/profil/ubah/{username}")
+    public String getFormUbahProfil (@PathVariable String username, Model model){
+        UserModel user = userService.getUserByUsername(username);
+        model.addAttribute("user", user);
+        model.addAttribute("gender", user.getGender());
+        return "ubah-profil";
+    }
+
+    @PostMapping("/profil/ubah/{id}")
+    public String editProfil(@PathVariable Long id, @ModelAttribute UserModel user, Model model){
+        System.out.println("masuk ke ubah post");
+        UserModel oldData = userService.getById(id);
+//        user.setId_faskes(oldData.getId_faskes());
+        System.out.println("edit : "+user.getName());
+        System.out.println("edit : "+user.getAddress());
+        System.out.println("edit : "+user.getGender());
+        System.out.println("edit : "+user.getEmail());
+        System.out.println("edit : "+user.getPhone());
+        userService.changeUser(user);
+        return "detail-profil";
+    }
 }

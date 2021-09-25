@@ -50,6 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel getByResetPasswordToken(String token) {
+        if (token == null){
+            return null;
+        }
         return userDb.findByResetPasswordToken(token);
     }
 
@@ -61,6 +64,24 @@ public class UserServiceImpl implements UserService {
 
         user.setResetPasswordToken(null);
         userDb.save(user);
+    }
+
+    @Override
+    public String getGender(int gender){
+        if(gender == 0){
+            return "Perempuan";
+        }
+        return "Laki-Laki";
+    }
+
+    @Override
+    public void changeUser(UserModel user) {
+        userDb.save(user);
+    }
+
+    @Override
+    public UserModel getById(Long id) {
+        return userDb.findById(id).get();
     }
 }
 
