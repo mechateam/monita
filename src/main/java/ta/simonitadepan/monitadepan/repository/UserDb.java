@@ -10,5 +10,4 @@ public interface UserDb extends JpaRepository<UserModel, String> {
 
     UserModel findByEmail(String email);
     UserModel findByResetPasswordToken(String token);
-    Optional<UserModel> findById(Long id);
 }

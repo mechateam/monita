@@ -79,9 +79,5 @@ public class UserServiceImpl implements UserService {
         userDb.save(user);
     }
 
-    @Override
-    public UserModel getById(Long id) {
-        return userDb.findById(id).get();
-    }
 }
 

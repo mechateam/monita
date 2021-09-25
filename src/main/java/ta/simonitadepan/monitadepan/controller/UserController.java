@@ -182,21 +182,19 @@ public class UserController {
     public String getFormUbahProfil (@PathVariable String username, Model model){
         UserModel user = userService.getUserByUsername(username);
         model.addAttribute("user", user);
-        model.addAttribute("gender", user.getGender());
         return "ubah-profil";
     }
 
-    @PostMapping("/profil/ubah/{id}")
-    public String editProfil(@PathVariable Long id, @ModelAttribute UserModel user, Model model){
+    @PostMapping("/profil/ubah/{username}")
+    public String editProfil(@ModelAttribute UserModel user, Model model, RedirectAttributes redirectAttributes){
         System.out.println("masuk ke ubah post");
-        UserModel oldData = userService.getById(id);
-//        user.setId_faskes(oldData.getId_faskes());
         System.out.println("edit : "+user.getName());
         System.out.println("edit : "+user.getAddress());
         System.out.println("edit : "+user.getGender());
         System.out.println("edit : "+user.getEmail());
         System.out.println("edit : "+user.getPhone());
+        System.out.println("id_faskes" + user.getId_faskes());
         userService.changeUser(user);
-        return "detail-profil";
+        return "redirect:/user/profil/"+user.getUsername();
     }
 }

@@ -24,8 +24,10 @@
         <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
         <!-- Register Form -->
         <div class="register-form mt-4">
-            <form th:action="@{/user/profil/ubah/}+${user.id_pengguna}" th:object="${user}" method="post">
+            <form th:action="@{/user/profil/ubah/}+${user.username}" th:object="${user}" method="post">
                 <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
+                <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
+                <input type="hidden" name="id" class="form-control" th:field="*{password}"/>
                 <div class="form-group text-start mb-3">
                     <input class="form-control" type="text" th:field="${user.name}" name="name">
                 </div>

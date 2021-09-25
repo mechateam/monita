@@ -5,41 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/FaskesDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/FaskesDb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/UserDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/UserDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/FaskesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/FaskesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-html/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-html/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail-profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail-profil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/service-worker.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ubah-profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ubah-profil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/asset-html/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/asset-html/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/MonitaDepanApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/MonitaDepanApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/UserController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/UserController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/BalitaModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/BalitaModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/FaskesModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/FaskesModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/UserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/UserModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/repository/FaskesDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/repository/FaskesDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/repository/UserDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/repository/UserDb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/service-worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ta/simonitadepan/monitadepan/MonitaDepanApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ta/simonitadepan/monitadepan/MonitaDepanApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +110,7 @@
       <workItem from="1632277245460" duration="21531000" />
       <workItem from="1632463235167" duration="2260000" />
       <workItem from="1632490675978" duration="284000" />
-      <workItem from="1632538593323" duration="6386000" />
+      <workItem from="1632538593323" duration="9212000" />
     </task>
     <servers />
   </component>
@@ -148,38 +126,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1632495911743" />
-    <state width="1306" height="567" key="GridCell.Tab.0.bottom" timestamp="1632552660753">
+    <state width="1323" height="568" key="GridCell.Tab.0.bottom" timestamp="1632555494687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632552660753" />
-    <state width="1306" height="567" key="GridCell.Tab.0.center" timestamp="1632552660751">
+    <state width="1323" height="568" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632555494687" />
+    <state width="1323" height="568" key="GridCell.Tab.0.center" timestamp="1632555494685">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632552660751" />
-    <state width="1306" height="567" key="GridCell.Tab.0.left" timestamp="1632552660751">
+    <state width="1323" height="568" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632555494685" />
+    <state width="1323" height="568" key="GridCell.Tab.0.left" timestamp="1632555494684">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632552660751" />
-    <state width="1306" height="567" key="GridCell.Tab.0.right" timestamp="1632552660752">
+    <state width="1323" height="568" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632555494684" />
+    <state width="1323" height="568" key="GridCell.Tab.0.right" timestamp="1632555494686">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632552660752" />
-    <state width="1306" height="567" key="GridCell.Tab.1.bottom" timestamp="1632552660755">
+    <state width="1323" height="568" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632555494686" />
+    <state width="1323" height="568" key="GridCell.Tab.1.bottom" timestamp="1632555494689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632552660755" />
-    <state width="1306" height="567" key="GridCell.Tab.1.center" timestamp="1632552660754">
+    <state width="1323" height="568" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632555494689" />
+    <state width="1323" height="568" key="GridCell.Tab.1.center" timestamp="1632555494688">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632552660754" />
-    <state width="1306" height="567" key="GridCell.Tab.1.left" timestamp="1632552660753">
+    <state width="1323" height="568" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632555494688" />
+    <state width="1323" height="568" key="GridCell.Tab.1.left" timestamp="1632555494687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632552660753" />
-    <state width="1306" height="567" key="GridCell.Tab.1.right" timestamp="1632552660754">
+    <state width="1323" height="568" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632555494687" />
+    <state width="1323" height="568" key="GridCell.Tab.1.right" timestamp="1632555494688">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="567" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632552660754" />
+    <state width="1323" height="568" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632555494688" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
