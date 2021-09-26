@@ -24,7 +24,7 @@
                     </svg></a></div>
                 <!-- Page Title-->
                 <div class="page-heading">
-                    <h6 class="mb-0">Daftar Anak</h6>
+                    <h6 class="mb-0">Daftar Balita</h6>
                 </div>
                 <!-- Navbar Toggler-->
                 <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
@@ -86,18 +86,18 @@
         <div class="top-products-area product-list-wrap">
             <div class="container">
                 <div class="row g-3">
-                    <!-- Single Top Product Card-->
+                    <!-- List Balita -->
                     <div th:each="balita, iter : ${listBalita}" class="col-12">
                         <div class="card single-product-card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="card-side-img">
-                                        <!-- Product Thumbnail--><a class="product-thumbnail d-block" href="page-shop-details.html"><img src="img/bg-img/2.jpg" alt=""></a>
+                                        <!-- Should be avatar balita --><a class="product-thumbnail d-block" href="page-shop-details.html"><img src="img/bg-img/2.jpg" alt=""></a>
                                     </div>
                                     <div class="card-content px-4 py-2">
                                         <!-- Balita Title--><a th:text="${balita.name}" class="product-title d-block text-truncate mt-0" href="page-shop-details.html"></a>
                                         <!-- Detail Balita -->
-                                        <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="sale-price"><span th:text="${balita.birth_date}"></span></p>
+                                        <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="sale-price"></p><p th:text="${listAge[iter.index]}"></p>
                                         <!-- Add Button-->
                                         <a class="btn m-1 btn-round btn-primary"  data-bs-toggle="modal" th:attr="data-bs-target='#bottomAlignModalUpdate'+${iter.index}">Ubah</a>
                                         <a class="btn m-1 btn-round btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#modalDelete'+${iter.index}">Hapus</a>
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn m-1 btn-circle bi-plus btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></a>
+                    <a class="btn m-1 btn-circle bi-plus btn-primary position-sticky" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></a>
                 </div>
             </div>
         </div>

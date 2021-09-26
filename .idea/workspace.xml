@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/BalitaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/BalitaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monita-depan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/monita-depan.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/BalitaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/BalitaModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/BalitaModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/BalitaModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/BalitaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/BalitaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +64,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
@@ -105,7 +101,7 @@
       <workItem from="1632242805445" duration="1945000" />
       <workItem from="1632277245460" duration="21531000" />
       <workItem from="1632523519147" duration="15101000" />
-      <workItem from="1632609590259" duration="3506000" />
+      <workItem from="1632609590259" duration="9256000" />
     </task>
     <servers />
   </component>
@@ -113,42 +109,42 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1632612942880">
+    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1632616118267">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1632612942880" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1632612281121">
+    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1632616118267" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632612281121" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1632612281121">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632612281121" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1632612281121">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632612281121" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1632612281121">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632612281121" />
-    <state width="1323" height="179" key="GridCell.Tab.1.bottom" timestamp="1632612281122">
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.1.bottom" timestamp="1632628862065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632612281122" />
-    <state width="1323" height="179" key="GridCell.Tab.1.center" timestamp="1632612281122">
+    <state width="1323" height="179" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632628862065" />
+    <state width="1323" height="179" key="GridCell.Tab.1.center" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632612281122" />
-    <state width="1323" height="179" key="GridCell.Tab.1.left" timestamp="1632612281121">
+    <state width="1323" height="179" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.1.left" timestamp="1632628862064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632612281121" />
-    <state width="1323" height="179" key="GridCell.Tab.1.right" timestamp="1632612281122">
+    <state width="1323" height="179" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632628862064" />
+    <state width="1323" height="179" key="GridCell.Tab.1.right" timestamp="1632628862065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632612281122" />
+    <state width="1323" height="179" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632628862065" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -157,6 +153,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/UserController.java</url>
           <line>125</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

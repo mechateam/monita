@@ -27,6 +27,7 @@ public class BalitaController {
             Model model
     ){
         model.addAttribute("listBalita", balitaService.getAllBalita());
+        model.addAttribute("listAge", balitaService.getListBalitaAge());
         return "page-balita";
     }
 

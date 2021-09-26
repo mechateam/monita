@@ -11,4 +11,5 @@ public interface BalitaService {
     BalitaModel getBalita(Long id);
     void deleteBalita(BalitaModel balita);
     void updateBalita(BalitaModel balita);
+    List<String> getListBalitaAge();
 }
