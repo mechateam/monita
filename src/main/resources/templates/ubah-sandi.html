@@ -24,10 +24,25 @@
         <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
         <!-- Register Form -->
         <div class="register-form mt-4">
-            <form th:action="@{/user/forgot_password}" method="post">
-                <div class="form-group text-start mb-3">
-                    <input class="form-control" type="email" name="email" placeholder="Masukan email anda">
+            <h1>Ubah Password</h1>
+            <form th:action="@{/user/profil/ubah-password/}+${user.username}" th:object="${user}" method="post">
+                <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
+                <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
+
+                <div class="mb-3">
+                    <label class="form-label">Password Lama <span class="fis-form-required">*</span></label>
+                    <input type="password" name="oldPassword" class="form-control" required/>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Password <span class="fis-form-required">*</span></label>
+                    <input type="password" name="password" class="form-control" required/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ketik Ulang Password <span class="fis-form-required">*</span></label>
+                    <input type="password" name="rePassword" class="form-control" required/>
+                    <span class="d-block text-danger fst-italic" style="font-style: 14px;" th:text="${errorPassword}"></span>
+                </div>
+
                 <button class="btn btn-primary w-100" type="submit">Reset Password</button>
             </form>
         </div>

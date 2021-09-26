@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -187,14 +188,42 @@ public class UserController {
 
     @PostMapping("/profil/ubah/{username}")
     public String editProfil(@ModelAttribute UserModel user, Model model, RedirectAttributes redirectAttributes){
-        System.out.println("masuk ke ubah post");
-        System.out.println("edit : "+user.getName());
-        System.out.println("edit : "+user.getAddress());
-        System.out.println("edit : "+user.getGender());
-        System.out.println("edit : "+user.getEmail());
-        System.out.println("edit : "+user.getPhone());
-        System.out.println("id_faskes" + user.getId_faskes());
         userService.changeUser(user);
         return "redirect:/user/profil/"+user.getUsername();
+    }
+
+    @GetMapping("/profil/ubah-password/{username}")
+    public String getFormUbahPassword (@ModelAttribute UserModel user, Model model){
+        model.addAttribute("user", user);
+        return "ubah-sandi";
+    }
+
+    @PostMapping("/profil/ubah-password/{username}")
+    public String editPassword (
+            @ModelAttribute UserModel user,
+            @RequestParam("oldPassword") String oldPassword,
+            @RequestParam("rePassword") String rePassword,
+            Model model,
+            RedirectAttributes redirectAttributes,
+            HttpServletRequest request
+    ){
+        UserModel userModel = userService.getUserByUsername(user.getUsername());
+
+        // Cek Password dan retype Password && cek duplikat username
+        if (user.getPassword().equals(rePassword)) {
+            // Save Password
+            userService.changePassword(userModel, oldPassword, user.getPassword());
+
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            System.out.println("lama : "+ oldPassword);
+            System.out.println("baru : "+ user.getPassword());
+            System.out.println("konf : "+ rePassword);
+
+            model.addAttribute("user",user);
+            return "page-home";
+        }
+        model.addAttribute("ErrorMessage", "Konfirmasi Password Baru tidak sesuai ");
+        return "redirect:/user/profil/ubah-password/"+user.getUsername();
+
     }
 }

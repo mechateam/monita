@@ -13,5 +13,6 @@ public interface UserService {
     public void updatePassword(UserModel customer, String newPassword);
     public String getGender(int gender);
     public void changeUser(UserModel user);
+    public boolean changePassword(UserModel user, String oldPassword, String newPassword);
 
 }
