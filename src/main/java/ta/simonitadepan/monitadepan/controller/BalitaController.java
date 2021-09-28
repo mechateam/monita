@@ -37,8 +37,11 @@ public class BalitaController {
             RedirectAttributes redirectAttributes
     ){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        balitaService.addBalita(balita, user);
-        redirectAttributes.addFlashAttribute("msg", "Balita berhasil ditambahkan!");
+        if(balitaService.addBalita(balita, user)) {
+            redirectAttributes.addFlashAttribute("msgCreateSc", "Data Balita Berhasil Ditambahkan!");
+        } else {
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Data Balita Gagal Ditambahkan, Periksa Tanggal Lahir!");
+        }
         return "redirect:/balita";
     }
 
@@ -47,10 +50,9 @@ public class BalitaController {
             @PathVariable Long id_balita,
             RedirectAttributes redirectAttributes
     ){
-
         BalitaModel balita = balitaService.getBalita(id_balita);
         balitaService.deleteBalita(balita);
-        redirectAttributes.addFlashAttribute("msg", "Balita berhasil dihapus!");
+        redirectAttributes.addFlashAttribute("msgDelete", "Data Balita Berhasil Dihapus!");
         return "redirect:/balita";
     }
 
@@ -64,11 +66,10 @@ public class BalitaController {
         model.addAttribute("balita", balita);
         try{
             balitaService.updateBalita(balita);
-            redirectAttributes.addFlashAttribute("msg", "Subcost Centre successfully edited!");
+            redirectAttributes.addFlashAttribute("msgUpdateSc", "Data Balita Berhasil Diubah!");
             return "redirect:/balita";
         } catch (NoSuchElementException e){ }
-        System.out.println("gagal update");
-        redirectAttributes.addFlashAttribute("msg", "Subcost Centre successfully edited!");
+        redirectAttributes.addFlashAttribute("msgUpdateEr", "Data Balita Gagal Diubah!!");
         return "redirect:/balita";
     }
 }

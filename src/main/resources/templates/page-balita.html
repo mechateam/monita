@@ -31,71 +31,63 @@
             </div>
         </div>
     </div>
-    <!-- # Sidenav Left -->
-    <!-- Offcanvas -->
-    <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1" aria-labelledby="affanOffcanvsLabel">
-        <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        <div class="offcanvas-body p-0">
-            <!-- Side Nav Wrapper -->
-            <div class="sidenav-wrapper">
-                <!-- Sidenav Profile -->
-                <div class="sidenav-profile bg-gradient">
-                    <div class="sidenav-style1"></div>
-                    <!-- User Thumbnail -->
-                    <div class="user-profile"><img src="img/bg-img/2.jpg" alt=""></div>
-                    <!-- User Info -->
-                    <div class="user-info">
-                        <h6 class="user-name mb-0">Affan Islam</h6><span>CEO, Designing World</span>
-                    </div>
-                </div>
-                <!-- Sidenav Nav -->
-                <ul class="sidenav-nav ps-0">
-                    <li><a href="page-home.html"><i class="bi bi-house-door"></i>Home</a></li>
-                    <li><a href="elements.html"><i class="bi bi-folder2-open"></i>Elements<span class="badge bg-danger rounded-pill ms-2">220+</span></a></li>
-                    <li><a href="pages.html"><i class="bi bi-collection"></i>Pages<span class="badge bg-success rounded-pill ms-2">100+</span></a></li>
-                    <li><a href="#"><i class="bi bi-cart-check"></i>Shop</a>
-                        <ul>
-                            <li><a href="page-shop-grid.html">Shop Grid</a></li>
-                            <li><a href="page-shop-list.html">Shop List</a></li>
-                            <li><a href="page-shop-details.html">Shop Details</a></li>
-                            <li><a href="page-cart.html">Cart</a></li>
-                            <li><a href="page-checkout.html">Checkout</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="settings.html"><i class="bi bi-gear"></i>Settings</a></li>
-                    <li>
-                        <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode
-                            <div class="form-check form-switch">
-                                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="page-login.html"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
-                </ul>
-                <!-- Social Info -->
-                <div class="social-info-wrap"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div>
-                <!-- Copyright Info -->
-                <div class="copyright-info">
-                    <p>2021 &copy; Made by<a href="#">Designing World</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="page-content-wrapper py-3">
-        <!-- Top Products-->
         <div class="top-products-area product-list-wrap">
             <div class="container">
+                <!-- Toast Message -->
+                <div th:if="${msgCreateSc}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                    <div class="toast-body">
+                        <div class="toast-text ms-3 me-2">
+                            <p class="mb-0 text-center" th:text="${msgCreateSc}"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div th:if="${msgCreateEr}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                    <div class="toast-body">
+                        <div class="toast-text ms-3 me-2">
+                            <p class="mb-0 text-center" th:text="${msgCreateEr}"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div th:if="${msgUpdateSc}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                    <div class="toast-body">
+                        <div class="toast-text ms-3 me-2">
+                            <p class="mb-0 text-center" th:text="${msgUpdateSc}"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div th:if="${msgUpdateEr}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                    <div class="toast-body">
+                        <div class="toast-text ms-3 me-2">
+                            <p class="mb-0 text-center" th:text="${msgUpdateEr}"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div th:if="${msgDelete}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                    <div class="toast-body">
+                        <div class="toast-text ms-3 me-2">
+                            <p class="mb-0 text-center" th:text="${msgDelete}"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <!-- List Balita -->
                 <div class="row g-3">
-                    <!-- List Balita -->
                     <div th:each="balita, iter : ${listBalita}" class="col-12">
                         <div class="card single-product-card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
+                                    <!-- Should be avatar balita -->
                                     <div class="card-side-img">
-                                        <!-- Should be avatar balita --><a class="product-thumbnail d-block" href="page-shop-details.html"><img src="img/bg-img/2.jpg" alt=""></a>
+                                        <a class="product-thumbnail d-block" href="page-shop-details.html"><img src="img/bg-img/2.jpg" alt=""></a>
                                     </div>
                                     <div class="card-content px-4 py-2">
-                                        <!-- Balita Title--><a th:text="${balita.name}" class="product-title d-block text-truncate mt-0" href="page-shop-details.html"></a>
+                                        <!-- Balita Title-->
+                                        <a th:text="${balita.name}" class="product-title d-block text-truncate mt-0" href="page-shop-details.html"></a>
                                         <!-- Detail Balita -->
                                         <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="sale-price"></p><p th:text="${listAge[iter.index]}"></p>
                                         <!-- Add Button-->
@@ -109,13 +101,15 @@
                         <div class="modal fade bottom-align-modal" th:id="'bottomAlignModalUpdate' + ${iter.index}" tabindex="-1" aria-labelledby="bottomAlignModalUpdateLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-end">
                                 <div class="modal-content">
-                                    <div class="modal-body">
-                                        <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button><br><br>
+                                    <div class="modal-header">
                                         <h5 class="modal-title" id="bottomAlignModalUpdateLabel">Ubah Data Anak</h5><br>
-                                        <form th:action="@{/balita/edit/} + ${balita.id_balita}" th:object="${balita}" method="POST">
+                                        <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form th:action="@{/balita/edit/} + ${balita.id_balita}" th:object="${balita}" method="POST">
+                                        <div class="modal-body">
                                             <div class="form-group">
                                                 <label class="form-label" for="inputNameUpdate">Nama Lengkap</label>
-                                                <input th:value="*{name}" class="form-control" id="inputNameUpdate" type="text">
+                                                <input th:value="*{name}" class="form-control" id="inputNameUpdate" type="text" name="name" required>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="inputBirthDateUpdate">Tanggal Lahir</label>
@@ -125,10 +119,12 @@
                                                 <label class="form-label" for="inputGenderUpdate">Jenis Kelamin</label>
                                                 <input th:value="*{gender == 0} ? 'Perempuan' : 'Laki-laki'" class="form-control" id="inputGenderUpdate" disabled>
                                             </div>
-                                            <button class="btn-sm btn-round btn-danger w-40" type="button" data-bs-dismiss="modal">Batal</button>
-                                            <button class="btn-sm btn-round btn-primary w-40" type="submit">Simpan</button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-sm btn-danger" type="button" data-bs-dismiss="modal">Batal</button>
+                                            <button class="btn btn-sm btn-success" type="submit">Simpan</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -138,10 +134,10 @@
                                 <div class="modal-content">
                                     <div class="modal-body ">
                                         <div class="d-flex justify-content-center align-items-center my-3">
-                                            <h6 class="modal-title" id="modalDeleteLabel" th:text="'Apakah anda yakin ingin menghapus data ' + ${balita.name} + '?'"></h6>
+                                            <h6 class="modal-title text-center" id="modalDeleteLabel" th:text="'Apakah anda yakin ingin menghapus data ' + ${balita.name} + '?'"></h6>
                                         </div>
                                         <div class="d-flex justify-content-center align-items-center my-3">
-                                            <p class="mb-0">Semua data anak akan terhapus permanen</p>
+                                            <p class="mb-0 text-center">Semua data anak akan terhapus permanen</p>
                                         </div>
                                         <div class="d-flex justify-content-center my-3">
                                             <button class="btn btn-sm btn-secondary" style="width: 150px; margin-right: 10px;" data-bs-dismiss="modal">Batal</button>
@@ -161,10 +157,12 @@
     <div class="modal fade bottom-align-modal" id="bottomAlignModal" tabindex="-1" aria-labelledby="bottomAlignModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button><br><br>
+                <div class="modal-header">
                     <h5 class="modal-title" id="bottomAlignModalLabel">Tambah Data Anak</h5><br>
-                    <form th:action="@{/balita}" method="POST">
+                    <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/balita}" method="POST">
+                    <div class="modal-body">
                         <div class="form-group">
                             <label class="form-label" for="inputName">Nama Lengkap</label>
                             <input class="form-control" id="inputName" type="text" placeholder="Nama Lengkap" name="name" required>
@@ -181,24 +179,15 @@
                                 <option th:value=1 th:text="Laki-Laki"></option>
                             </select>
                         </div>
-                        <button class="btn-sm btn-round btn-danger w-40" type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn-sm btn-round btn-primary w-40" type="submit">Simpan</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm btn-danger" type="button" data-bs-dismiss="modal">Batal</button>
+                        <button class="btn btn-sm btn-success" type="submit">Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-<!--    <div class="toast toast-autohide custom-toast-1 mb-2" tabindex="-1"  role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">-->
-<!--        <div class="toast-body">-->
-<!--            <svg class="bi bi-bootstrap-fill" width="30" height="30" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">-->
-<!--                <path fill-rule="evenodd" d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.542-2.11H5.062V12zm1.313-4.875V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375v2.725z"></path>-->
-<!--            </svg>-->
-<!--            <div class="toast-text ms-3 me-2">-->
-<!--                <p class="mb-0">Bootstrap 5 is launched.</p><small class="d-block">2 min ago</small>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>-->
-<!--    </div>-->
     <!-- Footer Nav -->
     <div class="footer-nav-area" id="footerNav">
         <div class="container px-0">

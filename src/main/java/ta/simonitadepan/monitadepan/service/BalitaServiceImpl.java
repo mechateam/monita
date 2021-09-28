@@ -10,7 +10,9 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @Transactional
@@ -24,11 +26,15 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
-    public void addBalita(BalitaModel balita, UserModel user) {
-        balita.setId_pengguna(user);
-        System.out.println("balita nama "+ balita.getName());
-        System.out.println("ortu nama "+ balita.getId_pengguna().getName());
-        balitaDb.save(balita);
+    public boolean addBalita(BalitaModel balita, UserModel user) {
+        Date now = new Date();
+        if(balita.getBirth_date().compareTo(now) < 0){
+            balita.setId_pengguna(user);
+            balitaDb.save(balita);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -45,10 +51,7 @@ public class BalitaServiceImpl implements BalitaService {
     public void updateBalita(BalitaModel balita) {
         BalitaModel balitaTarget = this.getBalita(balita.getId_balita());
         balitaTarget.setName(balita.getName());
-        balitaTarget.setBirth_date(balita.getBirth_date());
-        balitaTarget.setGender(balita.getGender());
         balitaDb.save(balitaTarget);
-        System.out.println("update balita nama "+ balita.getName());
     }
 
     @Override
@@ -61,7 +64,8 @@ public class BalitaServiceImpl implements BalitaService {
             if (period.getYears() == 1900){
                 listAge.add(period.getMonths() + " bulan");
             } else {
-                listAge.add(period.getYears() + " tahun " + period.getMonths() + " bulan ");
+                String year = period.toString();
+                listAge.add(year.substring(4,5)+ " tahun " + period.getMonths() + " bulan ");
             }
         }
         return listAge;
