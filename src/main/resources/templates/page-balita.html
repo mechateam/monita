@@ -31,7 +31,8 @@
             </div>
         </div>
     </div>
-    <div class="page-content-wrapper py-3">
+    <!-- Page Balita Exist-->
+    <div th:if="${emptyBalita == 0}" class="page-content-wrapper py-3">
         <div class="top-products-area product-list-wrap">
             <div class="container">
                 <!-- Toast Message -->
@@ -39,14 +40,6 @@
                     <div class="toast-body">
                         <div class="toast-text ms-3 me-2">
                             <p class="mb-0 text-center" th:text="${msgCreateSc}"></p>
-                        </div>
-                    </div>
-                    <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div th:if="${msgCreateEr}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
-                    <div class="toast-body">
-                        <div class="toast-text ms-3 me-2">
-                            <p class="mb-0 text-center" th:text="${msgCreateEr}"></p>
                         </div>
                     </div>
                     <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -149,6 +142,25 @@
                         </div>
                     </div>
                     <a class="btn m-1 btn-circle bi-plus btn-primary position-sticky" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Empty Balita -->
+    <div th:if="${emptyBalita == 1}" class="page-content-wrapper py-3">
+        <div class="custom-container">
+            <div th:if="${msgCreateEr}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                <div class="toast-body">
+                    <div class="toast-text ms-3 me-2">
+                        <p class="mb-0 text-center" th:text="${msgCreateEr}"></p>
+                    </div>
+                </div>
+                <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="card">
+                <div class="card-body px-5 text-center"><img class="mb-4" src="img/bg-img/39.png" alt="">
+                    <h4>Data Balita Masih Kosong!</h4>
+                    <p class="mb-4">Yuk Tambah Balita Untuk Menggunakan Fitur Simonita!</p><a class="btn btn-creative btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal">Tambah Balita</a>
                 </div>
             </div>
         </div>

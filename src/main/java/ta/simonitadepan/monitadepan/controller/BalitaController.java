@@ -26,8 +26,13 @@ public class BalitaController {
     public String balitaPage(
             Model model
     ){
-        model.addAttribute("listBalita", balitaService.getAllBalita());
-        model.addAttribute("listAge", balitaService.getListBalitaAge());
+        if(balitaService.getAllBalita().size() != 0) {
+            model.addAttribute("emptyBalita", 0);
+            model.addAttribute("listBalita", balitaService.getAllBalita());
+            model.addAttribute("listAge", balitaService.getListBalitaAge());
+        } else {
+            model.addAttribute("emptyBalita", 1);
+        }
         return "page-balita";
     }
 
