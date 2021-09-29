@@ -4,6 +4,7 @@
 <head>
     <object th:include="fragments/fragment :: head"></object>
 </head>
+
 <body>
 <!-- Preloader -->
 <div id="preloader">
@@ -12,42 +13,60 @@
 <!-- Internet Connection Status -->
 <!-- # This code for showing internet connection status -->
 <div class="internet-connection-status" id="internetStatus"></div>
-<!-- Back Button-->
-<div class="login-back-button"><a th:href="@{/profil}">
-    <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
-    </svg></a></div>
-<!-- Login Wrapper Area -->
-<div class="login-wrapper d-flex align-items-center justify-content-center">
-    <div class="custom-container">
-        <div class="text-center px-4"><h2 class="font-simonita-title" >SIMONITA</h2></div>
-        <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
-        <!-- Register Form -->
-        <div class="register-form mt-4">
-            <h6>Ubah Password</h6>
-            <form th:action="@{/profil/ubah-password/}+${user.username}" th:object="${user}" method="post">
-                <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
-                <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
-
-                <div class="mb-3">
-                    <label class="form-label">Password Lama <span class="fis-form-required">*</span></label>
-                    <input type="password" name="oldPassword" class="form-control" required/>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Password <span class="fis-form-required">*</span></label>
-                    <input type="password" name="password" class="form-control" required/>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ketik Ulang Password <span class="fis-form-required">*</span></label>
-                    <input type="password" name="rePassword" class="form-control" required/>
-                    <span class="d-block text-danger fst-italic" style="font-style: 14px;" th:text="${errorPassword}"></span>
-                </div>
-
-                <button class="btn btn-primary w-100" type="submit">Reset Password</button>
-            </form>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container">
+        <!-- Header Content-->
+        <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+            <!-- Back Button-->
+            <div class="back-button"><a th:href="@{/profil}">
+                <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+                </svg></a></div>
+            <!-- Page Title-->
+            <div class="page-heading">
+                <h6 class="mb-0">Ubah Password</h6>
+            </div>
+            <!-- Navbar Toggler-->
+            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
         </div>
     </div>
 </div>
+<!-- Content Area-->
+<div class="page-content-wrapper py-3">
+    <div class="container">
+        <!-- User Meta Data-->
+        <div class="card user-data-card">
+            <div class="card-body">
+                <h6 class="mb-3 text-center" th:text ="${message}">Silahkan login untuk menggunakan SIMONITA.</h6>
+                <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
+                <form th:action="@{/profil/ubah-password/}+${user.username}" th:object="${user}" method="post">
+                    <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
+                    <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
+
+                    <div class="form-group position-relative">
+                        <label class="form-label" for="oldPassword">Kata Sandi Lama</label>
+                        <input class="form-control input" id="oldPassword" type="password" placeholder="Masukkan Kata Sandi Lama" name="oldPassword" required>
+                    </div>
+
+                    <div class="form-group position-relative">
+                        <label class="form-label" for="password">Kata Sandi Baru</label>
+                        <input class="form-control input" id="password" type="password" placeholder="Masukkan Kata Sandi Baru" name="password" required>
+                    </div>
+
+                    <div class="form-group position-relative">
+                        <label class="form-label" for="rePassword">Konfirmasi Kata Sandi</label>
+                        <input class="form-control input" id="rePassword" type="password" placeholder="Konfirmasi Kata Sandi Baru" name="rePassword" required>
+                        <small th:if="${message}" class="mb-3 text-center" th:value="${message}"></small>
+                    </div>
+
+                    <button class="btn btn-primary w-100" type="submit">Reset Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Bottom NavBar -->
 <object th:include="fragments/bottom-bar"></object>
 <!-- All JavaScript Files -->

@@ -62,6 +62,14 @@ public class UserProfileController {
     ){
         UserModel userModel = userService.getUserByUsername(user.getUsername());
 
+        if(!(user.getPassword().equals(rePassword))){
+            System.out.println(user.getPassword());
+            System.out.println(rePassword);
+            System.out.println("masuk");
+            model.addAttribute("message", "Konfirmasi Password Baru tidak sesuai ");
+            return "redirect:/profil/ubah-password/"+user.getUsername();
+        }
+
         // Cek Password dan retype Password && cek duplikat username
         if (user.getPassword().equals(rePassword)) {
             // Save Password
@@ -75,7 +83,8 @@ public class UserProfileController {
             model.addAttribute("user",user);
             return "page-home";
         }
-        model.addAttribute("ErrorMessage", "Konfirmasi Password Baru tidak sesuai ");
+
+        model.addAttribute("message", "Password Lama tidak sesuai ");
         return "redirect:/profil/ubah-password/"+user.getUsername();
 
     }
