@@ -24,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -40,6 +40,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="1yZdp2264vay7njcHbPg9Jm1XWc" />
   <component name="ProjectId" id="1ybbpDZwhLEbSdF7wAw9oq4lUUR" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,6 +51,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -60,11 +62,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
@@ -99,6 +102,12 @@
       <workItem from="1632146809553" duration="5399000" />
       <workItem from="1632242805445" duration="1945000" />
       <workItem from="1632277245460" duration="21531000" />
+      <workItem from="1632463235167" duration="2260000" />
+      <workItem from="1632490675978" duration="284000" />
+      <workItem from="1632538593323" duration="10073000" />
+      <workItem from="1632655873524" duration="3262000" />
+      <workItem from="1632730485514" duration="949000" />
+      <workItem from="1632894531155" duration="2214000" />
       <workItem from="1632523519147" duration="15101000" />
       <workItem from="1632609590259" duration="10223000" />
       <workItem from="1632723513081" duration="4258000" />
@@ -111,6 +120,50 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1632656239754">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1632656239754" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1632495911743">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1632495911743" />
+    <state width="1306" height="559" key="GridCell.Tab.0.bottom" timestamp="1632896707262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632896707262" />
+    <state width="1306" height="559" key="GridCell.Tab.0.center" timestamp="1632896707261">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632896707261" />
+    <state width="1306" height="559" key="GridCell.Tab.0.left" timestamp="1632896707261">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632896707261" />
+    <state width="1306" height="559" key="GridCell.Tab.0.right" timestamp="1632896707262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632896707262" />
+    <state width="1306" height="559" key="GridCell.Tab.1.bottom" timestamp="1632896707264">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632896707264" />
+    <state width="1306" height="559" key="GridCell.Tab.1.center" timestamp="1632896707263">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632896707263" />
+    <state width="1306" height="559" key="GridCell.Tab.1.left" timestamp="1632896707262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632896707262" />
+    <state width="1306" height="559" key="GridCell.Tab.1.right" timestamp="1632896707264">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="559" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632896707264" />
+    <state x="359" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1632896187615">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="359" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1632896187615" />
     <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1632893319070">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -153,6 +206,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/UserController.java</url>
+          <line>126</line>
           <line>125</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

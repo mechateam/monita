@@ -65,5 +65,32 @@ public class UserServiceImpl implements UserService {
         user.setResetPasswordToken(null);
         userDb.save(user);
     }
+
+    @Override
+    public String getGender(int gender){
+        if(gender == 0){
+            return "Perempuan";
+        }
+        return "Laki-Laki";
+    }
+
+    @Override
+    public void changeUser(UserModel user) {
+        userDb.save(user);
+    }
+
+    @Override
+    public boolean changePassword(UserModel user, String oldPassword, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+            user.setPassword(encrypt(newPassword));
+            userDb.save(user);
+
+            return true;
+        }
+
+        return false;
+    }
 }
 

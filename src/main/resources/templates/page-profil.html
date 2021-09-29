@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+    <object th:include="fragments/fragment :: head"></object>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+<!-- Internet Connection Status -->
+<!-- # This code for showing internet connection status -->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container">
+        <!-- Header Content-->
+        <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+            <!-- Page Title-->
+            <div class="page-heading">
+                <h6 class="mb-0" th:text="${user.name}"></h6>
+            </div>
+            <!-- Navbar Toggler-->
+            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div>
+    </div>
+</div>
+<!-- Content Area-->
+<div class="page-content-wrapper py-3">
+    <div class="container">
+        <!-- Informasi Balita -->
+        <div class="card user-info-card mb-3">
+            <div class="card-body d-flex align-items-center">
+                <!-- Should be avatar balita -->
+                <div class="user-profile me-3"><img src="img/bg-img/2.jpg" alt=""></div>
+                <!-- Should be dynamic data, link at active balita -->
+                <div class="user-info">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mb-1">Meldi Hafizh Sayoko</h5><span class="badge bg-success ms-2 rounded-pill">Active</span>
+                    </div>
+                    <p class="mb-0">Laki-laki - Usia 1 tahun 3 bulan</p>
+                </div>
+            </div>
+        </div>
+        <!-- List Opsi Profil-->
+        <div class="card">
+            <div class="card-body p-3">
+                <!-- Page Item --><a class="affan-page-item" th:href="@{/profil/} + ${user.username}">
+                <div class="icon-wrapper"><i class="bi bi-person"></i></div>Lihat Profil<i class="bi bi-chevron-right"></i></a>
+                <!-- Page Item --><a class="affan-page-item" th:href="@{/profil/ubah-password/} + ${user.username}">
+                <div class="icon-wrapper"><i class="bi bi-lock"></i></div>Ubah Kata Sandi<i class="bi bi-chevron-right"></i></a>
+                <!-- Page Item --><a class="affan-page-item" th:href="@{/balita}">
+                <div class="icon-wrapper"><i class="bi bi-person"></i></div>Daftar Anak<i class="bi bi-chevron-right"></i></a>
+                <!-- Page Item --><a class="affan-page-item" href="page-otp.html">
+                <div class="icon-wrapper"><i class="bi bi-phone"></i></div>Kontak Faskes<i class="bi bi-chevron-right"></i></a>
+            </div>
+        </div>
+        <a class="btn btn-danger w-100" th:href="@{/logout}">Keluar Akun</a>
+    </div>
+</div>
+<!-- Bottom NavBar -->
+<object th:include="fragments/bottom-bar"></object>
+<!-- All JavaScript Files -->
+<object th:include="fragments/fragment :: js"></object>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+    <object th:include="fragments/fragment :: head"></object>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+<!-- Internet Connection Status -->
+<!-- # This code for showing internet connection status -->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container">
+        <!-- Header Content-->
+        <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+            <!-- Back Button-->
+            <div class="back-button"><a th:href="@{/profil}">
+                <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+                </svg></a></div>
+            <!-- Page Title-->
+            <div class="page-heading">
+                <h6 class="mb-0">Profil</h6>
+            </div>
+            <!-- Navbar Toggler-->
+            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div>
+    </div>
+</div>
+<!-- Content Area-->
+<div class="page-content-wrapper py-3">
+    <div class="container">
+        <!-- User Meta Data-->
+        <div class="card user-data-card">
+            <div class="card-body">
+                <form th:action="@{/profil/ubah/}+${user.username}" th:object="${user}" method="POST">
+                    <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
+                    <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
+                    <input type="hidden" name="password" class="form-control" th:field="*{password}"/>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="nama">Nama</label>
+                        <input class="form-control" id="nama" type="text" th:field="${user.name}" placeholder="Nama">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" id="email" type="text" th:field="${user.email}" placeholder="email">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="noTelp">Nomor Telepon</label>
+                        <input class="form-control" id="noTelp" type="text" th:field="${user.phone}" placeholder="noTelp">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Jenis Kelamin</label>
+                        <select name="gender" class="form-control">
+                            <div th:if="${user.gender == 0}">
+                                <option selected th:value="0" >Perempuan</option>
+                                <option th:Value="1" >Laki-Laki</option>
+                            </div>
+                            <div th:if="${user.gender == 1}">
+                                <option selected th:value="1" > Laki-Laki</option>
+                                <option th:value="0" >Perempuan</option>
+                            </div>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="address">Alamat</label>
+                        <input class="form-control" id="address" type="text" th:field="${user.address}" placeholder="address">
+                    </div>
+                    <button class="btn btn-success w-100" type="submit">Simpan Profil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bottom NavBar -->
+<object th:include="fragments/bottom-bar"></object>
+<!-- All JavaScript Files -->
+<object th:include="fragments/fragment :: js"></object>
+</body>
+</html>
