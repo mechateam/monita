@@ -42,7 +42,7 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
-    public BalitaModel getBalita(Long id) {
+    public BalitaModel getBalitaById(Long id) {
         return balitaDb.getById(id);
     }
 
@@ -52,7 +52,7 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
-    public void statusBalita(BalitaModel balita) {
+    public void changeStatusBalita(BalitaModel balita) {
         for (BalitaModel balitaLain : this.getAllBalita()) {
             balitaLain.setStatus(0);
         }
@@ -61,7 +61,7 @@ public class BalitaServiceImpl implements BalitaService {
 
     @Override
     public void updateBalita(BalitaModel balita) {
-        BalitaModel balitaTarget = this.getBalita(balita.getId_balita());
+        BalitaModel balitaTarget = this.getBalitaById(balita.getId_balita());
         balitaTarget.setName(balita.getName());
         balitaDb.save(balitaTarget);
     }

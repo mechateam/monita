@@ -55,7 +55,7 @@ public class BalitaController {
             @PathVariable Long id_balita,
             RedirectAttributes redirectAttributes
     ){
-        BalitaModel balita = balitaService.getBalita(id_balita);
+        BalitaModel balita = balitaService.getBalitaById(id_balita);
         balitaService.deleteBalita(balita);
         redirectAttributes.addFlashAttribute("msgDelete", "Data Balita Berhasil Dihapus!");
         return "redirect:/balita";
@@ -83,8 +83,8 @@ public class BalitaController {
             @PathVariable Long id_balita,
             RedirectAttributes redirectAttributes
     ){
-        BalitaModel balita = balitaService.getBalita(id_balita);
-        balitaService.statusBalita(balita);
+        BalitaModel balita = balitaService.getBalitaById(id_balita);
+        balitaService.changeStatusBalita(balita);
         return "redirect:/";
     }
 }
