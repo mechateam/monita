@@ -7,12 +7,8 @@ import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.time.*;
+import java.util.*;
 
 @Service
 @Transactional
@@ -27,13 +23,21 @@ public class BalitaServiceImpl implements BalitaService {
 
     @Override
     public boolean addBalita(BalitaModel balita, UserModel user) {
-        Date now = new Date();
-        if(balita.getBirth_date().compareTo(now) < 0){
+        Date date = new Date();
+        LocalDate today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate birth = balita.getBirth_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Period daysBetween = Period.between(birth, today);
+
+        if (daysBetween.isNegative()) {
+            return false;
+        } else {
             balita.setId_pengguna(user);
+            balita.setStatus(1);
+            for (BalitaModel balitaLain : this.getAllBalita()) {
+                balitaLain.setStatus(0);
+            }
             balitaDb.save(balita);
             return true;
-        } else {
-            return false;
         }
     }
 
@@ -48,10 +52,55 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
+    public void statusBalita(BalitaModel balita) {
+        for (BalitaModel balitaLain : this.getAllBalita()) {
+            balitaLain.setStatus(0);
+        }
+        balita.setStatus(1);
+    }
+
+    @Override
     public void updateBalita(BalitaModel balita) {
         BalitaModel balitaTarget = this.getBalita(balita.getId_balita());
         balitaTarget.setName(balita.getName());
         balitaDb.save(balitaTarget);
+    }
+
+    private String calculateAge(Date birth) {
+        Date today = new Date();
+        Calendar calendarBirth = Calendar.getInstance();
+        Calendar calendarNow = Calendar.getInstance();
+        calendarNow.setTime(today);
+        calendarBirth.setTime(birth);
+
+        int yearNow = calendarNow.get(Calendar.YEAR);
+        int yearBirth = calendarBirth.get(Calendar.YEAR);
+        int monthNow = calendarNow.get(Calendar.MONTH);
+        int monthBirth = calendarBirth.get(Calendar.MONTH);
+        int age = yearNow - yearBirth;
+        int month = monthNow- monthBirth;
+
+        if (monthBirth > monthNow) {
+            age--;
+            month = monthNow + 12 - monthBirth;
+        }
+        if (monthNow == monthBirth) {
+            if (age == 0) {
+                month = 1;
+            } else {
+                int dayNow = calendarNow.get(Calendar.DAY_OF_MONTH);
+                int dayBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
+                if (dayBirth > dayNow) {
+                    age--;
+                    month = 11;
+                }
+            }
+        }
+
+        if (age == 0) {
+            return month + " bulan";
+        }
+        return age + " tahun " + month + " bulan";
     }
 
     @Override
@@ -59,14 +108,7 @@ public class BalitaServiceImpl implements BalitaService {
         LocalDate today = LocalDate.now();
         List<String> listAge = new ArrayList<String>();
         for (BalitaModel balita : this.getAllBalita()) {
-            LocalDate birthday = LocalDate.of(balita.getBirth_date().getYear(), balita.getBirth_date().getMonth(), balita.getBirth_date().getDate());
-            Period period = Period.between(birthday, today);
-            if (period.getYears() == 1900){
-                listAge.add(period.getMonths() + " bulan");
-            } else {
-                String year = period.toString();
-                listAge.add(year.substring(4,5)+ " tahun " + period.getMonths() + " bulan ");
-            }
+            listAge.add(calculateAge(balita.getBirth_date()));
         }
         return listAge;
     }

@@ -77,4 +77,14 @@ public class BalitaController {
         redirectAttributes.addFlashAttribute("msgUpdateEr", "Data Balita Gagal Diubah!!");
         return "redirect:/balita";
     }
+
+    @GetMapping("/status/{id_balita}")
+    public String statusBalita(
+            @PathVariable Long id_balita,
+            RedirectAttributes redirectAttributes
+    ){
+        BalitaModel balita = balitaService.getBalita(id_balita);
+        balitaService.statusBalita(balita);
+        return "redirect:/";
+    }
 }

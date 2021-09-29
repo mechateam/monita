@@ -10,6 +10,7 @@ public interface BalitaService {
     boolean addBalita(BalitaModel balita, UserModel user);
     BalitaModel getBalita(Long id);
     void deleteBalita(BalitaModel balita);
+    void statusBalita(BalitaModel balita);
     void updateBalita(BalitaModel balita);
     List<String> getListBalitaAge();
 }
