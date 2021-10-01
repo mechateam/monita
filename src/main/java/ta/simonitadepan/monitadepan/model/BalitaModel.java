@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "balita")
@@ -43,6 +44,16 @@ public class BalitaModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private UserModel id_pengguna;
+
+    @OneToMany(mappedBy = "id_balita",fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<PertumbuhanBalitaModel> listPertumbuhan;
+
+    @OneToMany(mappedBy = "id_balita",fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<PerkembanganBalitaModel> listPerkembangan;
 
     public Long getId_balita() {
         return id_balita;
@@ -91,4 +102,12 @@ public class BalitaModel {
     public void setId_pengguna(UserModel id_pengguna) {
         this.id_pengguna = id_pengguna;
     }
+
+    public List<PertumbuhanBalitaModel> getListPertumbuhan() { return listPertumbuhan; }
+
+    public void setListPertumbuhan(List<PertumbuhanBalitaModel> listPertumbuhan) { this.listPertumbuhan = listPertumbuhan; }
+
+    public List<PerkembanganBalitaModel> getListPerkembangan() { return listPerkembangan; }
+
+    public void setListPerkembangan(List<PerkembanganBalitaModel> listPerkembangan) { this.listPerkembangan = listPerkembangan; }
 }
