@@ -3,6 +3,7 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 
@@ -111,5 +112,33 @@ public class BalitaServiceImpl implements BalitaService {
             listAge.add(calculateAge(balita.getBirth_date()));
         }
         return listAge;
+    }
+
+    @Override
+    public BalitaModel getBalitaAktif(UserModel user){
+
+        for (BalitaModel b: user.getListBalita()){
+            if(b.getStatus() == 1){return b;}
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean hasFilledPertumbuhan(BalitaModel balita){
+        for (PertumbuhanBalitaModel tumbuh: balita.getListPertumbuhan()){
+            int tahun_input = tumbuh.getInput_date().getYear();
+            int bulan_input = tumbuh.getInput_date().getMonth();
+
+            int tahun_now = LocalDateTime.now().getYear();
+            int bulan_now = LocalDateTime.now().getMonthValue();
+
+            if (tahun_input == tahun_now && bulan_input == bulan_now){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 }

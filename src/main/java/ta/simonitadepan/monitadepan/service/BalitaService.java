@@ -13,4 +13,7 @@ public interface BalitaService {
     void changeStatusBalita(BalitaModel balita);
     void updateBalita(BalitaModel balita);
     List<String> getListBalitaAge();
+
+    BalitaModel getBalitaAktif(UserModel user);
+    boolean hasFilledPertumbuhan(BalitaModel balita);
 }
