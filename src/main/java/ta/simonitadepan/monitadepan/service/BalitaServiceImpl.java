@@ -67,7 +67,10 @@ public class BalitaServiceImpl implements BalitaService {
         balitaDb.save(balitaTarget);
     }
 
-    private String calculateAge(Date birth) {
+    @Override
+    public Map<String, Integer> calculateAge(Date birth) {
+        Map<String,Integer> tahunBulan = new HashMap<String, Integer>();
+
         Date today = new Date();
         Calendar calendarBirth = Calendar.getInstance();
         Calendar calendarNow = Calendar.getInstance();
@@ -99,9 +102,16 @@ public class BalitaServiceImpl implements BalitaService {
         }
 
         if (age == 0) {
-            return month + " bulan";
+            tahunBulan.put("tahun",0);
         }
-        return age + " tahun " + month + " bulan";
+        else{
+            tahunBulan.put("tahun",age);
+        }
+
+
+        tahunBulan.put("bulan",month);
+
+        return tahunBulan;
     }
 
     @Override
@@ -109,7 +119,8 @@ public class BalitaServiceImpl implements BalitaService {
         LocalDate today = LocalDate.now();
         List<String> listAge = new ArrayList<String>();
         for (BalitaModel balita : this.getAllBalita()) {
-            listAge.add(calculateAge(balita.getBirth_date()));
+            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + calculateAge(balita.getBirth_date()).get("bulan");
+            listAge.add(txt);
         }
         return listAge;
     }
