@@ -125,13 +125,13 @@
                                   </thead>
                                   <tbody>
                                   <tr>
-                                      <th scope="row">Berat Badan</th>
+                                      <th scope="row">Berat Badan per Umur</th>
                                       <td th:text="${pertumbuhan.berat_badan} +' Kg'"></td>
                                       <td th:text="${listDiagnosis[0]}"></td>
                                       <td th:text="${listDeskripsiDiagnosis[0]}"></td>
                                   </tr>
                                   <tr>
-                                      <th scope="row">Tinggi Badan</th>
+                                      <th scope="row">Tinggi Badan per Umur</th>
                                       <td th:text="${pertumbuhan.tinggi_badan} +' cm'"></td>
                                       <td th:text="${listDiagnosis[1]}"></td>
                                       <td th:text="${listDeskripsiDiagnosis[1]}"></td>
@@ -141,6 +141,12 @@
                                       <td th:text="${imt}"></td>
                                       <td th:text="${listDiagnosis[2]}"></td>
                                       <td th:text="${listDeskripsiDiagnosis[2]}"></td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">Berat Badan per Tinggi Badan</th>
+                                      <td th:text="${imt}"></td>
+                                      <td th:text="${listDiagnosis[3]}"></td>
+                                      <td th:text="${listDeskripsiDiagnosis[3]}"></td>
                                   </tr>
                                   </tbody>
                               </table>

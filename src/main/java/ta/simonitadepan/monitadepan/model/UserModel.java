@@ -158,4 +158,12 @@ public class UserModel implements Serializable {
     public void setListBalita(List<BalitaModel> listBalita) {
         this.listBalita = listBalita;
     }
+
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
 }

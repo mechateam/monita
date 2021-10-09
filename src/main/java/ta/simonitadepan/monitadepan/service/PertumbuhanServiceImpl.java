@@ -9,6 +9,7 @@ import ta.simonitadepan.monitadepan.repository.PertumbuhanDb;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -44,8 +45,8 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         Float berat_badan = pertumbuhan.getBerat_badan();
         Float IMT = berat_badan/(tinggi_badan*tinggi_badan);
 
-        pertumbuhan.setDiagnosis(calculateBeratUmur(umur,berat_badan)[0] + ", "+calculateTinggiUsia(umur,tinggi_badan)[0]+", "+calculateIMT(umur,IMT)[0]);
-        pertumbuhan.setDeskripsi_diagnosis(calculateBeratUmur(umur,berat_badan)[1] + ", "+calculateTinggiUsia(umur,tinggi_badan)[1]+", "+calculateIMT(umur,IMT)[1]);
+        pertumbuhan.setDiagnosis(calculateBeratUmur(umur,berat_badan,balitaAktif.getGender())[0] + ", "+calculateTinggiUsia(umur,tinggi_badan,balitaAktif.getGender())[0]+", "+calculateIMT(umur,IMT,balitaAktif.getGender())[0] +", " + calculateBBperTB(berat_badan,tinggi_badan,balitaAktif.getGender(),umur)[0]);
+        pertumbuhan.setDeskripsi_diagnosis(calculateBeratUmur(umur,berat_badan,balitaAktif.getGender())[1] + ", "+calculateTinggiUsia(umur,tinggi_badan,balitaAktif.getGender())[1]+", "+calculateIMT(umur,IMT,balitaAktif.getGender())[1] +", " + calculateBBperTB(berat_badan,tinggi_badan,balitaAktif.getGender(),umur)[1]);
         pertumbuhan.setId_balita(balitaAktif);
         pertumbuhan.setInput_age(String.valueOf(umur));
         pertumbuhan.setInput_date(new Date());
@@ -56,20 +57,27 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         return false;
     }
 
-    private String[] calculateBeratUmur(Integer umur, Float berat){
+    private String[] calculateBeratUmur(Integer umur, Float berat, int gender){
         String diagnosis = "";
         String deskripsi = "";
-        Map<Integer, Float> tabelBeratUsiaLaki = serverProperties.getBeratusialaki().get(umur);
+        Map<Integer, Float> tabelBeratUmur;
+        if (gender == 0){
+            tabelBeratUmur = serverProperties.getBeratusiaperempuan().get(umur);
+        }
+        else{
+            tabelBeratUmur = serverProperties.getBeratusialaki().get(umur);
+        }
 
-        if (berat < tabelBeratUsiaLaki.get(-3)){
+
+        if (berat < tabelBeratUmur.get(-3)){
             diagnosis+="Perhatian";
             deskripsi+="Berat badan sangat kurang";
         }
-        else if (berat >= tabelBeratUsiaLaki.get(-3) && berat < tabelBeratUsiaLaki.get(-2)){
+        else if (berat >= tabelBeratUmur.get(-3) && berat < tabelBeratUmur.get(-2)){
             diagnosis+="Perhatian";
             deskripsi+="Berat badan kurang";
         }
-        else if(berat >= tabelBeratUsiaLaki.get(-2) && berat < tabelBeratUsiaLaki.get(1)){
+        else if(berat >= tabelBeratUmur.get(-2) && berat < tabelBeratUmur.get(1)){
             diagnosis+="Normal";
             deskripsi+="Berat badan normal";
         }
@@ -82,20 +90,26 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
 
     }
 
-    private String[] calculateTinggiUsia(Integer umur, Float tinggi){
+    private String[] calculateTinggiUsia(Integer umur, Float tinggi, int gender){
         String diagnosis = "";
         String deskripsi = "";
-        Map<Integer, Float> tabelTinggiUsiaLaki = serverProperties.getTbusialaki().get(umur);
+        Map<Integer, Float> tabelTinggiUsia;
+        if (gender == 0){
+            tabelTinggiUsia = serverProperties.getTbusiaperempuan().get(umur);
+        }
+        else{
+            tabelTinggiUsia = serverProperties.getTbusialaki().get(umur);
+        }
 
-        if (tinggi < tabelTinggiUsiaLaki.get(-3)){
+        if (tinggi < tabelTinggiUsia.get(-3)){
             diagnosis+="Perhatian";
             deskripsi+="Sangat Pendek";
         }
-        else if (tinggi >= tabelTinggiUsiaLaki.get(-3) && tinggi < tabelTinggiUsiaLaki.get(-2)){
+        else if (tinggi >= tabelTinggiUsia.get(-3) && tinggi < tabelTinggiUsia.get(-2)){
             diagnosis+="Perhatian";
             deskripsi+="Pendek";
         }
-        else if(tinggi >= tabelTinggiUsiaLaki.get(-2) && tinggi < tabelTinggiUsiaLaki.get(3)){
+        else if(tinggi >= tabelTinggiUsia.get(-2) && tinggi < tabelTinggiUsia.get(3)){
             diagnosis+="Normal";
             deskripsi+="Normal";
         }
@@ -108,29 +122,37 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
 
     }
 
-    private String[] calculateIMT(Integer umur, Float IMT){
+    private String[] calculateIMT(Integer umur, Float IMT,int gender){
         String diagnosis = "";
         String deskripsi = "";
 
-        Map<Integer, Float> tabelIMTLaki = serverProperties.getImtlaki().get(umur);
+        Map<Integer, Float> tabelIMT;
 
-        if (IMT < tabelIMTLaki.get(-3)){
+
+        if (gender == 0){
+            tabelIMT = serverProperties.getImtperempuan().get(umur);
+        }
+        else{
+            tabelIMT = serverProperties.getImtlaki().get(umur);
+        }
+
+        if (IMT < tabelIMT.get(-3)){
             diagnosis+="Perhatian";
             deskripsi+="Gizi Buruk";
         }
-        else if (IMT >= tabelIMTLaki.get(-3) && IMT < tabelIMTLaki.get(-2)){
+        else if (IMT >= tabelIMT.get(-3) && IMT < tabelIMT.get(-2)){
             diagnosis+="Perhatian";
             deskripsi+="Gizi Kurang";
         }
-        else if(IMT >= tabelIMTLaki.get(-2) && IMT < tabelIMTLaki.get(1)){
+        else if(IMT >= tabelIMT.get(-2) && IMT < tabelIMT.get(1)){
             diagnosis+="Normal";
             deskripsi+="Normal";
         }
-        else if(IMT >= tabelIMTLaki.get(1) && IMT < tabelIMTLaki.get(2)){
+        else if(IMT >= tabelIMT.get(1) && IMT < tabelIMT.get(2)){
             diagnosis+="Perhatian";
             deskripsi+="Beresiko Gizi Lebih";
         }
-        else if(IMT >= tabelIMTLaki.get(2) && IMT < tabelIMTLaki.get(3)){
+        else if(IMT >= tabelIMT.get(2) && IMT < tabelIMT.get(3)){
             diagnosis+="Perhatian";
             deskripsi+="Gizi Lebih";
         }
@@ -140,6 +162,55 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         }
 
         return new String[] {diagnosis,deskripsi};
+    }
+
+    private String[] calculateBBperTB(Float berat, Float tinggi,int gender, Integer umur){
+        String diagnosis = "";
+        String deskripsi = "";
+        Map<Integer, Float> tabelBBperTB;
+
+        if (gender==0 && umur <24){
+            tabelBBperTB = serverProperties.getBbpertbperempuan0().get(tinggi);
+        }
+        else if(gender==0 && umur >=24){
+            tabelBBperTB = serverProperties.getBbpertbperempuan24().get(tinggi);
+        }
+        else if(gender==1 && umur <24){
+            tabelBBperTB = serverProperties.getBbpertblaki0().get(tinggi);
+            System.out.println("a"+serverProperties.getBbpertblaki0().get(tinggi));
+        }
+        else{
+            tabelBBperTB = serverProperties.getBbpertblaki24().get(tinggi);
+        }
+        System.out.println(berat);
+
+        if (berat < tabelBBperTB.get(-3)){
+            diagnosis+="Perhatian";
+            deskripsi+="Gizi Buruk";
+        }
+        else if (berat >= tabelBBperTB.get(-3) && berat < tabelBBperTB.get(-2)){
+            diagnosis+="Perhatian";
+            deskripsi+="Gizi Kurang";
+        }
+        else if(berat >= tabelBBperTB.get(-2) && berat < tabelBBperTB.get(1)){
+            diagnosis+="Normal";
+            deskripsi+="Normal";
+        }
+        else if(berat >= tabelBBperTB.get(1) && berat < tabelBBperTB.get(2)){
+            diagnosis+="Perhatian";
+            deskripsi+="Beresiko Gizi Lebih";
+        }
+        else if(berat >= tabelBBperTB.get(2) && berat < tabelBBperTB.get(3)){
+            diagnosis+="Perhatian";
+            deskripsi+="Gizi Lebih";
+        }
+        else{
+            diagnosis+="Perhatian";
+            deskripsi+="Gizi Buruk";
+        }
+
+        return new String[] {diagnosis,deskripsi};
+
     }
 
 
