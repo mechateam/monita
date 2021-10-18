@@ -3,6 +3,7 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 
@@ -66,7 +67,10 @@ public class BalitaServiceImpl implements BalitaService {
         balitaDb.save(balitaTarget);
     }
 
-    private String calculateAge(Date birth) {
+    @Override
+    public Map<String, Integer> calculateAge(Date birth) {
+        Map<String,Integer> tahunBulan = new HashMap<String, Integer>();
+
         Date today = new Date();
         Calendar calendarBirth = Calendar.getInstance();
         Calendar calendarNow = Calendar.getInstance();
@@ -98,9 +102,16 @@ public class BalitaServiceImpl implements BalitaService {
         }
 
         if (age == 0) {
-            return month + " bulan";
+            tahunBulan.put("tahun",0);
         }
-        return age + " tahun " + month + " bulan";
+        else{
+            tahunBulan.put("tahun",age);
+        }
+
+
+        tahunBulan.put("bulan",month);
+
+        return tahunBulan;
     }
 
     @Override
@@ -108,8 +119,37 @@ public class BalitaServiceImpl implements BalitaService {
         LocalDate today = LocalDate.now();
         List<String> listAge = new ArrayList<String>();
         for (BalitaModel balita : this.getAllBalita()) {
-            listAge.add(calculateAge(balita.getBirth_date()));
+            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + calculateAge(balita.getBirth_date()).get("bulan");
+            listAge.add(txt);
         }
         return listAge;
+    }
+
+    @Override
+    public BalitaModel getBalitaAktif(UserModel user){
+
+        for (BalitaModel b: user.getListBalita()){
+            if(b.getStatus() == 1){return b;}
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean hasFilledPertumbuhan(BalitaModel balita){
+        for (PertumbuhanBalitaModel tumbuh: balita.getListPertumbuhan()){
+            int tahun_input = tumbuh.getInput_date().getYear();
+            int bulan_input = tumbuh.getInput_date().getMonth();
+
+            int tahun_now = LocalDateTime.now().getYear();
+            int bulan_now = LocalDateTime.now().getMonthValue();
+
+            if (tahun_input == tahun_now && bulan_input == bulan_now){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 }
