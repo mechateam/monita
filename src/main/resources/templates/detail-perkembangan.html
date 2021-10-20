@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+    <object th:include="fragments/fragment :: head"></object>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+<!-- Internet Connection Status -->
+<!-- # This code for showing internet connection status -->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container">
+        <!-- Header Content-->
+        <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+            <!-- Back Button-->
+            <div class="back-button"><a th:href="@{/perkembangan}">
+                <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+                </svg></a></div>
+            <!-- Page Title-->
+            <div class="page-heading">
+                <h6 class="mb-0">Detail Perkembangan</h6>
+            </div>
+            <!-- Navbar Toggler-->
+            <div><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div>
+    </div>
+</div>
+<div class="page-content-wrapper py-3">
+    <!-- Pagination-->
+    <div class="shop-pagination pb-3">
+        <!-- Toast Message-->
+        <div class="container">
+            <div th:if="${msgCreateSc}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                <div class="toast-body">
+                    <div class="toast-text ms-3 me-2">
+                        <p class="mb-0 text-center" th:text="${msgCreateSc}"></p>
+                    </div>
+                </div>
+                <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div th:if="${msgCreateEr}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+                <div class="toast-body">
+                    <div class="toast-text ms-3 me-2">
+                        <p class="mb-0 text-center" th:text="${msgCreateEr}"></p>
+                    </div>
+                </div>
+                <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="d-flex align-items-center justify-content-between"><big th:text="'Halo, ' + ${balita.name} +'!' " class="ms-1"> </big>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between"><small th:text="'Umur kamu sekarang adalah '+${tahun}+ ' tahun ' + ${bulan} +' bulan'" class="ms-1"></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Diagnosis -->
+    <div class="container">
+        <div class="card bg-primary bg-img" style="background-image: url('img/core-img/2.png')">
+            <div class="card-body p-5 direction-rtl">
+                <svg class="bi bi-cpu text-white mb-3" width="48" height="48" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"></path>
+                </svg>
+                <h2 class="text-white" th:text="${perkembangan.diagnosis}"></h2>
+                <p class="text-white mb-0" th:text="${perkembangan.deskripsi_diagnosis}"></p>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <table class="table mb-0 table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Gerak Halus</td>
+                        <td th:text="${perkembangan.diagnosis_gerak_halus}"></td>
+                    </tr>
+                    <tr>
+                        <td>Gerak Kasar</td>
+                        <td th:text="${perkembangan.diagnosis_gerak_kasar}"></td>
+                    </tr>
+                    <tr>
+                        <td>Bicara dan Bahasa</td>
+                        <td th:text="${perkembangan.diagnosis_bicara_bahasa}"></td>
+                    </tr>
+                    <tr>
+                        <td>Sosialisasi dan Kemandirian</td>
+                        <td th:text="${perkembangan.diagnosis_sosialisasi}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bottom Align Modal Create Balita -->
+<!-- Footer Nav -->
+<object th:include="fragments/bottom-bar"></object>
+<!-- All JavaScript Files -->
+<object th:include="fragments/fragment :: js"></object>
+</body>
+</html>

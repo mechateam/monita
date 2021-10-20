@@ -3,6 +3,7 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.PerkembanganBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 
@@ -66,7 +67,10 @@ public class BalitaServiceImpl implements BalitaService {
         balitaDb.save(balitaTarget);
     }
 
-    private String calculateAge(Date birth) {
+    @Override
+    public Map<String, Integer> calculateAge(Date birth) {
+        Map<String,Integer> tahunBulan = new HashMap<String, Integer>();
+
         Date today = new Date();
         Calendar calendarBirth = Calendar.getInstance();
         Calendar calendarNow = Calendar.getInstance();
@@ -86,7 +90,7 @@ public class BalitaServiceImpl implements BalitaService {
         }
         if (monthNow == monthBirth) {
             if (age == 0) {
-                month = 1;
+                month = 0;
             } else {
                 int dayNow = calendarNow.get(Calendar.DAY_OF_MONTH);
                 int dayBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
@@ -98,18 +102,57 @@ public class BalitaServiceImpl implements BalitaService {
         }
 
         if (age == 0) {
-            return month + " bulan";
+            tahunBulan.put("tahun",0);
         }
-        return age + " tahun " + month + " bulan";
+        else{
+            tahunBulan.put("tahun",age);
+        }
+
+
+        tahunBulan.put("bulan",month);
+
+        return tahunBulan;
     }
+
 
     @Override
     public List<String> getListBalitaAge() {
-        LocalDate today = LocalDate.now();
         List<String> listAge = new ArrayList<String>();
         for (BalitaModel balita : this.getAllBalita()) {
-            listAge.add(calculateAge(balita.getBirth_date()));
+            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + " tahun " + calculateAge(balita.getBirth_date()).get("bulan") + " bulan";
+            listAge.add(txt);
         }
         return listAge;
+    }
+
+    @Override
+    public BalitaModel getBalitaAktif(UserModel user){
+
+        for (BalitaModel b: user.getListBalita()){
+            if(b.getStatus() == 1){
+                System.out.println(b);
+                return b;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean hasFilledPerkembangan (BalitaModel balita){
+        for (PerkembanganBalitaModel kembang: balita.getListPerkembangan()){
+            int tahun_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            int bulan_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth().getValue();
+
+            int tahun_now = LocalDateTime.now().getYear();
+            int bulan_now = LocalDateTime.now().getMonthValue();
+
+            if (tahun_input == tahun_now && bulan_input == bulan_now){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 }
