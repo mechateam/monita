@@ -33,8 +33,12 @@ public class PageController {
     @GetMapping("/")
     public String landingPage(Model model){
 
+
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
+        if (balita==null){
+            return "redirect:/balita";
+        }
 
         Map<String, Integer> umur = balitaService.calculateAge(balita.getBirth_date());
 
