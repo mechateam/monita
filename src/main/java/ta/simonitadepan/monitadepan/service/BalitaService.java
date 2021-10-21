@@ -18,4 +18,5 @@ public interface BalitaService {
     BalitaModel getBalitaAktif(UserModel user);
     Map<String, Integer> calculateAge(Date birth);
     boolean hasFilledPerkembangan (BalitaModel balita);
+    boolean hasFilledPertumbuhan(BalitaModel balita);
 }

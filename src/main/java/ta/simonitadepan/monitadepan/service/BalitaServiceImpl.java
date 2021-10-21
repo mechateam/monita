@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
 import ta.simonitadepan.monitadepan.model.PerkembanganBalitaModel;
+import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 
@@ -129,10 +130,7 @@ public class BalitaServiceImpl implements BalitaService {
     public BalitaModel getBalitaAktif(UserModel user){
 
         for (BalitaModel b: user.getListBalita()){
-            if(b.getStatus() == 1){
-                System.out.println(b);
-                return b;
-            }
+            if(b.getStatus() == 1){return b;}
         }
 
         return null;
@@ -143,6 +141,24 @@ public class BalitaServiceImpl implements BalitaService {
         for (PerkembanganBalitaModel kembang: balita.getListPerkembangan()){
             int tahun_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
             int bulan_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth().getValue();
+
+            int tahun_now = LocalDateTime.now().getYear();
+            int bulan_now = LocalDateTime.now().getMonthValue();
+
+            if (tahun_input == tahun_now && bulan_input == bulan_now){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    
+    @Override
+    public boolean hasFilledPertumbuhan(BalitaModel balita){
+        for (PertumbuhanBalitaModel tumbuh: balita.getListPertumbuhan()){
+            int tahun_input = tumbuh.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            int bulan_input = tumbuh.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth().getValue();
 
             int tahun_now = LocalDateTime.now().getYear();
             int bulan_now = LocalDateTime.now().getMonthValue();

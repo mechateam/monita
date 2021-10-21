@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PerkembanganController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/PeriodePerkembanganDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/PerkembanganBalitaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/PertanyaanPerkembanganDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PerkembanganBalitaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PerkembanganBalitaServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PertanyaanPerkembanganService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PertanyaanPerkembanganServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/perkembangan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/detail-perkembangan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home-perkembangan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/page-add-perkembangan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PeriodePerkembanganModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PeriodePerkembanganModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PerkembanganBalitaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PerkembanganBalitaModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PertanyaanPerkembanganModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PertanyaanPerkembanganModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/BalitaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/MonitaDepanApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/MonitaDepanApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/FaskesModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/FaskesModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/UserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/model/UserModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/UserDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/security/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ta/simonitadepan/monitadepan/service/FaskesServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ta/simonitadepan/monitadepan/MonitaDepanApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ta/simonitadepan/monitadepan/MonitaDepanApplicationTests.class" afterDir="false" />
-    </list>
+    <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,6 +120,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="0" width="816" height="728" key="#Intentions" timestamp="1633261266049">

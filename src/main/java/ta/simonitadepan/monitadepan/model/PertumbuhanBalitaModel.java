@@ -23,6 +23,10 @@ public class PertumbuhanBalitaModel {
     private Date input_date;
 
     @NotNull
+    @Column(name = "input_age")
+    private String input_age;
+
+    @NotNull
     @Column(name = "berat_badan",nullable = false)
     private Float berat_badan;
 
@@ -98,5 +102,13 @@ public class PertumbuhanBalitaModel {
 
     public void setId_balita(BalitaModel id_balita) {
         this.id_balita = id_balita;
+    }
+
+    public String getInput_age() {
+        return input_age;
+    }
+
+    public void setInput_age(String input_age) {
+        this.input_age = input_age;
     }
 }
