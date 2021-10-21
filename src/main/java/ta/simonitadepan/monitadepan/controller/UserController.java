@@ -90,7 +90,7 @@ public class UserController {
         model.addAttribute("token", token);
 
         if (user == null) {
-            redir.addAttribute("message", "Invalid Token");
+            redir.addFlashAttribute("message", "Invalid Token");
             return "redirect:/login";
         }
 
@@ -99,9 +99,10 @@ public class UserController {
     }
 
     @PostMapping("/reset_password")
-    public String processResetPassword(HttpServletRequest request, Model model) {
+    public String processResetPassword(HttpServletRequest request, Model model,  RedirectAttributes redir) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
+        System.out.println(token);
 
         UserModel user = userService.getByResetPasswordToken(token);
         if (user == null){
@@ -111,15 +112,13 @@ public class UserController {
         model.addAttribute("title", "Reset your password");
 
         if (user == null) {
-            model.addAttribute("message", "Invalid Token");
-            return "message";
+            redir.addFlashAttribute("message", "Invalid Token");
+            return "redirect:/login";
         } else {
             userService.updatePassword(user, password);
-
-            model.addAttribute("message", "You have successfully changed your password.");
+            redir.addFlashAttribute("message", "You have successfully changed your password.");
+            return "redirect:/login";
         }
-
-        return "login";
 
     }
 
