@@ -10,13 +10,6 @@ function checkAdder() {
         add();
         counterQuestion++;
 
-        console.log('pertanyaan ke: ' + counterQuestion);
-        console.log('jumlah pertanyaan Ya: ' + counterYa);
-        console.log('jumlah gerak halus: ' + gerakHalus);
-        console.log('jumlah gerak kasar: ' + gerakKasar);
-        console.log('jumlah bicara: ' + bicara);
-        console.log('jumlah sosialisasi: ' + sosialisasi);
-
         document.getElementById('question').innerHTML = tmp[counterQuestion];
         document.getElementById('radioYa').checked = false;
         document.getElementById('radioTidak').checked = false

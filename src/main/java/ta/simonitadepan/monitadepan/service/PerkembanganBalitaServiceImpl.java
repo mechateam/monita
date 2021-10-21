@@ -60,14 +60,6 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
             if (p.getTipe().equals("Bicara dan Bahasa")) {B++;}
             if (p.getTipe().equals("Sosialisasi dan Kemandirian")) {S++;}
         }
-//        System.out.println("jumlah pertanyaan GH: " + GH );
-//        System.out.println("jumlah jawaban GH: " + countGH );
-//        System.out.println("jumlah pertanyaan GK: " + GK );
-//        System.out.println("jumlah jawaban GK: " + countGK );
-//        System.out.println("jumlah pertanyaan B: " + B );
-//        System.out.println("jumlah jawaban B: " + countB );
-//        System.out.println("jumlah pertanyaan S: " + S );
-//        System.out.println("jumlah jawaban S: " + countS );
         if (countGH == 0) {resultDiagnosisTipe.set(0, "Tidak ada penilaian gerak halus pada periode ini");}
         if (countGK == 0) {resultDiagnosisTipe.set(1, "Tidak ada penilaian gerak kasar pada periode ini");}
         if (countB == 0) {resultDiagnosisTipe.set(2, "Tidak ada penilaian bicara dan bahasa pada periode ini");}

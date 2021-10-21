@@ -40,11 +40,9 @@ public class PerkembanganController {
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         if (balitaService.hasFilledPerkembangan(balita) == true){
-            System.out.println("masuk udh isi");
             model.addAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan untuk rentang usia bulan ini");
         }
         else{
-            System.out.println("masuk blm isi");
             model.addAttribute("msg","Masukkan Data Perkembangan Balita");
         }
 
@@ -62,7 +60,6 @@ public class PerkembanganController {
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         if (balitaService.hasFilledPerkembangan(balita) == true){
-            System.out.println("masuk udh isi tambah");
             attributes.addFlashAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan bulan ini");
             return "redirect:/perkembangan";
         }
