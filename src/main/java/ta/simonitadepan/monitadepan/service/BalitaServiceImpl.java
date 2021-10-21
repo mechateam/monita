@@ -3,6 +3,7 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.PerkembanganBalitaModel;
 import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
@@ -90,7 +91,7 @@ public class BalitaServiceImpl implements BalitaService {
         }
         if (monthNow == monthBirth) {
             if (age == 0) {
-                month = 1;
+                month = 0;
             } else {
                 int dayNow = calendarNow.get(Calendar.DAY_OF_MONTH);
                 int dayBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
@@ -114,12 +115,12 @@ public class BalitaServiceImpl implements BalitaService {
         return tahunBulan;
     }
 
+
     @Override
     public List<String> getListBalitaAge() {
-        LocalDate today = LocalDate.now();
         List<String> listAge = new ArrayList<String>();
         for (BalitaModel balita : this.getAllBalita()) {
-            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + calculateAge(balita.getBirth_date()).get("bulan");
+            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + " tahun " + calculateAge(balita.getBirth_date()).get("bulan") + " bulan";
             listAge.add(txt);
         }
         return listAge;
@@ -136,10 +137,28 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
+    public boolean hasFilledPerkembangan (BalitaModel balita){
+        for (PerkembanganBalitaModel kembang: balita.getListPerkembangan()){
+            int tahun_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            int bulan_input = kembang.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth().getValue();
+
+            int tahun_now = LocalDateTime.now().getYear();
+            int bulan_now = LocalDateTime.now().getMonthValue();
+
+            if (tahun_input == tahun_now && bulan_input == bulan_now){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    
+    @Override
     public boolean hasFilledPertumbuhan(BalitaModel balita){
         for (PertumbuhanBalitaModel tumbuh: balita.getListPertumbuhan()){
-            int tahun_input = tumbuh.getInput_date().getYear();
-            int bulan_input = tumbuh.getInput_date().getMonth();
+            int tahun_input = tumbuh.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            int bulan_input = tumbuh.getInput_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth().getValue();
 
             int tahun_now = LocalDateTime.now().getYear();
             int bulan_now = LocalDateTime.now().getMonthValue();

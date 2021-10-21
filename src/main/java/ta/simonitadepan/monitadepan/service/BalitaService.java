@@ -15,8 +15,8 @@ public interface BalitaService {
     void changeStatusBalita(BalitaModel balita);
     void updateBalita(BalitaModel balita);
     List<String> getListBalitaAge();
-    Map<String, Integer> calculateAge(Date birth);
-
     BalitaModel getBalitaAktif(UserModel user);
+    Map<String, Integer> calculateAge(Date birth);
+    boolean hasFilledPerkembangan (BalitaModel balita);
     boolean hasFilledPertumbuhan(BalitaModel balita);
 }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+    <object th:include="fragments/fragment :: head"></object>
+    <script th:inline="javascript">
+        var tmp = /*[[${list}]]*/ null;
+        var tmpMap = /*[[${map}]]*/ null;
+    </script>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+<!-- Internet Connection Status -->
+<!-- # This code for showing internet connection status -->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container">
+        <!-- Header Content-->
+        <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+            <!-- Page Title-->
+            <div class="page-heading">
+                <h6 class="mb-0">Tambah Perkembangan</h6>
+            </div>
+            <!-- Navbar Toggler-->
+            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div>
+    </div>
+</div>
+<!-- Content Area-->
+<div class="page-content-wrapper py-3">
+    <div class="container">
+        <div class="card user-info-card mb-12">
+            <div class="card-body">
+                <!-- Single Skill Progress Bar -->
+                <div class="skill-progress-bar d-flex align-items-center">
+                    <!-- Skill Icon -->
+                    <div class="skill-icon shadow-sm">
+                        <svg class="bi bi-heart text-danger" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+                        </svg>
+                    </div>
+                    <!-- Skill Data -->
+                    <div class="skill-data">
+                        <!-- Skill Name -->
+                        <div class="skill-name d-flex align-items-center justify-content-between">
+                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span>96</span>%</small>
+                        </div>
+                        <!-- Progress -->
+                        <div class="progress" style="height: 4px;">
+                            <div id="progressBaru" class="progress-bar bg-success" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <h5 th:text="'Cek perkembangan balita usia ' + ${umur} + ' bulan'" class="mb-1"></h5>
+                </div><br>
+                <h6 th:text="${list[0]}" id="question"></h6>
+                <div class="single-plan-check shadow-sm active-effect">
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" name="choice" value="Ya" type="radio" id="radioYa" required>
+                        <label class="form-check-label" for="radioYa">Ya</label>
+                    </div>
+                    <svg class="bi bi-person text-primary" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                    </svg>
+                </div>
+                <div class="single-plan-check shadow-sm active-effect">
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" name="choice" value="Tidak" type="radio" id="radioTidak">
+                        <label class="form-check-label" for="radioTidak">Tidak</label>
+                    </div>
+                    <svg class="bi bi-person text-primary" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                    </svg>
+                </div>
+                <button class="btn btn-primary w-100" id="buttonNext" th:onClick= "checkAdder()" >Berikutnya</button>
+                <button class="btn btn-success w-100" style="display: none;" id="buttonModal" onClick= "toSubmit()" data-bs-toggle="modal" data-bs-target="#modalSave">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal to Save -->
+<div class="modal fade" id="modalSave" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <div class="d-flex justify-content-center align-items-center my-3">
+                    <h6 class="modal-title text-center" th:text="'Apakah anda yakin ingin menyimpan data perkembangan ' + ${namaBalita} + ' usia ' + ${umur} + '?'"></h6>
+                </div>
+                <div class="d-flex justify-content-center align-items-center my-3">
+                    <p class="mb-0 text-center">Data yang disimpan tidak dapat diubah kembali.</p>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <button class="btn btn-sm btn-secondary" style="width: 150px; margin-right: 10px;" data-bs-dismiss="modal">Batal</button>
+                    <form th:action="@{/perkembangan/tambah}" method="POST">
+                        <input id="result" name="result" type="text" hidden>
+                        <input id="resultGH" name="resultGH" type="text" hidden>
+                        <input id="resultGK" name="resultGK" type="text" hidden>
+                        <input id="resultB" name="resultB" type="text" hidden>
+                        <input id="resultS" name="resultS" type="text" hidden>
+                        <button type="submit" name="toSave" class="btn btn-sm btn-success" style="width: 150px;">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bottom NavBar -->
+<object th:include="fragments/bottom-bar"></object>
+<!-- All JavaScript Files -->
+<object th:include="fragments/fragment :: js"></object>
+<script src="../js/perkembangan.js"></script>
+</body>
+</html>

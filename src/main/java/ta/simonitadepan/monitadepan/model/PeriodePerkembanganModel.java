@@ -18,7 +18,7 @@ public class PeriodePerkembanganModel {
 
     @NotNull
     @Column(name = "periode",nullable = false)
-    private Integer periode;
+    private String periode;
 
     @OneToMany(mappedBy = "id_periode",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -38,11 +38,11 @@ public class PeriodePerkembanganModel {
         this.id_periode = id_periode;
     }
 
-    public Integer getPeriode() {
+    public String getPeriode() {
         return periode;
     }
 
-    public void setPeriode(Integer periode) {
+    public void setPeriode(String periode) {
         this.periode = periode;
     }
 

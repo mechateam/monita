@@ -19,6 +19,10 @@ public class PertanyaanPerkembanganModel {
     @Column(name = "pertanyaan",nullable = false)
     private String pertanyaan;
 
+    @NotNull
+    @Column(name = "tipe",nullable = false)
+    private String tipe;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_periode",referencedColumnName = "id_periode",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -36,4 +40,12 @@ public class PertanyaanPerkembanganModel {
     public PeriodePerkembanganModel getId_periode() { return id_periode;  }
 
     public void setId_periode(PeriodePerkembanganModel id_periode) { this.id_periode = id_periode;  }
+
+    public String getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
+    }
 }
