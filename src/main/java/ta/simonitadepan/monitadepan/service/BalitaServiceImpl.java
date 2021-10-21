@@ -34,10 +34,10 @@ public class BalitaServiceImpl implements BalitaService {
             return false;
         } else {
             balita.setId_pengguna(user);
-            balita.setStatus(1);
-            for (BalitaModel balitaLain : this.getAllBalita()) {
+            for (BalitaModel balitaLain : this.getListBalitaLogin(user)) {
                 balitaLain.setStatus(0);
             }
+            balita.setStatus(1);
             balitaDb.save(balita);
             return true;
         }
