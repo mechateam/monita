@@ -53,7 +53,8 @@ public class UserController {
     }
 
     @GetMapping("/forgot_password")
-    public String showForgotPasswordForm() {
+    public String showForgotPasswordForm(Model model) {
+        model.addAttribute("masuk_first",true);
         return "page-forget-password";
     }
 
@@ -64,7 +65,9 @@ public class UserController {
         String token = RandomString.make(30);
 
         try {
-            userService.updateResetPasswordToken(token, email);
+            if (userService.updateResetPasswordToken(token, email) == null){
+                throw new UsernameNotFoundException("Email tidak ditemukan");
+            }
             String resetPasswordLink = getSiteURL(request) + "/user/reset_password?token=" + token;
             sendmail(email,resetPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
