@@ -40,29 +40,24 @@ public class PageController {
             return "redirect:/balita";
         }
 
+        PertumbuhanBalitaModel pertumbuhanBalitaModel = pertumbuhanService.getPertumbuhanBulanIni(balita.getListPertumbuhan());
+
         Map<String, Integer> umur = balitaService.calculateAge(balita.getBirth_date());
 
-        if (balita.getListPertumbuhan() == null){
+        if (pertumbuhanBalitaModel == null){
             model.addAttribute("isi",false);
         }
         else{
             model.addAttribute("isi",true);
-            PertumbuhanBalitaModel pertumbuhanBalitaModel = pertumbuhanService.getPertumbuhanBulanIni(balita.getListPertumbuhan());
-            
-            if (pertumbuhanBalitaModel!= null){
-                if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
-                    model.addAttribute("diagnosis", "SESUAI");
-                }
-                else{
-                    model.addAttribute("diagnosis", "PERHATIAN");
-                }
-                model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
-                model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
+            if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
+                model.addAttribute("diagnosis", "SESUAI");
             }
-
-
+            else{
+                model.addAttribute("diagnosis", "PERHATIAN");
+            }
+            model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
+            model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
         }
-
 
         model.addAttribute("balita",balita);
         model.addAttribute("bulan",umur.get("bulan"));
