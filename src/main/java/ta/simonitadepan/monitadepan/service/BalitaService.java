@@ -9,6 +9,8 @@ import java.util.Map;
 
 public interface BalitaService {
     List<BalitaModel> getAllBalita();
+    List<BalitaModel> getListBalitaLogin(UserModel user);
+    List<String> getListBalitaAgeLogin(UserModel user);
     boolean addBalita(BalitaModel balita, UserModel user);
     BalitaModel getBalitaById(Long id);
     void deleteBalita(BalitaModel balita);

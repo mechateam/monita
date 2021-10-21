@@ -48,15 +48,19 @@ public class PageController {
         else{
             model.addAttribute("isi",true);
             PertumbuhanBalitaModel pertumbuhanBalitaModel = pertumbuhanService.getPertumbuhanBulanIni(balita.getListPertumbuhan());
-            if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
-                model.addAttribute("diagnosis", "SESUAI");
-            }
-            else{
-                model.addAttribute("diagnosis", "PERHATIAN");
+            
+            if (pertumbuhanBalitaModel!= null){
+                if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
+                    model.addAttribute("diagnosis", "SESUAI");
+                }
+                else{
+                    model.addAttribute("diagnosis", "PERHATIAN");
+                }
+                model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
+                model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
             }
 
-            model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
-            model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
+
         }
 
 

@@ -15,7 +15,8 @@ import java.util.NoSuchElementException;
 
 @Controller
 @RequestMapping("/balita")
-public class BalitaController {
+public class
+BalitaController {
     @Autowired
     BalitaService balitaService;
 
@@ -26,10 +27,11 @@ public class BalitaController {
     public String balitaPage(
             Model model
     ){
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         if(balitaService.getAllBalita().size() != 0) {
             model.addAttribute("emptyBalita", 0);
-            model.addAttribute("listBalita", balitaService.getAllBalita());
-            model.addAttribute("listAge", balitaService.getListBalitaAge());
+            model.addAttribute("listBalita", balitaService.getListBalitaLogin(user));
+            model.addAttribute("listAge", balitaService.getListBalitaAgeLogin(user));
         } else {
             model.addAttribute("emptyBalita", 1);
         }

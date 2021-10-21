@@ -127,6 +127,16 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
+    public List<String> getListBalitaAgeLogin(UserModel user) {
+        List<String> listAge = new ArrayList<String>();
+        for (BalitaModel balita : this.getListBalitaLogin(user)) {
+            String txt = ""+ calculateAge(balita.getBirth_date()).get("tahun") + " tahun " + calculateAge(balita.getBirth_date()).get("bulan") + " bulan";
+            listAge.add(txt);
+        }
+        return listAge;
+    }
+
+    @Override
     public BalitaModel getBalitaAktif(UserModel user){
 
         for (BalitaModel b: user.getListBalita()){
@@ -170,5 +180,10 @@ public class BalitaServiceImpl implements BalitaService {
         }
 
         return false;
+    }
+
+    @Override
+    public List<BalitaModel> getListBalitaLogin(UserModel user){
+        return user.getListBalita();
     }
 }
