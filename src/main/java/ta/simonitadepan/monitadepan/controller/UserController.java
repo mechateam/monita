@@ -53,7 +53,8 @@ public class UserController {
     }
 
     @GetMapping("/forgot_password")
-    public String showForgotPasswordForm() {
+    public String showForgotPasswordForm(Model model) {
+        model.addAttribute("masuk_first",true);
         return "page-forget-password";
     }
 
@@ -64,7 +65,9 @@ public class UserController {
         String token = RandomString.make(30);
 
         try {
-            userService.updateResetPasswordToken(token, email);
+            if (userService.updateResetPasswordToken(token, email) == null){
+                throw new UsernameNotFoundException("Email tidak ditemukan");
+            }
             String resetPasswordLink = getSiteURL(request) + "/user/reset_password?token=" + token;
             sendmail(email,resetPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
@@ -87,7 +90,7 @@ public class UserController {
         model.addAttribute("token", token);
 
         if (user == null) {
-            redir.addAttribute("message", "Invalid Token");
+            redir.addFlashAttribute("message", "Invalid Token");
             return "redirect:/login";
         }
 
@@ -96,9 +99,10 @@ public class UserController {
     }
 
     @PostMapping("/reset_password")
-    public String processResetPassword(HttpServletRequest request, Model model) {
+    public String processResetPassword(HttpServletRequest request, Model model,  RedirectAttributes redir) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
+        System.out.println(token);
 
         UserModel user = userService.getByResetPasswordToken(token);
         if (user == null){
@@ -108,15 +112,13 @@ public class UserController {
         model.addAttribute("title", "Reset your password");
 
         if (user == null) {
-            model.addAttribute("message", "Invalid Token");
-            return "message";
+            redir.addFlashAttribute("message", "Invalid Token");
+            return "redirect:/login";
         } else {
             userService.updatePassword(user, password);
-
-            model.addAttribute("message", "You have successfully changed your password.");
+            redir.addFlashAttribute("message", "You have successfully changed your password.");
+            return "redirect:/login";
         }
-
-        return "login";
 
     }
 

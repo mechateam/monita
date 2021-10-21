@@ -8,9 +8,7 @@ import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.repository.PertumbuhanDb;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -183,6 +181,7 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
             tabelBBperTB = serverProperties.getBbpertblaki24().get(tinggi);
         }
         System.out.println(berat);
+        System.out.println(tabelBBperTB.keySet());
 
         if (berat < tabelBBperTB.get(-3)){
             diagnosis+="Perhatian";
@@ -211,6 +210,31 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
 
         return new String[] {diagnosis,deskripsi};
 
+    }
+
+    @Override
+    public PertumbuhanBalitaModel getPertumbuhanBulanIni(List<PertumbuhanBalitaModel> listPertumbuhan){
+        Date tanggal_hari_ini = new Date();
+        Integer bulan = tanggal_hari_ini.getMonth();
+        Integer tahun = tanggal_hari_ini.getYear();
+
+        for (PertumbuhanBalitaModel tumbuh: listPertumbuhan){
+            if (tumbuh.getInput_date().getMonth() == bulan && tumbuh.getInput_date().getYear() == tahun ){
+                return tumbuh;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean getHasilDiagnosisBulanIni(String diagnosis){
+        List<String> myList = new ArrayList<String>(Arrays.asList(diagnosis.split(", ")));
+        for (String diag: myList){
+            if (diag.equals("Perhatian")){
+                return false;
+            }
+        }
+        return true;
     }
 
 
