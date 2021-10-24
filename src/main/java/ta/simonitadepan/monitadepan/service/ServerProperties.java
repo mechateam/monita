@@ -4,6 +4,7 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 ;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -20,6 +21,16 @@ public class ServerProperties {
     private Map<Integer, Map<Integer,Float>> imtperempuan;
     private Map<Float, Map<Integer,Float>> bbpertbperempuan0;
     private Map<Float, Map<Integer,Float>> bbpertbperempuan24;
+
+    private List<Map<String, String>> imunisasi;
+
+    public List<Map<String, String>> getImunisasi() {
+        return imunisasi;
+    }
+
+    public void setImunisasi(List<Map<String, String>> imunisasi) {
+        this.imunisasi = imunisasi;
+    }
 
     public Map<Float, Map<Integer, Float>> getBbpertblaki0() {
         return bbpertblaki0;

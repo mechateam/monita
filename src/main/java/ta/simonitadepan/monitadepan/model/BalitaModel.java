@@ -55,6 +55,19 @@ public class BalitaModel {
     @JsonIgnore
     private List<PerkembanganBalitaModel> listPerkembangan;
 
+    @OneToMany(mappedBy = "balita",fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<ImunisasiModel> listImunisasi;
+
+    public List<ImunisasiModel> getListImunisasi() {
+        return listImunisasi;
+    }
+
+    public void setListImunisasi(List<ImunisasiModel> listImunisasi) {
+        this.listImunisasi = listImunisasi;
+    }
+
     public Long getId_balita() {
         return id_balita;
     }

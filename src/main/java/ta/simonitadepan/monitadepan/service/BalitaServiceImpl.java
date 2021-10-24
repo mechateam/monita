@@ -3,10 +3,12 @@ package ta.simonitadepan.monitadepan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.ImunisasiModel;
 import ta.simonitadepan.monitadepan.model.PerkembanganBalitaModel;
 import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
+import ta.simonitadepan.monitadepan.repository.ImunisasiDb;
 
 import javax.transaction.Transactional;
 import java.time.*;
@@ -17,6 +19,12 @@ import java.util.*;
 public class BalitaServiceImpl implements BalitaService {
     @Autowired
     BalitaDb balitaDb;
+
+    @Autowired
+    ServerProperties serverProperties;
+
+    @Autowired
+    ImunisasiDb imunisasiDb;
 
     @Override
     public List<BalitaModel> getAllBalita() {
@@ -39,8 +47,20 @@ public class BalitaServiceImpl implements BalitaService {
             }
             balita.setStatus(1);
             balitaDb.save(balita);
-            return true;
+
         }
+        List<Map<String, String>> listImunisasi = serverProperties.getImunisasi();
+
+        for (Map<String,String> imunisasi: listImunisasi){
+            ImunisasiModel imunBaru = new ImunisasiModel();
+            imunBaru.setBalita(balita);
+            imunBaru.setDeskripsi(imunisasi.get("Deskripsi"));
+            imunBaru.setName(imunisasi.get("Imunisasi"));
+            imunBaru.setPeriode(imunisasi.get("Usia"));
+            imunBaru.setStatus(0);
+            imunisasiDb.save(imunBaru);
+        }
+        return true;
     }
 
     @Override
