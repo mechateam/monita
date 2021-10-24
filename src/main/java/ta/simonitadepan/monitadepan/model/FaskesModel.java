@@ -42,10 +42,58 @@ public class FaskesModel implements Serializable {
     @Column(name = "sip",nullable = true)
     private String sip;
 
+    @NotNull
+    @Column(name="address",nullable = false)
+    private String address;
+
+    @NotNull
+    @Column(name="rt",nullable = false)
+    private String rt;
+
+    @NotNull
+    @Column(name="rw",nullable = false)
+    private String rw;
+
+    @NotNull
+    @Column(name="kelurahan",nullable = false)
+    private String kelurahan;
+
     @OneToMany(mappedBy = "id_faskes",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<UserModel> listUser;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRt() {
+        return rt;
+    }
+
+    public void setRt(String rt) {
+        this.rt = rt;
+    }
+
+    public String getRw() {
+        return rw;
+    }
+
+    public void setRw(String rw) {
+        this.rw = rw;
+    }
+
+    public String getKelurahan() {
+        return kelurahan;
+    }
+
+    public void setKelurahan(String kelurahan) {
+        this.kelurahan = kelurahan;
+    }
 
     public Long getId_faskes() {
         return id_faskes;
