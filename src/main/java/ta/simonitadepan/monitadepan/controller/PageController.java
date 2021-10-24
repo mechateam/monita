@@ -33,9 +33,15 @@ public class PageController {
     @GetMapping("/")
     public String landingPage(Model model){
 
+
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
-        PertumbuhanBalitaModel pertumbuhanBalitaModel  = pertumbuhanService.getPertumbuhanBulanIni(balita.getListPertumbuhan());
+        if (balita==null){
+            return "redirect:/balita";
+        }
+
+        PertumbuhanBalitaModel pertumbuhanBalitaModel = pertumbuhanService.getPertumbuhanBulanIni(balita.getListPertumbuhan());
+
         Map<String, Integer> umur = balitaService.calculateAge(balita.getBirth_date());
 
         if (pertumbuhanBalitaModel == null){
@@ -43,17 +49,16 @@ public class PageController {
         }
         else{
             model.addAttribute("isi",true);
+            if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
+                model.addAttribute("diagnosis", "SESUAI");
+            }
+            else{
+                model.addAttribute("diagnosis", "PERHATIAN");
+            }
+            model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
+            model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
         }
 
-        if (pertumbuhanService.getHasilDiagnosisBulanIni(pertumbuhanBalitaModel.getDiagnosis())){
-            model.addAttribute("diagnosis", "SESUAI");
-        }
-        else{
-            model.addAttribute("diagnosis", "PERHATIAN");
-        }
-
-        model.addAttribute("berat", pertumbuhanBalitaModel.getBerat_badan());
-        model.addAttribute("tinggi", pertumbuhanBalitaModel.getTinggi_badan());
         model.addAttribute("balita",balita);
         model.addAttribute("bulan",umur.get("bulan"));
         model.addAttribute("tahun",umur.get("tahun"));

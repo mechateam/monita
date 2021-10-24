@@ -30,6 +30,22 @@ public class PerkembanganBalitaModel {
     @Column(name = "deskripsi_diagnosis",nullable = false)
     private String deskripsi_diagnosis;
 
+    @NotNull
+    @Column(name = "diagnosis_gerak_halus", nullable = false)
+    private String diagnosis_gerak_halus;
+
+    @NotNull
+    @Column(name = "diagnosis_gerak_kasar", nullable = false)
+    private String diagnosis_gerak_kasar;
+
+    @NotNull
+    @Column(name = "diagnosis_bicara_bahasa", nullable = false)
+    private String diagnosis_bicara_bahasa;
+
+    @NotNull
+    @Column(name = "diagnosis_sosialisasi", nullable = false)
+    private String diagnosis_sosialisasi;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_balita",referencedColumnName = "id_balita",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -88,5 +104,37 @@ public class PerkembanganBalitaModel {
 
     public void setId_periode(PeriodePerkembanganModel id_periode) {
         this.id_periode = id_periode;
+    }
+
+    public String getDiagnosis_gerak_halus() {
+        return diagnosis_gerak_halus;
+    }
+
+    public void setDiagnosis_gerak_halus(String diagnosis_gerak_halus) {
+        this.diagnosis_gerak_halus = diagnosis_gerak_halus;
+    }
+
+    public String getDiagnosis_gerak_kasar() {
+        return diagnosis_gerak_kasar;
+    }
+
+    public void setDiagnosis_gerak_kasar(String diagnosis_gerak_kasar) {
+        this.diagnosis_gerak_kasar = diagnosis_gerak_kasar;
+    }
+
+    public String getDiagnosis_bicara_bahasa() {
+        return diagnosis_bicara_bahasa;
+    }
+
+    public void setDiagnosis_bicara_bahasa(String diagnosis_bicara_bahasa) {
+        this.diagnosis_bicara_bahasa = diagnosis_bicara_bahasa;
+    }
+
+    public String getDiagnosis_sosialisasi() {
+        return diagnosis_sosialisasi;
+    }
+
+    public void setDiagnosis_sosialisasi(String diagnosis_sosialisasi) {
+        this.diagnosis_sosialisasi = diagnosis_sosialisasi;
     }
 }
