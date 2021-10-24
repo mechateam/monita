@@ -17,7 +17,7 @@ public class ImunisasiModel {
 
     @NotNull
     @Column(name="periode",nullable = false)
-    private String periode;
+    private Integer periode;
 
     @NotNull
     @Column(name="name",nullable = false)
@@ -44,11 +44,11 @@ public class ImunisasiModel {
         this.id_imunisasi = id_imunisasi;
     }
 
-    public String getPeriode() {
+    public Integer getPeriode() {
         return periode;
     }
 
-    public void setPeriode(String periode) {
+    public void setPeriode(Integer periode) {
         this.periode = periode;
     }
 

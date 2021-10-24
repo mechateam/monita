@@ -6810,71 +6810,71 @@ antopometri:
       -2: 18.5
       -1: 20.2
   imunisasi:
-    - Usia: 0-7 Hari
+    - Usia: 0
       Imunisasi: Hepatitis B (HB-O)
       Deskripsi: Mencegah penularan penyakit HEPATITIS B dan kerusakan hati.
-    - Usia: 1 Bulan
+    - Usia: 1
       Imunisasi: BCG
       Deskripsi: 'BCG: Mencegah penyakit TBC (Tuberkulosis) berat.'
-    - Usia: 1 Bulan
+    - Usia: 1
       Imunisasi: Polio 1
       Deskripsi: >-
         Polio: Mencegah polio yang dapat menyebabkan lumpuh layuh pada tungkai dan
         atau lengan.
-    - Usia: 2 Bulan
+    - Usia: 2
       Imunisasi: DPT HB Hib 1
       Deskripsi: >-
         DPT HB HIB mencegah penularan penyakit: , Difteri yang dapat menyebabkan
         penyumbatan jalan nafas , Batuk rejan (batuk 100 hari) , Tetanus , Hepatitis
         B yang dapat menyebabkan kerusakan hati , Infeksi HIB menyebabkan meningitis
         (radang selaput otak)
-    - Usia: 2 Bulan
+    - Usia: 2
       Imunisasi: Polio 2
       Deskripsi: >-
         Polio: Mencegah polio yang dapat menyebabkan lumpuh layuh pada tungkai dan
         atau lengan.
-    - Usia: 3 Bulan
+    - Usia: 3
       Imunisasi: DPT HB Hib 2
       Deskripsi: >-
         DPT HB HIB mencegah penularan penyakit: , Difteri yang dapat menyebabkan
         penyumbatan jalan nafas , Batuk rejan (batuk 100 hari) , Tetanus , Hepatitis
         B yang dapat menyebabkan kerusakan hati , Infeksi HIB menyebabkan meningitis
         (radang selaput otak)
-    - Usia: 3 Bulan
+    - Usia: 3
       Imunisasi: Polio 3
       Deskripsi: >-
         Polio: Mencegah polio yang dapat menyebabkan lumpuh layuh pada tungkai dan
         atau lengan.
-    - Usia: 4 Bulan
+    - Usia: 4
       Imunisasi: DPT HB Hib 3
       Deskripsi: >-
         DPT HB HIB mencegah penularan penyakit: , Difteri yang dapat menyebabkan
         penyumbatan jalan nafas , Batuk rejan (batuk 100 hari) , Tetanus , Hepatitis
         B yang dapat menyebabkan kerusakan hati , Infeksi HIB menyebabkan meningitis
         (radang selaput otak)
-    - Usia: 4 Bulan
+    - Usia: 4
       Imunisasi: Polio 4
       Deskripsi: >-
         Polio: Mencegah polio yang dapat menyebabkan lumpuh layuh pada tungkai dan
         atau lengan.
-    - Usia: 4 Bulan
+    - Usia: 4
       Imunisasi: IPV
       Deskripsi: >-
         IPV: Mencegah polio yang dapat menyebabkan lumpuh layuh pada tungkai dan
         atau lengan.
-    - Usia: 9 Bulan
+    - Usia: 9
       Imunisasi: Campak
       Deskripsi: >-
         Mencegah campak yang dapat mengakibatkan komplikasi radang paru, radang otak
         dan kebutaan
-    - Usia: 18 Bulan
+    - Usia: 18
       Imunisasi: DPT HB Hib lanjutan
       Deskripsi: >-
         DPT HB HIB mencegah penularan penyakit: , Difteri yang dapat menyebabkan
         penyumbatan jalan nafas , Batuk rejan (batuk 100 hari) , Tetanus , Hepatitis
         B yang dapat menyebabkan kerusakan hati , Infeksi HIB menyebabkan meningitis
         (radang selaput otak)
-    - Usia: 18 Bulan
+    - Usia: 18
       Imunisasi: Campak Lanjutan
       Deskripsi: >-
         Mencegah campak yang dapat mengakibatkan komplikasi radang paru, radang otak

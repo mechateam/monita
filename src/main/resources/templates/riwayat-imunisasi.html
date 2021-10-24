@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="http://thymeleaf.org" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+<head>
+    <object th:include="fragments/fragment :: head"></object>
+</head>
+<body>
+    <!-- Preloader -->
+<!--    <div id="preloader">-->
+<!--        <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>-->
+<!--    </div>-->
+    <!-- Internet Connection Status -->
+    <!-- # This code for showing internet connection status -->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Header Area-->
+    <div class="header-area" id="headerArea">
+        <div class="container">
+            <!-- Header Content-->
+            <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+                <!-- Back Button-->
+                <div class="back-button"><a href="pages.html">
+                    <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+                    </svg></a></div>
+                <!-- Page Title-->
+                <div class="page-heading">
+                    <h6 class="mb-0">Riwayat Imunisasi</h6>
+                </div>
+                <!-- Navbar Toggler-->
+                <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Balita Exist-->
+    <div class="page-content-wrapper py-3">
+        <div class="top-products-area product-list-wrap">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body p-2">
+                        <div class="d-flex align-items-center justify-content-between"><big th:text="'Halo, ' + ${balita.name} +'!' " class="ms-1"> </big>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between"><small th:text="'Umur kamu sekarang adalah '+${tahun}+ ' tahun ' + ${bulan} +' bulan'" class="ms-1"></small>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                        <div class="card-body p-2">
+                            <div class="standard-tab">
+                                <ul class="nav rounded-lg mb-2 p-2 shadow-sm" id="affanTabs1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a th:href="@{/imunisasi}" class="btn btn-dark nav-link active" id="dark-tab" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="true">Imunisasi</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a th:href="@{/imunisasi/riwayat}" class="btn btn-dark nav-link" id="dark-tab" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="false">Riwayat Imunisasi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <br>
+
+
+                <!-- List Imunisasi Belum -->
+                <div class="row g-3">
+                    <div th:each="imunisasi, iter : ${listImunisasi}" class="col-12">
+                        <div class="card single-product-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <!-- Should be avatar balita -->
+                                    <div class="card-content px-4 py-2">
+                                        <!-- Balita Title-->
+                                        <div class="user-info">
+                                            <div class="d-flex align-items-center">
+                                                <button th:text="${imunisasi.name}" class="product-title d-block text-truncate mt-0" style="background: transparent; border: none !important;" data-bs-toggle="modal" th:attr="data-bs-target='#modalActive'+${iter.index}"></button>
+                                                <span th:if="${imunisasi.status == 1}" class="badge bg-success ms-2 rounded-pill">SUDAH IMUNISASI</span>
+                                                <span th:unless="${imunisasi.status == 1}" class="badge bg-danger ms-2 rounded-pill">BELUM IMUNISASI</span>
+                                            </div>
+                                            <!-- Detail Balita -->
+                                            <p th:text="${imunisasi.deskripsi}" class="sale-price"></p><p th:text="${imunisasi.periode} +' bulan'"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Align Modal Create Balita -->
+    <!-- Footer Nav -->
+    <object th:include="fragments/bottom-bar"></object>
+    <!-- All JavaScript Files -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/slideToggle.min.js"></script>
+    <script src="js/internet-status.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/rangeslider.min.js"></script>
+    <script src="js/vanilla-dataTables.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/magic-grid.min.js"></script>
+    <script src="js/dark-rtl.js"></script>
+    <script src="js/active.js"></script>
+    <!-- PWA -->
+    <script src="js/pwa.js"></script>
+</body>
+</html>

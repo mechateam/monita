@@ -56,7 +56,7 @@ public class BalitaServiceImpl implements BalitaService {
             imunBaru.setBalita(balita);
             imunBaru.setDeskripsi(imunisasi.get("Deskripsi"));
             imunBaru.setName(imunisasi.get("Imunisasi"));
-            imunBaru.setPeriode(imunisasi.get("Usia"));
+            imunBaru.setPeriode((Integer.parseInt(imunisasi.get("Usia"))));
             imunBaru.setStatus(0);
             imunisasiDb.save(imunBaru);
         }
