@@ -63,6 +63,17 @@ public class FaskesModel implements Serializable {
     @JsonIgnore
     private List<UserModel> listUser;
 
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
     public String getAddress() {
         return address;
     }
