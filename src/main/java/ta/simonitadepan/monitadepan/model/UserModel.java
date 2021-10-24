@@ -54,6 +54,18 @@ public class UserModel implements Serializable {
     private String address;
 
     @NotNull
+    @Column(name="rt",nullable = false)
+    private String rt;
+
+    @NotNull
+    @Column(name="rw",nullable = false)
+    private String rw;
+
+    @NotNull
+    @Column(name="kelurahan",nullable = false)
+    private String kelurahan;
+
+    @NotNull
     @Column(name="nik",nullable = false)
     private String nik;
 
@@ -70,6 +82,30 @@ public class UserModel implements Serializable {
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
+
+    public String getRt() {
+        return rt;
+    }
+
+    public void setRt(String rt) {
+        this.rt = rt;
+    }
+
+    public String getRw() {
+        return rw;
+    }
+
+    public void setRw(String rw) {
+        this.rw = rw;
+    }
+
+    public String getKelurahan() {
+        return kelurahan;
+    }
+
+    public void setKelurahan(String kelurahan) {
+        this.kelurahan = kelurahan;
+    }
 
     public String getResetPasswordToken() {
         return resetPasswordToken;
