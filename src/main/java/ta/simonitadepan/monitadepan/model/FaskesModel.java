@@ -42,10 +42,81 @@ public class FaskesModel implements Serializable {
     @Column(name = "sip",nullable = true)
     private String sip;
 
+    @NotNull
+    @Column(name="address",nullable = false)
+    private String address;
+
+    @NotNull
+    @Column(name="rt",nullable = false)
+    private Integer rt;
+
+    @NotNull
+    @Column(name="rw",nullable = false)
+    private Integer rw;
+
+    @NotNull
+    @Column(name="kelurahan",nullable = false)
+    private String kelurahan;
+
     @OneToMany(mappedBy = "id_faskes",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<UserModel> listUser;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
+    @NotNull
+    @Column(name="email",nullable = false)
+    private String email;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getRt() {
+        return rt;
+    }
+
+    public void setRt(Integer rt) {
+        this.rt = rt;
+    }
+
+    public Integer getRw() {
+        return rw;
+    }
+
+    public void setRw(Integer rw) {
+        this.rw = rw;
+    }
+
+    public String getKelurahan() {
+        return kelurahan;
+    }
+
+    public void setKelurahan(String kelurahan) {
+        this.kelurahan = kelurahan;
+    }
 
     public Long getId_faskes() {
         return id_faskes;
