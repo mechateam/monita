@@ -79,8 +79,8 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
 
         PerkembanganBalitaModel perkembangan = new PerkembanganBalitaModel();
         perkembangan.setInput_date(now);
-        perkembangan.setId_balita(balita);
-        perkembangan.setId_periode(periode);
+        perkembangan.setIdBalita(balita);
+        perkembangan.setIdPeriode(periode);
         perkembangan.setDiagnosis(diagnosis.get(0));
         perkembangan.setDeskripsi_diagnosis(diagnosis.get(1));
         perkembangan.setDiagnosis_gerak_halus(diagnosisTipe.get(0));
@@ -88,5 +88,10 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
         perkembangan.setDiagnosis_bicara_bahasa(diagnosisTipe.get(2));
         perkembangan.setDiagnosis_sosialisasi(diagnosisTipe.get(3));
         perkembanganBalitaDb.save(perkembangan);
+    }
+
+    @Override
+    public List<PerkembanganBalitaModel> getPerkembanganByPeriodeAndBalita(PeriodePerkembanganModel periode, BalitaModel balitaModel){
+        return perkembanganBalitaDb.findAllByIdPeriodeAndIdBalita(periode,balitaModel);
     }
 }

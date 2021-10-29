@@ -19,4 +19,8 @@ public class FaskesServiceImpl implements  FaskesService {
         return faskesDb.findAll();
     }
 
+    @Override
+    public List<FaskesModel> findByKelurahan(String kelurahan){
+        return faskesDb.findAllByKelurahan(kelurahan);
+    }
 }

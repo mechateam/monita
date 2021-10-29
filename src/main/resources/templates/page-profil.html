@@ -38,9 +38,10 @@
                 <!-- Should be dynamic data, link at active balita -->
                 <div class="user-info">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-1">Meldi Hafizh Sayoko</h5><span class="badge bg-success ms-2 rounded-pill">Active</span>
+                        <h5 th:text="${balita.name}" class="mb-1"></h5><span class="badge bg-success ms-2 rounded-pill">Active</span>
                     </div>
-                    <p class="mb-0">Laki-laki - Usia 1 tahun 3 bulan</p>
+                    <p th:text="${umur}" class="mb-0"></p>
+                    <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="mb-0"></p>
                 </div>
             </div>
         </div>
@@ -61,7 +62,7 @@
     </div>
 </div>
 <!-- Bottom NavBar -->
-<object th:include="fragments/bottom-bar"></object>
+<object th:include="fragments/bottom-bar :: footer('Profil')"></object>
 <!-- All JavaScript Files -->
 <object th:include="fragments/fragment :: js"></object>
 </body>
