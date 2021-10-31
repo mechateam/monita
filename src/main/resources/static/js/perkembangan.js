@@ -10,13 +10,11 @@ function checkAdder() {
         add();
         counterQuestion++;
 
+        document.getElementById('progressText').innerHTML = counterQuestion*10 + '%';
         document.getElementById('question').innerHTML = tmp[counterQuestion];
         document.getElementById('radioYa').checked = false;
         document.getElementById('radioTidak').checked = false
         var i = (counterQuestion*10).toString();
-        document.getElementById('progressBaru').setAttribute('style', 'width: i%');
-        document.getElementById('progressBaru').setAttribute('aria-valuenow', counterQuestion);
-        document.getElementById('progressBaru').setAttribute('aria-valuenow', counterQuestion);
 
         console.log(counterQuestion);
         if(counterQuestion == 9) {
