@@ -58,7 +58,7 @@ public class BalitaModel {
     @JsonIgnore
     private List<PertumbuhanBalitaModel> listPertumbuhan;
 
-    @OneToMany(mappedBy = "id_balita",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idBalita",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<PerkembanganBalitaModel> listPerkembangan;

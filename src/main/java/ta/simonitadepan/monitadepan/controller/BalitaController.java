@@ -57,9 +57,16 @@ BalitaController {
             @PathVariable Long id_balita,
             RedirectAttributes redirectAttributes
     ){
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         BalitaModel balita = balitaService.getBalitaById(id_balita);
-        balitaService.deleteBalita(balita);
-        redirectAttributes.addFlashAttribute("msgDelete", "Data Balita Berhasil Dihapus!");
+        if (balita.getId_pengguna().equals(user)){
+            balitaService.deleteBalita(balita);
+            redirectAttributes.addFlashAttribute("msgDelete", "Data Balita Berhasil Dihapus!");
+        }
+        else{
+            redirectAttributes.addFlashAttribute("msgDelete", "Telah terjadi kesalahan!");
+        }
+
         return "redirect:/balita";
     }
 
@@ -86,6 +93,9 @@ BalitaController {
             RedirectAttributes redirectAttributes
     ){
         BalitaModel balita = balitaService.getBalitaById(id_balita);
+        if (balita.getId_pengguna().getUsername() != SecurityContextHolder.getContext().getAuthentication().getName() ){
+            return "redirect:/balita";
+        }
         balitaService.changeStatusBalita(balita);
         return "redirect:/";
     }

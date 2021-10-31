@@ -11,4 +11,6 @@ public interface PerkembanganBalitaService {
     List<String> processDiagnosis(Integer countYa);
     List<String> processDiagnosisTipe(BalitaModel balita, Integer countGH, Integer countGK, Integer countB, Integer countS);
     void savePerkembanganBalita(BalitaModel balita, List<String> diagnosis, PeriodePerkembanganModel periode, List<String> diagnosisTipe);
+
+    List<PerkembanganBalitaModel> getPerkembanganByPeriodeAndBalita(PeriodePerkembanganModel periode, BalitaModel balitaModel);
 }

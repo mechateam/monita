@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ta.simonitadepan.monitadepan.model.FaskesModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.service.FaskesService;
 import ta.simonitadepan.monitadepan.service.UserService;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 @Controller
@@ -45,9 +47,13 @@ public class UserController {
             Model model,
             RedirectAttributes redirect
     ){
-        userService.addUser(user);
 
-        model.addAttribute("msg","Akun anda sudah dibuat, silahkan login");
+        if(userService.addUser(user) == null){
+            redirect.addFlashAttribute("message","Username yang ingin dibuat sudah terdaftar. Pilih username lain.");
+            return "redirect:/user/register";
+        }
+
+        redirect.addFlashAttribute("msg","Akun anda sudah dibuat, silahkan login");
         return "redirect:/login";
 
     }
@@ -169,5 +175,11 @@ public class UserController {
 
         msg.setContent(multipart);
         Transport.send(msg);
+    }
+
+    @ResponseBody
+    @GetMapping("loadfaskesbykelurahan/{kelurahan}")
+    public List<FaskesModel> loadfaskesbykelurahan(@PathVariable String kelurahan){
+        return faskesService.findByKelurahan(kelurahan);
     }
 }

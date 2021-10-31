@@ -19,7 +19,7 @@
         <!-- Header Content-->
         <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
           <!-- Back Button-->
-          <div class="back-button"><a th:href="@{/}">
+          <div class="back-button"><a href="/pertumbuhan/riwayat">
               <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
               </svg></a></div>
@@ -63,34 +63,42 @@
           </div>
         </div>
       </div>
+
         <!-- Slider Diagnosis -->
             <div class="container px-0">
-                <div class="tiny-slider-three-wrapper">
-                    <div class="tiny-slider-three">
+
+                <div class="tiny-slider-one-wrapper">
+                    <div class="tiny-slider-one">
                         <!-- Single Hero Slide -->
                         <div>
-                            <div class="single-hero-slide bg-img">
-                                <div class="slide-content" th:style="'background-image: url('+ @{/img/bg-img/18.jpg} +');'">
-                                    <h2 class="text-white">Berat berdasarkan umur</h2>
-                                    <h1 th:text="${listDiagnosis[0]}" class="text-white mb-5 fw-bold"></h1>
+                            <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/18.jpg')">
+                                <div class="h-100 d-flex align-items-center text-center">
+                                    <div class="container">
+                                        <h3 class="text-white mb-1">Berat berdasarkan umur</h3>
+                                        <p th:text="${listDiagnosis[0]}" class="text-white mb-4"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Single Hero Slide -->
                         <div>
-                            <div class="single-hero-slide bg-img">
-                                <div class="slide-content" th:style="'background-image: url('+ @{/img/bg-img/black-bg.jpg} +');'">
-                                    <h2 class="text-white">Tinggi berdasarkan umur</h2>
-                                    <h1 th:text="${listDiagnosis[1]}" class="text-white mb-5 fw-bold"></h1>
+                            <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/18.jpg')">
+                                <div class="h-100 d-flex align-items-center text-center">
+                                    <div class="container">
+                                        <h3 class="text-white mb-1">Tinggi berdasarkan umur</h3>
+                                        <p th:text="${listDiagnosis[1]}" class="text-white mb-4"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Single Hero Slide -->
                         <div>
-                            <div class="single-hero-slide bg-img">
-                                <div class="slide-content" th:style="'background-image: url('+ @{/img/bg-img/black-bg.jpg} +');'">
-                                    <h2 class="text-white">Index Massa Tubuh</h2>
-                                    <h1 th:text="${listDiagnosis[2]}" class="text-white mb-5 fw-bold"></h1>
+                            <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/18.jpg')">
+                                <div class="h-100 d-flex align-items-center text-center">
+                                    <div class="container">
+                                        <h3 class="text-white mb-1">Indeks Massa Tubuh</h3>
+                                        <p th:text="${listDiagnosis[2]}" class="text-white mb-4"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +171,7 @@
     </div>
     <!-- Bottom Align Modal Create Balita -->
     <!-- Footer Nav -->
-    <object th:include="fragments/bottom-bar"></object>
+    <object th:include="fragments/bottom-bar :: footer('Pertumbuhan')"></object>
     <!-- All JavaScript Files -->
     <object th:include="fragments/fragment :: js"></object>
   </body>
