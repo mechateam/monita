@@ -14,6 +14,33 @@
 <!-- # This code for showing internet connection status -->
 <div class="internet-connection-status" id="internetStatus"></div>
 <!-- Header Area-->
+<div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1" aria-labelledby="affanOffcanvsLabel">
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="offcanvas-body p-0">
+        <!-- Side Nav Wrapper -->
+        <div class="sidenav-wrapper">
+            <!-- Sidenav Profile -->
+            <div class="sidenav-profile bg-gradient">
+                <div class="sidenav-style1"></div>
+                <!-- User Info -->
+                <div class="user-info">
+                    <h6 class="user-name mb-0">SIMONITA</h6><span>Sistem Monitoring Balita</span>
+                </div>
+            </div>
+            <!-- Sidenav Nav -->
+            <ul class="sidenav-nav ps-0">
+                <li>
+                    <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode
+                        <div class="form-check form-switch">
+                            <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+                        </div>
+                    </div>
+                </li>
+                <li><button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal"><i class="bi bi-box-arrow-right"></i>Logout</button></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="header-area" id="headerArea">
     <div class="container">
         <!-- Header Content-->
