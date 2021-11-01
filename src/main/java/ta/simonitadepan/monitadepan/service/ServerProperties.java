@@ -24,6 +24,16 @@ public class ServerProperties {
 
     private List<Map<String, String>> imunisasi;
 
+    private List<String> kelurahan;
+
+    public List<String> getKelurahan() {
+        return kelurahan;
+    }
+
+    public void setKelurahan(List<String> kelurahan) {
+        this.kelurahan = kelurahan;
+    }
+
     public List<Map<String, String>> getImunisasi() {
         return imunisasi;
     }

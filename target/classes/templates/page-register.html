@@ -60,8 +60,7 @@
               <input class="form-control" type="text" placeholder="Kecamatan" name="kecamatan">
               <select name="kelurahan" class="form-control" id="kelurahan_terpilih">
                 <option selected value =""> -- Pilih Kelurahan -- </option>
-                <option th:value="Ciputat" th:text="Ciputat"></option>
-                <option th:value="Bebas" th:text="Bebas"></option>
+                <option th:each="kelurahan: ${listKelurahan}" th:value="${kelurahan}" th:text="${kelurahan}"></option>
               </select>
             </div>
             <div class="input-group text-start mb-3">

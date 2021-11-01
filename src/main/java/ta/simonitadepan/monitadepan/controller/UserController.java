@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ta.simonitadepan.monitadepan.model.FaskesModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.service.FaskesService;
+import ta.simonitadepan.monitadepan.service.ServerProperties;
 import ta.simonitadepan.monitadepan.service.UserService;
 
 import javax.mail.*;
@@ -34,9 +35,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ServerProperties serverProperties;
+
     @RequestMapping("/register")
     public String registerForm(Model model){
         model.addAttribute("listFaskes",faskesService.getAllFaskes());
+        model.addAttribute("listKelurahan",serverProperties.getKelurahan());
 
         return "page-register";
     }
