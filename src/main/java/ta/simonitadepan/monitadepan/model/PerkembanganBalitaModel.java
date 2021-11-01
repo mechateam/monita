@@ -23,6 +23,10 @@ public class PerkembanganBalitaModel {
     private Date input_date;
 
     @NotNull
+    @Column(name = "input_age")
+    private String input_age;
+
+    @NotNull
     @Column(name = "diagnosis",nullable = false)
     private String diagnosis;
 
@@ -136,5 +140,13 @@ public class PerkembanganBalitaModel {
 
     public void setDiagnosis_sosialisasi(String diagnosis_sosialisasi) {
         this.diagnosis_sosialisasi = diagnosis_sosialisasi;
+    }
+
+    public String getInput_age() {
+        return input_age;
+    }
+
+    public void setInput_age(String input_age) {
+        this.input_age = input_age;
     }
 }
