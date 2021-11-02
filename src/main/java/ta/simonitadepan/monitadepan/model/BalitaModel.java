@@ -47,6 +47,14 @@ public class BalitaModel {
     @Column(name = "tinggi_badan_lahir",nullable = false)
     private Float tinggi_badan_lahir;
 
+    @NotNull
+    @Column(name = "imd",nullable = false)
+    private Boolean imd;
+
+    @NotNull
+    @Column(name = "kia",nullable = false)
+    private Boolean kia;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pegguna",referencedColumnName = "id_pengguna",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -67,6 +75,22 @@ public class BalitaModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<ImunisasiModel> listImunisasi;
+
+    public Boolean getImd() {
+        return imd;
+    }
+
+    public void setImd(Boolean imd) {
+        this.imd = imd;
+    }
+
+    public Boolean getKia() {
+        return kia;
+    }
+
+    public void setKia(Boolean kia) {
+        this.kia = kia;
+    }
 
     public Float getBerat_badan_lahir() {
         return berat_badan_lahir;
