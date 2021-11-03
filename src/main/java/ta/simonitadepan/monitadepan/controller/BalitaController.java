@@ -93,10 +93,13 @@ BalitaController {
             RedirectAttributes redirectAttributes
     ){
         BalitaModel balita = balitaService.getBalitaById(id_balita);
-        if (balita.getId_pengguna().getUsername() != SecurityContextHolder.getContext().getAuthentication().getName() ){
-            return "redirect:/balita";
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        System.out.println(balita.getId_pengguna().getUsername());
+        System.out.println(user.getUsername());
+        if (balita.getId_pengguna().getUsername() != user.getUsername()){
+            return "redirect:/";
         }
-        balitaService.changeStatusBalita(balita);
+        balitaService.changeStatusBalita(balita, user);
         return "redirect:/";
     }
 }

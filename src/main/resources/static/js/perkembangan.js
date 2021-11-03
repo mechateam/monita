@@ -10,14 +10,15 @@ function checkAdder() {
         add();
         counterQuestion++;
 
-        document.getElementById('progressText').innerHTML = counterQuestion*10 + '%';
+        document.getElementById('image').setAttribute('src', tmpImg[counterQuestion]);
+        document.getElementById('progressText').innerHTML = counterQuestion + '/' + size;
         document.getElementById('question').innerHTML = tmp[counterQuestion];
         document.getElementById('radioYa').checked = false;
         document.getElementById('radioTidak').checked = false
         var i = (counterQuestion*10).toString();
 
         console.log(counterQuestion);
-        if(counterQuestion == 9) {
+        if(counterQuestion == size-1) {
             console.log("masuk");
             document.getElementById('buttonNext').setAttribute('style', 'display: none');
             document.getElementById('buttonModal').setAttribute('style', 'display: block');

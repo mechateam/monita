@@ -14,7 +14,7 @@ public interface BalitaService {
     boolean addBalita(BalitaModel balita, UserModel user);
     BalitaModel getBalitaById(Long id);
     void deleteBalita(BalitaModel balita);
-    void changeStatusBalita(BalitaModel balita);
+    void changeStatusBalita(BalitaModel balita, UserModel user);
     void updateBalita(BalitaModel balita);
     List<String> getListBalitaAge();
     BalitaModel getBalitaAktif(UserModel user);
