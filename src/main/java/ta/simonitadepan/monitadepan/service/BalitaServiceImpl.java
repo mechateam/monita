@@ -80,8 +80,8 @@ public class BalitaServiceImpl implements BalitaService {
     }
 
     @Override
-    public void changeStatusBalita(BalitaModel balita) {
-        for (BalitaModel balitaLain : this.getAllBalita()) {
+    public void changeStatusBalita(BalitaModel balita, UserModel user) {
+        for (BalitaModel balitaLain : user.getListBalita()) {
             balitaLain.setStatus(0);
         }
         balita.setStatus(1);

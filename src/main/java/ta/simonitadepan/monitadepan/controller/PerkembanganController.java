@@ -11,10 +11,7 @@ import ta.simonitadepan.monitadepan.model.*;
 import ta.simonitadepan.monitadepan.service.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class PerkembanganController {
@@ -63,16 +60,21 @@ public class PerkembanganController {
             attributes.addFlashAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan bulan ini");
             return "redirect:/perkembangan";
         }
+        List<PertanyaanPerkembanganModel> p = pertanyaanPerkembanganService.getAllPertanyaanByBalita(balita);
         Map<String,String> map = new HashMap<String, String>();
         List<String> list = new ArrayList<String>();
-        for (PertanyaanPerkembanganModel p : pertanyaanPerkembanganService.getAllPertanyaanByBalita(balita)) {
-            map.put(p.getPertanyaan(), p.getTipe());
-            list.add(p.getPertanyaan());
+        List<String> img = new ArrayList<String>(Collections.nCopies(p.size(), ""));
+        for (int i=0; i<p.size(); i++) {
+            map.put(p.get(i).getPertanyaan(), p.get(i).getTipe());
+            list.add(p.get(i).getPertanyaan());
+            if(p.get(i).getUrlGambar() != null) {img.set(i, p.get(i).getUrlGambar());}
         }
         model.addAttribute("namaBalita", balita.getName());
         model.addAttribute("umur", balitaService.calculateAge(balita.getBirth_date()).get("tahun")*12 + balitaService.calculateAge(balita.getBirth_date()).get("bulan"));
         model.addAttribute("list", list);
+        model.addAttribute("sizeQuestion", list.size());
         model.addAttribute("map", map);
+        model.addAttribute("img", img);
         return "page-add-perkembangan";
     }
 

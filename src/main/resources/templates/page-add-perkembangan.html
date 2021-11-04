@@ -6,6 +6,8 @@
     <script th:inline="javascript">
         var tmp = /*[[${list}]]*/ null;
         var tmpMap = /*[[${map}]]*/ null;
+        var tmpImg = /*[[${img}]]*/ null;
+        var size = /*[[${sizeQuestion}]]*/ null;
     </script>
 </head>
 
@@ -48,7 +50,7 @@
                     <div class="skill-data">
                         <!-- Skill Name -->
                         <div class="skill-name d-flex align-items-center justify-content-between">
-                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span id="progressText" style="color: red">0%</span></small>
+                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span id="progressText" style="color: red" th:text="'0/' + ${sizeQuestion}"></span></small>
                         </div>
                         <!-- Progress -->
                         <div class="progress" style="height: 4px;">
@@ -59,7 +61,10 @@
                 <div class="d-flex align-items-center">
                     <h5 th:text="'Cek perkembangan balita usia ' + ${umur} + ' bulan'" class="mb-1"></h5>
                 </div><br>
-                <h6 th:text="${list[0]}" id="question"></h6>
+                <h6 th:text="${list[0]}" style="text-align: justify; text-justify: inter-word;" id="question"></h6>
+                <div class="mx-auto align-content-center">
+                    <img th:src="${img[0]}" id="image">
+                </div>
                 <div class="single-plan-check shadow-sm active-effect">
                     <div class="form-check mb-0">
                         <input class="form-check-input" name="choice" value="Ya" type="radio" id="radioYa" required>
