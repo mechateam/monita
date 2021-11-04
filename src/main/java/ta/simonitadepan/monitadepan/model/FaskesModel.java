@@ -58,6 +58,10 @@ public class FaskesModel implements Serializable {
     @Column(name="kelurahan",nullable = false)
     private String kelurahan;
 
+    @NotNull
+    @Column(name = "phone",nullable = false)
+    private String phone;
+
     @OneToMany(mappedBy = "id_faskes",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
@@ -69,6 +73,14 @@ public class FaskesModel implements Serializable {
     @NotNull
     @Column(name="email",nullable = false)
     private String email;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getResetPasswordToken() {
         return resetPasswordToken;
