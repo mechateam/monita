@@ -141,9 +141,10 @@
           </div>
         </div>
       </div>
+    </div>
 
     <!-- Bottom NavBar -->
-    <object th:include="fragments/bottom-bar :: footer('Home')"></object>
+    <div th:replace="fragments/bottom-bar :: footer('Home')"></div>
 
     <!-- All JavaScript Files -->
     <object th:include="fragments/fragment :: js"></object>
