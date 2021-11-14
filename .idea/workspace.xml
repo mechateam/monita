@@ -22,20 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/ImunisasiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/ImunisasiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PertumbuhanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PertumbuhanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail-pertumbuhan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail-pertumbuhan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home-imunisasi.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home-imunisasi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home-perkembangan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home-perkembangan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home-pertumbuhan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home-pertumbuhan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-profil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/riwayat-pertumbuhan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page-register.html" afterDir="false" />
-    </list>
+    <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +152,7 @@
       <workItem from="1634704589938" duration="1882000" />
       <workItem from="1634713977610" duration="9536000" />
       <workItem from="1634831491936" duration="718000" />
-      <workItem from="1636730909517" duration="5289000" />
+      <workItem from="1636730909517" duration="5636000" />
     </task>
     <servers />
   </component>
