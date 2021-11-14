@@ -15,31 +15,6 @@
 <div class="internet-connection-status" id="internetStatus"></div>
 <!-- Header Area-->
 <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1" aria-labelledby="affanOffcanvsLabel">
-    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    <div class="offcanvas-body p-0">
-        <!-- Side Nav Wrapper -->
-        <div class="sidenav-wrapper">
-            <!-- Sidenav Profile -->
-            <div class="sidenav-profile bg-gradient">
-                <div class="sidenav-style1"></div>
-                <!-- User Info -->
-                <div class="user-info">
-                    <h6 class="user-name mb-0">SIMONITA</h6><span>Sistem Monitoring Balita</span>
-                </div>
-            </div>
-            <!-- Sidenav Nav -->
-            <ul class="sidenav-nav ps-0">
-                <li>
-                    <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode
-                        <div class="form-check form-switch">
-                            <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
-                        </div>
-                    </div>
-                </li>
-                <li><button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal"><i class="bi bi-box-arrow-right"></i>Logout</button></li>
-            </ul>
-        </div>
-    </div>
 </div>
 <div class="header-area" id="headerArea">
     <div class="container">
@@ -49,8 +24,6 @@
             <div class="page-heading">
                 <h6 class="mb-0" th:text="${user.name}"></h6>
             </div>
-            <!-- Navbar Toggler-->
-            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
         </div>
     </div>
 </div>
@@ -83,6 +56,8 @@
                 <div class="icon-wrapper"><i class="bi bi-person"></i></div>Daftar Anak<i class="bi bi-chevron-right"></i></a>
                 <!-- Page Item --><a class="affan-page-item" href="page-otp.html">
                 <div class="icon-wrapper"><i class="bi bi-phone"></i></div>Kontak Faskes<i class="bi bi-chevron-right"></i></a>
+                <div class="icon-wrapper"><i class="bi bi-moon"></i>Night Mode <input class="justify-content-end bi form-check form-switch form-check-input form-check-success" id="darkSwitch" type="checkbox">
+                </div>
             </div>
         </div>
         <button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal">Keluar Akun</button>

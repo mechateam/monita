@@ -33,12 +33,12 @@ public class PertumbuhanController {
     PertumbuhanService pertumbuhanService;
 
     @GetMapping("")
-    public String mainPagePertumbuhan(Model model){
+    public String mainPagePertumbuhan(Model model, RedirectAttributes redirectAttributes){
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
         if (balita == null){
-
-            //todo
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Data Pertumbuhan yang anda inginkan tidak ada");
+            return "redirect:/pertumbuhan";
         }
 
         if (balitaService.hasFilledPertumbuhan(balita) == true){
@@ -55,27 +55,6 @@ public class PertumbuhanController {
 
 
         return "home-pertumbuhan";
-
-    }
-
-    @GetMapping(value = "/riwayat")
-    public String riwayatPagePertumbuhan(
-            Model model, RedirectAttributes redirectAttributes
-    ){
-
-        BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
-        if (balita == null){
-            redirectAttributes.addFlashAttribute("msgCreateEr", "Data Pertumbuhan yang anda inginkan tidak ada");
-            return "redirect:/pertumbuhan";
-        }
-
-
-        model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("tahun"));
-        model.addAttribute("bulan",balitaService.calculateAge(balita.getBirth_date()).get("bulan"));
-        model.addAttribute("balita",balita);
-        model.addAttribute("statusBalita",balitaService.hasFilledPertumbuhan(balita));
-
-        return "riwayat-pertumbuhan";
 
     }
 
