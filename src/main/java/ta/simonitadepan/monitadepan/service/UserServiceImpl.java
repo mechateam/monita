@@ -21,12 +21,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(UserModel user) {
+    public UserModel addUser(UserModel user) {
+        if (userDb.findByUsername(user.getUsername()) != null){
+            return null;
+        }
         System.out.println("password sblm di encrypt "+ user.getPassword());
         String pass = encrypt(user.getPassword());
         user.setPassword(pass);
         System.out.println("password sblm di encrypt "+ user.getPassword());
         userDb.save(user);
+        return user;
     }
 
     @Override

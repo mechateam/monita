@@ -7,4 +7,6 @@ import java.util.List;
 public interface FaskesService {
     List<FaskesModel> getAllFaskes();
 
+    List<FaskesModel> findByKelurahan(String kelurahan);
+
 }

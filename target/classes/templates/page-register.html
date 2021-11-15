@@ -24,6 +24,7 @@
         <!-- Register Form -->
         <div class="register-form mt-4">
           <h6 class="mb-3 text-center">Daftar akun anda untuk menggunakan SIMONITA.</h6>
+          <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
           <form th:action="@{/user/register}" th:object="${user}" oninput="address.value = alamat1.value + ' ,'+kelurahan.value + ' ,'+ kecamatan.value + ' ,'+
            kota.value + ' ,'+ provinsi.value" method="POST">
             <div class="form-group text-start mb-3">
@@ -55,19 +56,28 @@
             <div class="form-group text-start mb-3">
               <input class="form-control" type="text" placeholder="Alamat" name="alamat1">
             </div>
-            <div class="input-group text-start mb-3">
-              <input class="form-control" type="text" placeholder="Kelurahan" name="kelurahan">
+            <div class="form-group text-start mb-3">
               <input class="form-control" type="text" placeholder="Kecamatan" name="kecamatan">
+              <select name="kelurahan" class="form-control" id="kelurahan_terpilih">
+                <option selected value =""> -- Pilih Kelurahan -- </option>
+                <option th:each="kelurahan: ${listKelurahan}" th:value="${kelurahan}" th:text="${kelurahan}"></option>
+              </select>
             </div>
             <div class="input-group text-start mb-3">
               <input class="form-control" type="text" placeholder="Kota/Kabupaten" name="kota">
               <input class="form-control" type="text" placeholder="Provinsi" name="provinsi">
             </div>
+            <div class="input-group text-start mb-3">
+              <input class="form-control" type="number" placeholder="RT" name="rt">
+              <input class="form-control" type="number" placeholder="RW" name="rw">
+            </div>
             <input type="hidden" name="address">
-            <select name="id_faskes" class="form-control">
-              <option selected value =""> -- Pilih Faskes -- </option>
-              <option th:each="faskes: ${listFaskes}" th:value="${faskes.id_faskes}" th:text="${faskes.name}"></option>
+            <select id="faskes_terpilih" name="id_faskes" class="form-control">
+              <option value =""> Fasilitas Kesehatan </option>
+<!--              <option selected value =""> &#45;&#45; Pilih Faskes &#45;&#45; </option>-->
+<!--              <option th:each="faskes: ${listFaskes}" th:value="${faskes.id_faskes}" th:text="${faskes.name}"></option>-->
             </select>
+            <div id="hidden_faskes"></div>
             <div class="mb-3" id="pswmeter"></div>
             <button class="btn btn-primary w-100" type="submit">Sign Up</button>
           </form>
@@ -85,6 +95,38 @@
     input.oninvalid=function (ev) {
       ev.target.setCustomValidity('Minimal 8 huruf dan 1 angka');
     }
+  </script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      function getBaseUrl() {
+        var pathArray = location.href.split('/');
+        console.log(pathArray);
+        var protocol = pathArray[0];
+        var host = pathArray[2];
+        var url = protocol + '//' + host + '/';
+
+        return url;
+      }
+
+      $('#kelurahan_terpilih').on('change', function(){
+        var deptId = $(this).val();
+        $.ajax({
+          type: 'GET',
+          url: getBaseUrl()+'user/loadfaskesbykelurahan/' + deptId,
+          success: function(result) {
+            var s = '';
+            var x='';
+            for(var i = 0; i < result.length; i++) {
+              s+= '<option selected disabled value="'+ result[i].id_faskes+'" >'+ result[i].name+'</option>';
+              x+='<input name="id_faskes" hidden class="form-control" type="text" value="' + result[i].id_faskes + '">';
+            }
+            $('#faskes_terpilih').html(s);
+            $('#hidden_faskes').html(x);
+          }
+        });
+      });
+    });
   </script>
   </body>
 </html>

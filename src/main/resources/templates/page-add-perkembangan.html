@@ -6,6 +6,8 @@
     <script th:inline="javascript">
         var tmp = /*[[${list}]]*/ null;
         var tmpMap = /*[[${map}]]*/ null;
+        var tmpImg = /*[[${img}]]*/ null;
+        var size = /*[[${sizeQuestion}]]*/ null;
     </script>
 </head>
 
@@ -48,18 +50,21 @@
                     <div class="skill-data">
                         <!-- Skill Name -->
                         <div class="skill-name d-flex align-items-center justify-content-between">
-                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span>96</span>%</small>
+                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span id="progressText" style="color: red" th:text="'0/' + ${sizeQuestion}"></span></small>
                         </div>
                         <!-- Progress -->
                         <div class="progress" style="height: 4px;">
-                            <div id="progressBaru" class="progress-bar bg-success" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"></div>
+                            <div id="progressBaru" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"></div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
                     <h5 th:text="'Cek perkembangan balita usia ' + ${umur} + ' bulan'" class="mb-1"></h5>
                 </div><br>
-                <h6 th:text="${list[0]}" id="question"></h6>
+                <h6 th:text="${list[0]}" style="text-align: justify; text-justify: inter-word;" id="question"></h6>
+                <div class="mx-auto align-content-center">
+                    <img th:src="${img[0]}" id="image">
+                </div>
                 <div class="single-plan-check shadow-sm active-effect">
                     <div class="form-check mb-0">
                         <input class="form-check-input" name="choice" value="Ya" type="radio" id="radioYa" required>
@@ -111,7 +116,7 @@
     </div>
 </div>
 <!-- Bottom NavBar -->
-<object th:include="fragments/bottom-bar"></object>
+<div th:replace="fragments/bottom-bar :: footer('Perkembangan')"></div>
 <!-- All JavaScript Files -->
 <object th:include="fragments/fragment :: js"></object>
 <script src="../js/perkembangan.js"></script>

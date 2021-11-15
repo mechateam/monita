@@ -23,6 +23,10 @@ public class PerkembanganBalitaModel {
     private Date input_date;
 
     @NotNull
+    @Column(name = "input_age")
+    private String input_age;
+
+    @NotNull
     @Column(name = "diagnosis",nullable = false)
     private String diagnosis;
 
@@ -50,13 +54,13 @@ public class PerkembanganBalitaModel {
     @JoinColumn(name = "id_balita",referencedColumnName = "id_balita",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private BalitaModel id_balita;
+    private BalitaModel idBalita;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_periode",referencedColumnName = "id_periode",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private PeriodePerkembanganModel id_periode;
+    private PeriodePerkembanganModel idPeriode;
 
     public Long getId_perkembangan() {
         return id_perkembangan;
@@ -90,20 +94,20 @@ public class PerkembanganBalitaModel {
         this.deskripsi_diagnosis = deskripsi_diagnosis;
     }
 
-    public BalitaModel getId_balita() {
-        return id_balita;
+    public BalitaModel getIdBalita() {
+        return idBalita;
     }
 
-    public void setId_balita(BalitaModel id_balita) {
-        this.id_balita = id_balita;
+    public void setIdBalita(BalitaModel idBalita) {
+        this.idBalita = idBalita;
     }
 
-    public PeriodePerkembanganModel getId_periode() {
-        return id_periode;
+    public PeriodePerkembanganModel getIdPeriode() {
+        return idPeriode;
     }
 
-    public void setId_periode(PeriodePerkembanganModel id_periode) {
-        this.id_periode = id_periode;
+    public void setIdPeriode(PeriodePerkembanganModel idPeriode) {
+        this.idPeriode = idPeriode;
     }
 
     public String getDiagnosis_gerak_halus() {
@@ -136,5 +140,13 @@ public class PerkembanganBalitaModel {
 
     public void setDiagnosis_sosialisasi(String diagnosis_sosialisasi) {
         this.diagnosis_sosialisasi = diagnosis_sosialisasi;
+    }
+
+    public String getInput_age() {
+        return input_age;
+    }
+
+    public void setInput_age(String input_age) {
+        this.input_age = input_age;
     }
 }

@@ -23,11 +23,22 @@ public class PertanyaanPerkembanganModel {
     @Column(name = "tipe",nullable = false)
     private String tipe;
 
+    @Column(name = "urlGambar",nullable = true)
+    private String urlGambar;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_periode",referencedColumnName = "id_periode",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PeriodePerkembanganModel id_periode;
+
+    public String getUrlGambar() {
+        return urlGambar;
+    }
+
+    public void setUrlGambar(String urlGambar) {
+        this.urlGambar = urlGambar;
+    }
 
     public Long getId_pertanyaan() { return id_pertanyaan; }
 

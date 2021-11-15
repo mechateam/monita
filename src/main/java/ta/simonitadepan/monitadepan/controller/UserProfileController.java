@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ta.simonitadepan.monitadepan.model.BalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
+import ta.simonitadepan.monitadepan.service.BalitaService;
 import ta.simonitadepan.monitadepan.service.FaskesService;
 import ta.simonitadepan.monitadepan.service.UserService;
 
@@ -18,23 +20,39 @@ public class UserProfileController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    BalitaService balitaService;
+
     @GetMapping("/profil")
     public String getProfilPage(Model model){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
+        BalitaModel balita = balitaService.getBalitaAktif(user);
+        Integer tahun = balitaService.calculateAge(balita.getBirth_date()).get("tahun");
+        Integer bulan = balitaService.calculateAge(balita.getBirth_date()).get("bulan");
+
+        String umur = "Usia " + tahun + " tahun " + bulan + " bulan";
+
+        if (balita != null){
+            model.addAttribute("balita", balita);
+            model.addAttribute("umur",umur);
+        }
+        else{
+            model.addAttribute("empty","Harap tambah anak atau pilih anak");
+        }
         return "page-profil";
     }
 
     @GetMapping("/profil/{username}")
     public String getDetailPage(@PathVariable String username, Model model){
-        UserModel user = userService.getUserByUsername(username);
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "detail-profil";
     }
 
     @GetMapping("/profil/ubah/{username}")
     public String getFormUbahProfil (@PathVariable String username, Model model){
-        UserModel user = userService.getUserByUsername(username);
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "ubah-profil";
     }
@@ -47,6 +65,10 @@ public class UserProfileController {
 
     @GetMapping("/profil/ubah-password/{username}")
     public String getFormUbahPassword (@ModelAttribute UserModel user, Model model){
+        if (!user.getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
+            return "redirect:/profil/"+user.getUsername();
+        }
+
         model.addAttribute("user", user);
         return "ubah-sandi";
     }

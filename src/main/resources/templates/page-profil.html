@@ -14,6 +14,8 @@
 <!-- # This code for showing internet connection status -->
 <div class="internet-connection-status" id="internetStatus"></div>
 <!-- Header Area-->
+<div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1" aria-labelledby="affanOffcanvsLabel">
+</div>
 <div class="header-area" id="headerArea">
     <div class="container">
         <!-- Header Content-->
@@ -22,8 +24,6 @@
             <div class="page-heading">
                 <h6 class="mb-0" th:text="${user.name}"></h6>
             </div>
-            <!-- Navbar Toggler-->
-            <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
         </div>
     </div>
 </div>
@@ -34,13 +34,14 @@
         <div class="card user-info-card mb-3">
             <div class="card-body d-flex align-items-center">
                 <!-- Should be avatar balita -->
-                <div class="user-profile me-3"><img src="img/bg-img/2.jpg" alt=""></div>
+                <div class="user-profile me-3"><img th:src="@{/img/core-img/bayi.png}" alt=""></div>
                 <!-- Should be dynamic data, link at active balita -->
                 <div class="user-info">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-1">Meldi Hafizh Sayoko</h5><span class="badge bg-success ms-2 rounded-pill">Active</span>
+                        <h5 th:text="${balita.name}" class="mb-1"></h5><span class="badge bg-success ms-2 rounded-pill">Active</span>
                     </div>
-                    <p class="mb-0">Laki-laki - Usia 1 tahun 3 bulan</p>
+                    <p th:text="${umur}" class="mb-0"></p>
+                    <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="mb-0"></p>
                 </div>
             </div>
         </div>
@@ -55,13 +56,33 @@
                 <div class="icon-wrapper"><i class="bi bi-person"></i></div>Daftar Anak<i class="bi bi-chevron-right"></i></a>
                 <!-- Page Item --><a class="affan-page-item" href="page-otp.html">
                 <div class="icon-wrapper"><i class="bi bi-phone"></i></div>Kontak Faskes<i class="bi bi-chevron-right"></i></a>
+                <div class="icon-wrapper"><i class="bi bi-moon"></i>Night Mode <input class="justify-content-end bi form-check form-switch form-check-input form-check-success" id="darkSwitch" type="checkbox">
+                </div>
             </div>
         </div>
-        <a class="btn btn-danger w-100" th:href="@{/logout}">Keluar Akun</a>
+        <button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal">Keluar Akun</button>
+    </div>
+
+    <div class="modal fade" id="bootstrapBasicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Keluar Akun</h6>
+                    <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Apakah anda yakin akan logout dari akun anda?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                    <a href="/logout" class="btn btn-sm btn-danger">Keluar</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Bottom NavBar -->
-<object th:include="fragments/bottom-bar"></object>
+<div th:replace="fragments/bottom-bar :: footer('Profil')"></div>
 <!-- All JavaScript Files -->
 <object th:include="fragments/fragment :: js"></object>
 </body>

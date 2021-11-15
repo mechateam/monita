@@ -18,7 +18,7 @@
             <!-- Header Content-->
             <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
                 <!-- Back Button-->
-                <div class="back-button"><a href="pages.html">
+                <div class="back-button"><a href="javascript:history.back()">
                     <svg class="bi bi-arrow-left-short" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
                     </svg></a></div>
@@ -54,22 +54,23 @@
                     </div>
                 </div>
                 <br>
-                        <div class="card-body p-2">
-                            <div class="standard-tab">
-                                <ul class="nav rounded-lg mb-2 p-2 shadow-sm" id="affanTabs1" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a th:href="@{/imunisasi}" class="btn btn-dark nav-link active" id="dark-tab" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="true">Imunisasi</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a th:href="@{/imunisasi/riwayat}" class="btn btn-dark nav-link" id="dark-tab" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="false">Riwayat Imunisasi</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="standard-tab">
+                            <ul class="nav rounded-lg mb-2 p-2 shadow-sm" id="affanTabs1" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="btn btn-dark nav-link active" id="tabMain" onClick= "toMain()" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="true">Imunisasi</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="btn btn-dark nav-link" id="tabRiwayat" onClick= "toRiwayat()" data-bs-toggle="tab" data-bs-target="#dark" role="tab" aria-controls="dark" aria-selected="false">Riwayat Imunisasi</a>
+                                </li>
+                            </ul>
                         </div>
-                <br>
+                    </div>
+                </div><br>
 
                 <!-- List Imunisasi Belum -->
-                <div class="row g-3">
+                <div class="row g-3" id="main">
                     <div th:each="imunisasi, iter : ${listImunisasiBelum}" class="col-12">
                         <div class="card single-product-card">
                             <div class="card-body">
@@ -107,7 +108,29 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn m-1 btn-circle bi-plus btn-primary position-sticky" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></a>
+                </div>
+                <div class="row g-3" id="riwayat" style="display: none">
+                    <div th:each="imunisasi, iter : ${listImunisasi}" class="col-12">
+                        <div class="card single-product-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <!-- Should be avatar balita -->
+                                    <div class="card-content px-4 py-2">
+                                        <!-- Balita Title-->
+                                        <div class="user-info">
+                                            <div class="d-flex align-items-center">
+                                                <button th:text="${imunisasi.name}" class="product-title d-block text-truncate mt-0" style="background: transparent; border: none !important;" data-bs-toggle="modal" th:attr="data-bs-target='#modalActive'+${iter.index}"></button>
+                                                <span th:if="${imunisasi.status == 1}" class="badge bg-success ms-2 rounded-pill">SUDAH IMUNISASI</span>
+                                                <span th:unless="${imunisasi.status == 1}" class="badge bg-danger ms-2 rounded-pill">BELUM IMUNISASI</span>
+                                            </div>
+                                            <!-- Detail Balita -->
+                                            <p th:text="${imunisasi.deskripsi}" class="sale-price"></p><p th:text="${imunisasi.periode} +' bulan'"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,8 +148,22 @@
     </div>
     <!-- Bottom Align Modal Create Balita -->
     <!-- Footer Nav -->
-    <object th:include="fragments/bottom-bar"></object>
+    <div th:replace="fragments/bottom-bar :: footer('Imunisasi')"></div>
     <!-- All JavaScript Files -->
+    <script th:inline="javascript">
+        function toRiwayat() {
+            document.getElementById('main').setAttribute('style', 'display: none;');
+            document.getElementById('riwayat').setAttribute('style', 'display: block;');
+            document.getElementById('tabRiwayat').classList.add("active");
+            document.getElementById('tabMain').classList.remove("active");
+        }
+        function toMain() {
+            document.getElementById('tabMain').classList.add("active");
+            document.getElementById('tabRiwayat').classList.remove("active");
+            document.getElementById('main').setAttribute('style', 'display: block;');
+            document.getElementById('riwayat').setAttribute('style', 'display: none;');
+        }
+    </script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/slideToggle.min.js"></script>
     <script src="js/internet-status.js"></script>

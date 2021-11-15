@@ -167,6 +167,8 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         String deskripsi = "";
         Map<Integer, Float> tabelBBperTB;
 
+        tinggi = (float) roundToHalf(tinggi);
+
         if (gender==0 && umur <24){
             tabelBBperTB = serverProperties.getBbpertbperempuan0().get(tinggi);
         }
@@ -175,13 +177,10 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         }
         else if(gender==1 && umur <24){
             tabelBBperTB = serverProperties.getBbpertblaki0().get(tinggi);
-            System.out.println("a"+serverProperties.getBbpertblaki0().get(tinggi));
         }
         else{
             tabelBBperTB = serverProperties.getBbpertblaki24().get(tinggi);
         }
-        System.out.println(berat);
-        System.out.println(tabelBBperTB.keySet());
 
         if (berat < tabelBBperTB.get(-3)){
             diagnosis+="Perhatian";
@@ -237,6 +236,9 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
         return true;
     }
 
+    public static double roundToHalf(double d) {
+        return Math.round(d * 2) / 2.0;
+    }
 
 
 }

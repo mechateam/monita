@@ -38,11 +38,15 @@ public class ImunisasiController {
 
         List<ImunisasiModel> listImunisasiBelum = imunisasiService.getListBelumImunisasi(balita);
 
+        List<ImunisasiModel> listImunisasi = balita.getListImunisasi();
+
+        model.addAttribute("listImunisasi",listImunisasi);
+
         model.addAttribute("listImunisasiBelum",listImunisasiBelum);
         model.addAttribute("balita",balita);
 
         model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("tahun"));
-        model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("bulan"));
+        model.addAttribute("bulan",balitaService.calculateAge(balita.getBirth_date()).get("bulan"));
 
         if (listImunisasiBelum.size() ==0){
             model.addAttribute("emptyImunisasi",1);
@@ -61,22 +65,5 @@ public class ImunisasiController {
         redirectAttributes.addFlashAttribute("msgCreateSc", "Berhasil menambahkan imunisasi!");
 
         return "redirect:/imunisasi";
-    }
-
-    @GetMapping("/riwayat")
-    public String riwayatImunisasi(
-            Model model
-    ){
-        BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
-
-        List<ImunisasiModel> listImunisasi = balita.getListImunisasi();
-
-        model.addAttribute("listImunisasi",listImunisasi);
-        model.addAttribute("balita",balita);
-
-        model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("tahun"));
-        model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("bulan"));
-
-        return "riwayat-imunisasi";
     }
 }

@@ -101,13 +101,20 @@
                 </div> </a>
               </div>
 
-              <div class="col-6">
-                <a href="/pertumbuhan/"><div class="feature-card mx-auto text-center">
+              <div th:if="${perkembangan_sudah == null}" class="col-6">
+                <a href="/perkembangan/"><div class="feature-card mx-auto text-center">
                   <p>Perkembangan</p>
-                  <h2>PERHATIAN</h2>
-                  <p>Motorik Terlambat</p>
+                  <h2 th:text="${perkembangan.diagnosis}"></h2>
+                  <p th:text="${perkembangan.deskripsi_diagnosis}"></p>
+                  <p th:text="${perkembangan.diagnosis_gerak_halus + ' | '+ perkembangan.diagnosis_gerak_kasar + ' | '+ perkembangan.diagnosis_bicara_bahasa + ' | '+ perkembangan.diagnosis_sosialisasi}"></p>
                 </div></a>
               </div>
+            <div th:unless="${perkembangan_sudah == null}" class="col-6">
+            <a href="/perkembangan/"><div class="feature-card mx-auto text-center">
+              <p>Perkembangan</p>
+              <h2 th:text="${perkembangan_sudah}"></h2>
+            </div></a>
+          </div>
             </div>
           </div>
         </div>
@@ -118,20 +125,26 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="row">
-              <div class="col justify-content-start">
+              <div th:if="${imunisasi_sudah == null}" class="col justify-content-start">
+              <a href="/imunisasi/"><div class="feature-card mx-auto text-center">
+                <h4 th:text="${imunisasi.name}"></h4>
+                <p th:text="'Untuk periode/umur ' + ${imunisasi.periode} + ' bulan'"></p>
+                <p th:text="${imunisasi.deskripsi}"></p>
+              </div></a>
+            </div>
+              <div th:unless="${imunisasi_sudah == null}" class="col justify-content-start">
                 <a href="/imunisasi/"><div class="feature-card mx-auto text-center">
-                  <h4>Polio</h4>
-                  <p>Selasa, 28 September 2021</p>
-                  <p>Percepatan abcd</p>
+                  <p th:text="${imunisasi_sudah}"></p>
                 </div></a>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
     <!-- Bottom NavBar -->
-    <object th:include="fragments/bottom-bar"></object>
+    <div th:replace="fragments/bottom-bar :: footer('Home')"></div>
 
     <!-- All JavaScript Files -->
     <object th:include="fragments/fragment :: js"></object>

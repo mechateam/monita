@@ -1,6 +1,7 @@
 package ta.simonitadepan.monitadepan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
 import ta.simonitadepan.monitadepan.model.PeriodePerkembanganModel;
@@ -76,11 +77,13 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
     @Override
     public void savePerkembanganBalita(BalitaModel balita, List<String> diagnosis, PeriodePerkembanganModel periode, List<String> diagnosisTipe) {
         Date now = new Date();
+        Integer umur = (balitaService.calculateAge(balita.getBirth_date()).get("tahun") * 12) + balitaService.calculateAge(balita.getBirth_date()).get("bulan");
 
         PerkembanganBalitaModel perkembangan = new PerkembanganBalitaModel();
         perkembangan.setInput_date(now);
-        perkembangan.setId_balita(balita);
-        perkembangan.setId_periode(periode);
+        perkembangan.setInput_age(String.valueOf(umur));
+        perkembangan.setIdBalita(balita);
+        perkembangan.setIdPeriode(periode);
         perkembangan.setDiagnosis(diagnosis.get(0));
         perkembangan.setDeskripsi_diagnosis(diagnosis.get(1));
         perkembangan.setDiagnosis_gerak_halus(diagnosisTipe.get(0));
@@ -88,5 +91,10 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
         perkembangan.setDiagnosis_bicara_bahasa(diagnosisTipe.get(2));
         perkembangan.setDiagnosis_sosialisasi(diagnosisTipe.get(3));
         perkembanganBalitaDb.save(perkembangan);
+    }
+
+    @Override
+    public List<PerkembanganBalitaModel> getPerkembanganByPeriodeAndBalita(PeriodePerkembanganModel periode, BalitaModel balitaModel){
+        return perkembanganBalitaDb.findAllByIdPeriodeAndIdBalita(periode,balitaModel);
     }
 }

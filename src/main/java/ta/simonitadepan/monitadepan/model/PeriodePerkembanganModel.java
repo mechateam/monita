@@ -25,7 +25,7 @@ public class PeriodePerkembanganModel {
     @JsonIgnore
     private List<PertanyaanPerkembanganModel> listPertanyaan;
 
-    @OneToMany(mappedBy = "id_periode",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idPeriode",fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<PerkembanganBalitaModel> listPerkembangan;
