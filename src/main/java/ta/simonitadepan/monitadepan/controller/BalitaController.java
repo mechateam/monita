@@ -28,7 +28,7 @@ BalitaController {
             Model model
     ){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        if(balitaService.getAllBalita().size() != 0) {
+        if(user.getListBalita().size() != 0) {
             model.addAttribute("emptyBalita", 0);
             model.addAttribute("listBalita", balitaService.getListBalitaLogin(user));
             model.addAttribute("listAge", balitaService.getListBalitaAgeLogin(user));

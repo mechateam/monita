@@ -36,6 +36,12 @@ public class PerkembanganController {
             Model model
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+
+        if (balita == null){
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
+        }
+        
         if (balitaService.hasFilledPerkembangan(balita) == true){
             model.addAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan untuk rentang usia bulan ini");
         }

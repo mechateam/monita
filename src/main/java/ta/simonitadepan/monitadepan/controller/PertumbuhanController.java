@@ -37,8 +37,8 @@ public class PertumbuhanController {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
         if (balita == null){
-            redirectAttributes.addFlashAttribute("msgCreateEr", "Data Pertumbuhan yang anda inginkan tidak ada");
-            return "redirect:/pertumbuhan";
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
         }
 
         if (balitaService.hasFilledPertumbuhan(balita) == true){
