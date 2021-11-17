@@ -72,6 +72,7 @@ public class BalitaServiceImpl implements BalitaService {
     public void deleteBalita(BalitaModel balita) {
         UserModel user = balita.getId_pengguna();
         balitaDb.delete(balita);
+        balitaDb.save(balita);
         if (user.getListBalita().size() !=0 && user.getListBalita()!= null){
             user.getListBalita().get(0).setStatus(1);
             balitaDb.save(user.getListBalita().get(0));
