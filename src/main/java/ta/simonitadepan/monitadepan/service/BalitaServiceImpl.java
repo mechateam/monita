@@ -9,6 +9,7 @@ import ta.simonitadepan.monitadepan.model.PertumbuhanBalitaModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.repository.BalitaDb;
 import ta.simonitadepan.monitadepan.repository.ImunisasiDb;
+import ta.simonitadepan.monitadepan.repository.UserDb;
 
 import javax.transaction.Transactional;
 import java.time.*;
