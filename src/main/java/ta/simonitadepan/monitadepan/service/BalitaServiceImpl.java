@@ -21,6 +21,9 @@ public class BalitaServiceImpl implements BalitaService {
     BalitaDb balitaDb;
 
     @Autowired
+    UserDb userDb;
+
+    @Autowired
     ServerProperties serverProperties;
 
     @Autowired
