@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ta.simonitadepan.monitadepan.model.*;
 import ta.simonitadepan.monitadepan.service.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
@@ -33,7 +34,8 @@ public class PerkembanganController {
 
     @GetMapping("/perkembangan")
     public String perkembanganPage(
-            Model model
+            Model model,
+            RedirectAttributes redirectAttributes
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
