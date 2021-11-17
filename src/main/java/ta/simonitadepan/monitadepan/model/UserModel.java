@@ -76,6 +76,7 @@ public class UserModel implements Serializable {
     private FaskesModel id_faskes;
 
     @OneToMany(mappedBy = "id_pengguna",fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<BalitaModel> listBalita;
 
