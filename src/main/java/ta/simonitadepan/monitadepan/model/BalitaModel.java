@@ -55,9 +55,8 @@ public class BalitaModel {
     @Column(name = "kia",nullable = false)
     private Boolean kia;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "id_pegguna",referencedColumnName = "id_pengguna",nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private UserModel id_pengguna;
 
