@@ -40,7 +40,7 @@
             <div class="card-body">
                 <h6 class="mb-3 text-center" th:text ="${message}">Silahkan login untuk menggunakan SIMONITA.</h6>
                 <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
-                <form th:action="@{/profil/ubah-password/}+${user.username}" th:object="${user}" method="post">
+                <form th:action="@{/profil/ubah-password/}" th:object="${user}" method="post">
                     <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
                     <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
 

@@ -28,12 +28,13 @@ public class UserProfileController {
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         BalitaModel balita = balitaService.getBalitaAktif(user);
-        Integer tahun = balitaService.calculateAge(balita.getBirth_date()).get("tahun");
-        Integer bulan = balitaService.calculateAge(balita.getBirth_date()).get("bulan");
 
-        String umur = "Usia " + tahun + " tahun " + bulan + " bulan";
 
         if (balita != null){
+            Integer tahun = balitaService.calculateAge(balita.getBirth_date()).get("tahun");
+            Integer bulan = balitaService.calculateAge(balita.getBirth_date()).get("bulan");
+
+            String umur = "Usia " + tahun + " tahun " + bulan + " bulan";
             model.addAttribute("balita", balita);
             model.addAttribute("umur",umur);
         }
@@ -43,37 +44,37 @@ public class UserProfileController {
         return "page-profil";
     }
 
-    @GetMapping("/profil/{username}")
-    public String getDetailPage(@PathVariable String username, Model model){
+    @GetMapping("/detail-profil")
+    public String getDetailPage(Model model){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "detail-profil";
     }
 
     @GetMapping("/profil/ubah/{username}")
-    public String getFormUbahProfil (@PathVariable String username, Model model){
+    public String getFormUbahProfil (Model model){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "ubah-profil";
     }
 
-    @PostMapping("/profil/ubah/{username}")
+    @PostMapping("/profil/ubah")
     public String editProfil(@ModelAttribute UserModel user, Model model, RedirectAttributes redirectAttributes){
         userService.changeUser(user);
-        return "redirect:/profil/"+user.getUsername();
+        return "redirect:/profil/";
     }
 
-    @GetMapping("/profil/ubah-password/{username}")
+    @GetMapping("/profil/ubah-password")
     public String getFormUbahPassword (@ModelAttribute UserModel user, Model model){
         if (!user.getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
-            return "redirect:/profil/"+user.getUsername();
+            return "redirect:/profil/";
         }
 
         model.addAttribute("user", user);
         return "ubah-sandi";
     }
 
-    @PostMapping("/profil/ubah-password/{username}")
+    @PostMapping("/profil/ubah-password")
     public String editPassword (
             @ModelAttribute UserModel user,
             @RequestParam("oldPassword") String oldPassword,
@@ -89,7 +90,7 @@ public class UserProfileController {
             System.out.println(rePassword);
             System.out.println("masuk");
             model.addAttribute("message", "Konfirmasi Password Baru tidak sesuai ");
-            return "redirect:/profil/ubah-password/"+user.getUsername();
+            return "redirect:/profil/ubah-password/";
         }
 
         // Cek Password dan retype Password && cek duplikat username
@@ -107,7 +108,7 @@ public class UserProfileController {
         }
 
         model.addAttribute("message", "Password Lama tidak sesuai ");
-        return "redirect:/profil/ubah-password/"+user.getUsername();
+        return "redirect:/profil/ubah-password/";
 
     }
 }

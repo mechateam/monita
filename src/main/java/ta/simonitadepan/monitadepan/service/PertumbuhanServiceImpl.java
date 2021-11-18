@@ -40,8 +40,10 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
 
 
         Float tinggi_badan = pertumbuhan.getTinggi_badan();
+        Float tinggi_badan_meter= tinggi_badan/100;
         Float berat_badan = pertumbuhan.getBerat_badan();
-        Float IMT = berat_badan/(tinggi_badan*tinggi_badan);
+        Float IMT = berat_badan/(tinggi_badan_meter*tinggi_badan_meter);
+
 
         pertumbuhan.setDiagnosis(calculateBeratUmur(umur,berat_badan,balitaAktif.getGender())[0] + ", "+calculateTinggiUsia(umur,tinggi_badan,balitaAktif.getGender())[0]+", "+calculateIMT(umur,IMT,balitaAktif.getGender())[0] +", " + calculateBBperTB(berat_badan,tinggi_badan,balitaAktif.getGender(),umur)[0]);
         pertumbuhan.setDeskripsi_diagnosis(calculateBeratUmur(umur,berat_badan,balitaAktif.getGender())[1] + ", "+calculateTinggiUsia(umur,tinggi_badan,balitaAktif.getGender())[1]+", "+calculateIMT(umur,IMT,balitaAktif.getGender())[1] +", " + calculateBBperTB(berat_badan,tinggi_badan,balitaAktif.getGender(),umur)[1]);

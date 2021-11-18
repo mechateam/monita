@@ -32,9 +32,14 @@ public class ImunisasiController {
 
     @GetMapping("")
     public String imunisasiPage(
-            Model model
+            Model model,
+            RedirectAttributes redirectAttributes
     ){
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        if (balita == null){
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
+        }
 
         List<ImunisasiModel> listImunisasiBelum = imunisasiService.getListBelumImunisasi(balita);
 

@@ -31,7 +31,7 @@
 <div class="page-content-wrapper py-3">
     <div class="container">
         <!-- Informasi Balita -->
-        <div class="card user-info-card mb-3">
+        <div th:unless="${empty}" class="card user-info-card mb-3">
             <div class="card-body d-flex align-items-center">
                 <!-- Should be avatar balita -->
                 <div class="user-profile me-3"><img th:src="@{/img/core-img/bayi.png}" alt=""></div>
@@ -45,12 +45,22 @@
                 </div>
             </div>
         </div>
+        <div th:if="${empty}" class="card user-info-card mb-3">
+            <div class="card-body d-flex align-items-center">
+                <!-- Should be avatar balita -->
+                <div class="user-profile me-3"><img th:src="@{/img/core-img/bayi.png}" alt=""></div>
+                <!-- Should be dynamic data, link at active balita -->
+                <div class="user-info">
+                    <p class="mb-0">Belum mendaftarkan balita</p>
+                </div>
+            </div>
+        </div>
         <!-- List Opsi Profil-->
         <div class="card">
             <div class="card-body p-3">
-                <!-- Page Item --><a class="affan-page-item" th:href="@{/profil/} + ${user.username}">
+                <!-- Page Item --><a class="affan-page-item" th:href="@{/detail-profil}">
                 <div class="icon-wrapper"><i class="bi bi-person"></i></div>Lihat Profil<i class="bi bi-chevron-right"></i></a>
-                <!-- Page Item --><a class="affan-page-item" th:href="@{/profil/ubah-password/} + ${user.username}">
+                <!-- Page Item --><a class="affan-page-item" th:href="@{/profil/ubah-password/}">
                 <div class="icon-wrapper"><i class="bi bi-lock"></i></div>Ubah Kata Sandi<i class="bi bi-chevron-right"></i></a>
                 <!-- Page Item --><a class="affan-page-item" th:href="@{/balita}">
                 <div class="icon-wrapper"><i class="bi bi-person"></i></div>Daftar Anak<i class="bi bi-chevron-right"></i></a>
