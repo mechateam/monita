@@ -1,13 +1,13 @@
 {
-  "name": "Affan",
-  "short_name": "Affan",
-  "start_url": "https://designing-world.com/affan-1.3.0/element-hero-blocks.html",
+  "name": "Sistem Monitoring Balita",
+  "short_name": "SIMONITA",
+  "start_url": "https://simonita.me",
   "display": "standalone",
   "background_color": "#0d5afd",
   "theme_color": "#0d5afd",
   "categories": ["mobile", "multipurpose", "blog", "ecommerce", "pwa"],
   "orientation": "portrait",
-  "description": "Affan - PWA Mobile HTML Template",
+  "description": "SIMONITA - Sistem Monitoring Balita",
   "icons": [{
       "src": "img/icons/icon-72x72.png",
       "type": "image/png",

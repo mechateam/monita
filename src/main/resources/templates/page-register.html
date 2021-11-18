@@ -23,7 +23,7 @@
         <div class="text-center px-4"><h2 class="font-simonita-title" >SIMONITA</h2></div>
         <!-- Register Form -->
         <div class="register-form mt-4">
-          <h6 class="mb-3 text-center">Daftar akun anda untuk menggunakan SIMONITA.</h6>
+          <h6 class="mb-3 text-center">Daftarkan akun anda untuk menggunakan SIMONITA.</h6>
           <h6 th:if="${message != null}"class="mb-3 text-center" th:text="${message}"></h6>
           <form th:action="@{/user/register}" th:object="${user}" oninput="address.value = alamat1.value + ' ,'+kelurahan.value + ' ,'+ kecamatan.value + ' ,'+
            kota.value + ' ,'+ provinsi.value" method="POST">
@@ -57,7 +57,7 @@
               <input class="form-control" type="text" placeholder="Alamat" name="alamat1">
             </div>
             <div class="form-group text-start mb-3">
-              <input class="form-control" type="text" placeholder="Kecamatan" name="kecamatan">
+              <input class="form-control" type="text" placeholder="Kecamatan" name="kecamatan"><br>
               <select name="kelurahan" class="form-control" id="kelurahan_terpilih">
                 <option selected value =""> -- Pilih Kelurahan -- </option>
                 <option th:each="kelurahan: ${listKelurahan}" th:value="${kelurahan}" th:text="${kelurahan}"></option>
