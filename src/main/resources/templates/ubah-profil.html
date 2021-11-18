@@ -38,7 +38,7 @@
         <!-- User Meta Data-->
         <div class="card user-data-card">
             <div class="card-body">
-                <form th:action="@{/profil/ubah/}+${user.username}" th:object="${user}" method="POST">
+                <form th:action="@{/profil/ubah/}" th:object="${user}" method="POST">
                     <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
                     <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
                     <input type="hidden" name="password" class="form-control" th:field="*{password}"/>
@@ -69,6 +69,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label" for="address">Alamat</label>
+                        <input type="hidden" th:value="*{kelurahan}">
                         <input class="form-control" id="address" type="text" th:field="${user.address}" placeholder="address">
                     </div>
                     <button class="btn btn-success w-100" type="submit">Simpan Profil</button>

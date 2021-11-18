@@ -75,20 +75,23 @@ public class BalitaServiceImpl implements BalitaService {
     @Override
     public void deleteBalita(BalitaModel balita) {
         UserModel user = balita.getId_pengguna();
-        balitaDb.delete(balita);
-        if (user.getListBalita().size() !=0 && user.getListBalita()!= null){
-            user.getListBalita().get(0).setStatus(1);
-            balitaDb.save(user.getListBalita().get(0));
-        }
 
+        if (user.getListBalita().size() !=0 && user.getListBalita()!= null){
+            if (balita.getStatus() == 1) {
+                changeStatusBalita(user.getListBalita().get(0), user);
+            }
+        }
+        balitaDb.delete(balita);
     }
 
     @Override
     public void changeStatusBalita(BalitaModel balita, UserModel user) {
         for (BalitaModel balitaLain : user.getListBalita()) {
             balitaLain.setStatus(0);
+            balitaDb.save(balitaLain);
         }
         balita.setStatus(1);
+        balitaDb.save(balita);
     }
 
     @Override

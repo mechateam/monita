@@ -2,6 +2,7 @@ package ta.simonitadepan.monitadepan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +78,11 @@ BalitaController {
             Model model,
             RedirectAttributes redirectAttributes
     ){
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (balita.getId_pengguna().getUsername() != user.getUsername()) {
+            redirectAttributes.addFlashAttribute("msgUpdateEr", "Data Balita Gagal Diubah!!");
+            return "redirect:/balita";
+        }
         model.addAttribute("balita", balita);
         try{
             balitaService.updateBalita(balita);

@@ -87,7 +87,7 @@ public class PertumbuhanController {
         List<String> listDiagnosis = Arrays.asList(pertumbuhan.getDiagnosis().split(","));
         List<String> listDeskripsiDiagnosis = Arrays.asList(pertumbuhan.getDeskripsi_diagnosis().split(","));
 
-        Float IMT = pertumbuhan.getBerat_badan()/(pertumbuhan.getTinggi_badan()*pertumbuhan.getTinggi_badan());
+        Float IMT = pertumbuhan.getBerat_badan()/((pertumbuhan.getTinggi_badan()/100)*(pertumbuhan.getTinggi_badan()/100));
 
         model.addAttribute("tahun",balitaService.calculateAge(balita.getBirth_date()).get("tahun"));
         model.addAttribute("bulan",balitaService.calculateAge(balita.getBirth_date()).get("bulan"));

@@ -64,6 +64,10 @@ public class PerkembanganController {
             Model model, RedirectAttributes attributes
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        if (balita == null){
+            attributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
+        }
         if (balitaService.hasFilledPerkembangan(balita) == true){
             attributes.addFlashAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan bulan ini");
             return "redirect:/perkembangan";
@@ -88,8 +92,13 @@ public class PerkembanganController {
 
     @RequestMapping(value = "/perkembangan/tambah", method = RequestMethod.POST, params = {"toSave"})
     public String postPerkembangan(@RequestParam String result, @RequestParam String resultGH,
-                                   @RequestParam String resultGK, @RequestParam String resultB, @RequestParam String resultS) {
+                                   @RequestParam String resultGK, @RequestParam String resultB, @RequestParam String resultS,
+                                   RedirectAttributes redirectAttributes) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        if (balita == null){
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
+        }
         List<String> diagnosisTipe = perkembanganBalitaService.processDiagnosisTipe(balita, Integer.valueOf(resultGH), Integer.valueOf(resultGK), Integer.valueOf(resultB), Integer.valueOf(resultS));
         List<String> diagnosisList = perkembanganBalitaService.processDiagnosis(Integer.valueOf(result));
         PeriodePerkembanganModel periode = periodePerkembanganService.getCurrentPeriodeBalita(balita);
@@ -99,9 +108,13 @@ public class PerkembanganController {
 
     @GetMapping("/perkembangan/detail/{id_perkembangan}")
     public String perkembanganDetailPage(
-            @PathVariable long id_perkembangan, Model model
+            @PathVariable long id_perkembangan, Model model,RedirectAttributes redirectAttributes
     ) {
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        if (balita == null){
+            redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
+            return "redirect:/balita";
+        }
         for (PerkembanganBalitaModel kembang : balita.getListPerkembangan()) {
             if(kembang.getId_perkembangan() == id_perkembangan){
                 model.addAttribute("perkembangan", kembang);
