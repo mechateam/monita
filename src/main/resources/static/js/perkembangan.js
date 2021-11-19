@@ -46,5 +46,7 @@ function toSubmit() {
         document.getElementById('resultGK').setAttribute('value', gerakKasar);
         document.getElementById('resultB').setAttribute('value', bicara);
         document.getElementById('resultS').setAttribute('value', sosialisasi);
+        document.getElementById('buttonModal').setAttribute('data-bs-toggle', 'modal');
+        document.getElementById('buttonModal').setAttribute('data-bs-target', '#modalSave');
     }
 }
