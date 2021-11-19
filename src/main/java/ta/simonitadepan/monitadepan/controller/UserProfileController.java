@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.FaskesModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.service.BalitaService;
 import ta.simonitadepan.monitadepan.service.FaskesService;
@@ -28,6 +29,7 @@ public class UserProfileController {
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         BalitaModel balita = balitaService.getBalitaAktif(user);
+        FaskesModel faskes = user.getId_faskes();
 
 
         if (balita != null){
@@ -41,6 +43,7 @@ public class UserProfileController {
         else{
             model.addAttribute("empty","Harap tambah anak atau pilih anak");
         }
+        model.addAttribute("noTelpFaskes",faskes.getPhone());
         return "page-profil";
     }
 
