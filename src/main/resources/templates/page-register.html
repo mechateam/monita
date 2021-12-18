@@ -40,8 +40,9 @@
               <input class="form-control" type="text" placeholder="NIK" name="nik">
             </div>
             <div class="form-group text-start mb-3 position-relative">
-              <input name="password" class="form-control" id="psw-input" type="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" required>
+              <input name="password" class="form-control" id="psw-input" type="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z]).{5,}" required>
               <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></div>
+               <label for="psw-input">Minimal 5 karakter dan 1 angka</label>
             </div>
             <div class="form-group text-start mb-3">
               <input class="form-control" type="text" placeholder="Nomor Telepon" name="phone">
@@ -90,12 +91,12 @@
     </div>
     <!-- All JavaScript Files -->
     <object th:include="fragments/fragment :: js"></object>
-  <script>
-    var input = document.getElementById('psw-input');
-    input.oninvalid=function (ev) {
-      ev.target.setCustomValidity('Minimal 8 huruf dan 1 angka');
-    }
-  </script>
+<!--  <script>-->
+<!--    var input = document.getElementById('psw-input');-->
+<!--    input.oninvalid=function (ev) {-->
+<!--      ev.target.setCustomValidity('Minimal 8 huruf dan 1 angka');-->
+<!--    }-->
+<!--  </script>-->
   <script type="text/javascript">
 
     $(document).ready(function() {
