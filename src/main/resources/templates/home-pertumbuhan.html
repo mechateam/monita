@@ -177,6 +177,17 @@
                 document.getElementById('riwayat').setAttribute('style', 'display: none;');
             }
         </script>
+        <script th:inline="javascript">
+            function convertCommas() {
+                var tt = document.getElementById("inputName").value;
+                tt = tt.replace(/,/g, '.');
+                document.getElementById("inputName").value = tt;
+
+                var xx = document.getElementById("inputBirthDate").value;
+                xx = xx.replace(/,/g, '.');
+                document.getElementById("inputBirthDate").value = tt;
+            }
+        </script>
     <!-- All JavaScript Files -->
     <object th:include="fragments/fragment :: js"></object>
   </body>

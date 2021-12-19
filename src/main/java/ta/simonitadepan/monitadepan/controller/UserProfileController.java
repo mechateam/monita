@@ -68,10 +68,8 @@ public class UserProfileController {
     }
 
     @GetMapping("/profil/ubah-password")
-    public String getFormUbahPassword (@ModelAttribute UserModel user, Model model){
-        if (!user.getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
-            return "redirect:/profil/";
-        }
+    public String getFormUbahPassword (Model model){
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
         model.addAttribute("user", user);
         return "ubah-sandi";
@@ -86,12 +84,9 @@ public class UserProfileController {
             RedirectAttributes redirectAttributes,
             HttpServletRequest request
     ){
-        UserModel userModel = userService.getUserByUsername(user.getUsername());
+        UserModel userModel = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if(!(user.getPassword().equals(rePassword))){
-            System.out.println(user.getPassword());
-            System.out.println(rePassword);
-            System.out.println("masuk");
             model.addAttribute("message", "Konfirmasi Password Baru tidak sesuai ");
             return "redirect:/profil/ubah-password/";
         }
@@ -107,7 +102,8 @@ public class UserProfileController {
             System.out.println("konf : "+ rePassword);
 
             model.addAttribute("user",user);
-            return "page-home";
+            redirectAttributes.addFlashAttribute("passSuccess","Password Berhasil Diubah");
+            return "redirect:/profil/";
         }
 
         model.addAttribute("message", "Password Lama tidak sesuai ");

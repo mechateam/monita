@@ -50,6 +50,12 @@ public class BalitaServiceImpl implements BalitaService {
                 balitaLain.setStatus(0);
             }
             balita.setStatus(1);
+
+            // guard umur lebih dari 5 tahun
+            if (calculateAge(balita.getBirth_date()).get("tahun") > 5 && calculateAge(balita.getBirth_date()).get("bulan") > 0){
+                return false;
+            }
+
             balitaDb.save(balita);
 
         }

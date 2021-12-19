@@ -55,6 +55,14 @@
                 </div>
             </div>
         </div>
+        <div th:if="${passSuccess}" class="toast toast-autohide custom-toast-1 mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-autohide="true">
+            <div class="toast-body">
+                <div class="toast-text ms-3 me-2">
+                    <p class="mb-0 text-center" th:text="${passSuccess}"></p>
+                </div>
+            </div>
+            <button class="btn btn-close position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
         <!-- List Opsi Profil-->
         <div class="card">
             <div class="card-body p-3">

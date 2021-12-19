@@ -54,7 +54,7 @@ public class UserController {
     ){
 
         if(userService.addUser(user) == null){
-            redirect.addFlashAttribute("message","Username yang ingin dibuat sudah terdaftar. Pilih username lain.");
+            redirect.addFlashAttribute("message","Username/Email/Nomor Telepon yang ingin dibuat sudah terdaftar. Pilih username/email/nomor telepon lain.");
             return "redirect:/user/register";
         }
 

@@ -173,16 +173,41 @@ public class PertumbuhanServiceImpl implements PertumbuhanService {
 
         if (gender==0 && umur <24){
             tabelBBperTB = serverProperties.getBbpertbperempuan0().get(tinggi);
+            if (tinggi < 45){
+                tabelBBperTB = serverProperties.getBbpertbperempuan0().get((float)45);
+            }
+            else if (tinggi >110){
+                tabelBBperTB = serverProperties.getBbpertbperempuan0().get((float)110);
+            }
         }
         else if(gender==0 && umur >=24){
             tabelBBperTB = serverProperties.getBbpertbperempuan24().get(tinggi);
+            if (tinggi<65){
+                tabelBBperTB = serverProperties.getBbpertbperempuan24().get((float)65);
+            }
+            else if(tinggi > 120){
+                tabelBBperTB = serverProperties.getBbpertbperempuan24().get((float)120);
+            }
         }
         else if(gender==1 && umur <24){
             tabelBBperTB = serverProperties.getBbpertblaki0().get(tinggi);
+            if (tinggi < 45){
+                tabelBBperTB = serverProperties.getBbpertblaki0().get((float)45);
+            }
+            else if (tinggi >110){
+                tabelBBperTB = serverProperties.getBbpertblaki0().get((float)110);
+            }
         }
         else{
             tabelBBperTB = serverProperties.getBbpertblaki24().get(tinggi);
+            if (tinggi<65){
+                tabelBBperTB = serverProperties.getBbpertblaki24().get((float)65);
+            }
+            else if(tinggi > 120){
+                tabelBBperTB = serverProperties.getBbpertblaki24().get((float)120);
+            }
         }
+
 
         if (berat < tabelBBperTB.get(-3)){
             diagnosis+="Perhatian";
