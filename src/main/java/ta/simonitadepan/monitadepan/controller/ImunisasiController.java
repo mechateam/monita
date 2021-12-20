@@ -15,6 +15,7 @@ import ta.simonitadepan.monitadepan.service.ImunisasiService;
 import ta.simonitadepan.monitadepan.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/imunisasi")
@@ -36,6 +37,7 @@ public class ImunisasiController {
             RedirectAttributes redirectAttributes
     ){
         BalitaModel balita = balitaService.getBalitaAktif(userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+
         if (balita == null){
             redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
             return "redirect:/balita";
@@ -43,7 +45,7 @@ public class ImunisasiController {
 
         List<ImunisasiModel> listImunisasiBelum = imunisasiService.getListBelumImunisasi(balita);
 
-        List<ImunisasiModel> listImunisasi = balita.getListImunisasi();
+        List<ImunisasiModel> listImunisasi = balitaService.listImunisasiBalitaSorted(balita);
 
         model.addAttribute("listImunisasi",listImunisasi);
 

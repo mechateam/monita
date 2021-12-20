@@ -100,12 +100,10 @@ BalitaController {
     ){
         BalitaModel balita = balitaService.getBalitaById(id_balita);
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(balita.getId_pengguna().getUsername());
-        System.out.println(user.getUsername());
         if (balita.getId_pengguna().getUsername() != user.getUsername()){
             return "redirect:/";
         }
         balitaService.changeStatusBalita(balita, user);
-        return "redirect:/";
+        return "redirect:/balita";
     }
 }

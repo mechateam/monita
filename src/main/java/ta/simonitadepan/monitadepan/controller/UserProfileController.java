@@ -1,5 +1,6 @@
 package ta.simonitadepan.monitadepan.controller;
 
+import org.apache.naming.factory.webservices.ServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,7 @@ import ta.simonitadepan.monitadepan.model.FaskesModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.service.BalitaService;
 import ta.simonitadepan.monitadepan.service.FaskesService;
+import ta.simonitadepan.monitadepan.service.ServerProperties;
 import ta.simonitadepan.monitadepan.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,9 @@ public class UserProfileController {
 
     @Autowired
     BalitaService balitaService;
+
+    @Autowired
+    ServerProperties serverProperties;
 
     @GetMapping("/profil")
     public String getProfilPage(Model model){
@@ -43,7 +48,14 @@ public class UserProfileController {
         else{
             model.addAttribute("empty","Harap tambah anak atau pilih anak");
         }
-        model.addAttribute("noTelpFaskes",faskes.getPhone());
+
+        String nomorTelp = faskes.getPhone();
+        if (nomorTelp.startsWith("0")){
+            nomorTelp.substring(1);
+        }
+        nomorTelp = "+62" + nomorTelp;
+
+        model.addAttribute("noTelpFaskes",nomorTelp);
         return "page-profil";
     }
 
@@ -56,6 +68,8 @@ public class UserProfileController {
 
     @GetMapping("/profil/ubah/{username}")
     public String getFormUbahProfil (Model model){
+        model.addAttribute("listKelurahan",serverProperties.getKelurahan());
+
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "ubah-profil";
