@@ -50,6 +50,12 @@ public class BalitaServiceImpl implements BalitaService {
                 balitaLain.setStatus(0);
             }
             balita.setStatus(1);
+
+            // guard umur lebih dari 5 tahun
+            if (calculateAge(balita.getBirth_date()).get("tahun") > 5 && calculateAge(balita.getBirth_date()).get("bulan") > 0){
+                return false;
+            }
+
             balitaDb.save(balita);
 
         }
@@ -78,7 +84,12 @@ public class BalitaServiceImpl implements BalitaService {
 
         if (user.getListBalita().size() !=0 && user.getListBalita()!= null){
             if (balita.getStatus() == 1) {
-                changeStatusBalita(user.getListBalita().get(0), user);
+                if (user.getListBalita().indexOf(balita) == 0 && user.getListBalita().size() > 1){
+                    changeStatusBalita(user.getListBalita().get(1), user);
+                }
+                else{
+                    changeStatusBalita(user.getListBalita().get(0), user);
+                }
             }
         }
         balitaDb.delete(balita);
@@ -86,10 +97,15 @@ public class BalitaServiceImpl implements BalitaService {
 
     @Override
     public void changeStatusBalita(BalitaModel balita, UserModel user) {
-        for (BalitaModel balitaLain : user.getListBalita()) {
-            balitaLain.setStatus(0);
-            balitaDb.save(balitaLain);
+
+        for (int i=0;i<user.getListBalita().size();i++){
+            user.getListBalita().get(i).setStatus(0);
+            balitaDb.save(user.getListBalita().get(i));
         }
+//        for (BalitaModel balitaLain : user.getListBalita()) {
+//            balitaLain.setStatus(0);
+//            balitaDb.save(balitaLain);
+//        }
         balita.setStatus(1);
         balitaDb.save(balita);
     }
@@ -218,5 +234,19 @@ public class BalitaServiceImpl implements BalitaService {
     @Override
     public List<BalitaModel> getListBalitaLogin(UserModel user){
         return user.getListBalita();
+    }
+
+    @Override
+    public List<ImunisasiModel> listImunisasiBalitaSorted(BalitaModel balita){
+        List<ImunisasiModel> imunisasis = balita.getListImunisasi();
+
+        //ini sort imunisasi by status, ignore aja ga kebaca grr
+        Collections.sort(imunisasis, new Comparator<ImunisasiModel>() {
+            @Override
+            public int compare(ImunisasiModel u1, ImunisasiModel u2) {
+                return u2.getStatus().compareTo(u1.getStatus());
+            }
+        });
+        return imunisasis;
     }
 }

@@ -1,11 +1,13 @@
 package ta.simonitadepan.monitadepan.service;
 
 import ta.simonitadepan.monitadepan.model.BalitaModel;
+import ta.simonitadepan.monitadepan.model.ImunisasiModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface BalitaService {
     List<BalitaModel> getAllBalita();
@@ -21,4 +23,6 @@ public interface BalitaService {
     Map<String, Integer> calculateAge(Date birth);
     boolean hasFilledPerkembangan (BalitaModel balita);
     boolean hasFilledPertumbuhan(BalitaModel balita);
+
+    List<ImunisasiModel> listImunisasiBalitaSorted(BalitaModel balita);
 }

@@ -38,7 +38,8 @@
         <!-- User Meta Data-->
         <div class="card user-data-card">
             <div class="card-body">
-                <form th:action="@{/profil/ubah/}" th:object="${user}" method="POST">
+                <form th:action="@{/profil/ubah/}" th:object="${user}" method="POST" oninput="address.value = alamat1.value + ' ,'+kelurahan.value + ' ,'+ kecamatan.value + ' ,'+
+           kota.value + ' ,'+ provinsi.value">
                     <input type="hidden" name="id" class="form-control" th:field="*{id_pengguna}"/>
                     <input type="hidden" name="id" class="form-control" th:field="*{id_faskes}"/>
                     <input type="hidden" name="password" class="form-control" th:field="*{password}"/>
@@ -68,10 +69,29 @@
                         </select>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="address">Alamat</label>
-                        <input type="hidden" th:value="*{kelurahan}">
-                        <input class="form-control" id="address" type="text" th:field="${user.address}" placeholder="address">
+                        <label class="form-label" for="alamat1">Alamat</label>
+                        <input class="form-control" id="alamat1" type="text" placeholder="Alamat">
                     </div>
+
+                    <div class="form-group text-start mb-3">
+                        <label class="form-label" for="kecamatan">Kecamatan</label>
+                        <input id="kecamatan" class="form-control" type="text" placeholder="Kecamatan" name="kecamatan"><br>
+                        <label class="form-label" for="kelurahan_terpilih">Kelurahan</label>
+                        <select required name="kelurahan" class="form-control" id="kelurahan_terpilih">
+                            <option selected value =""> -- Pilih Kelurahan -- </option>
+                            <option th:each="kelurahan: ${listKelurahan}" th:value="${kelurahan}" th:text="${kelurahan}"></option>
+                        </select>
+                    </div>
+                    <div class="input-group text-start mb-3">
+                        <input class="form-control" type="text" placeholder="Kota/Kabupaten" name="kota">
+                        <input class="form-control" type="text" placeholder="Provinsi" name="provinsi">
+                    </div>
+                    <div class="input-group text-start mb-3">
+                        <input th:value="*{rt}" class="form-control" type="number" placeholder="RT" name="rt">
+                        <input th:value="*{rw}" class="form-control" type="number" placeholder="RW" name="rw">
+                    </div>
+                    <input type="hidden" name="address">
+
                     <button class="btn btn-success w-100" type="submit">Simpan Profil</button>
                 </form>
             </div>

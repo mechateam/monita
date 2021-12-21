@@ -150,11 +150,10 @@
                                                 <input th:value="*{tinggi_badan_lahir}" placeholder="Tinggi badan lahir"  class="form-control" id="tinggiBadanLahir" type="text" name="tinggi_badan_lahir">
                                             </div>
                                             <div class="form-group">
-                                                <input th:value="*{imd == 0} ? 'false' : 'true'" id="IMD" type="checkbox" name="imd" disabled>
-                                                <label class="form-label" for="IMD">Inisasi Menyusui Dini</label> <br>
-                                                <input th:value="*{kia == 0} ? 'false' : 'true'" id="IMD" type="checkbox" name="imd" disabled>
-                                                <label class="form-label" for="kia">Sudah memiliki buku KIA</label>
-
+                                                <input th:value="*{imd == 0} ? 'false' : 'true'" id="IMDEdit" type="checkbox" name="imd">
+                                                <label class="form-label" for="IMDEdit">Inisasi Menyusui Dini</label> <br>
+                                                <input th:value="*{kia == 0} ? 'false' : 'true'" id="KIAEdit" type="checkbox" name="kia">
+                                                <label class="form-label" for="KIAEdit">Sudah memiliki buku KIA</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -283,6 +282,17 @@
             document.getElementById('IMDHidden').disabled = true;
         }if(document.getElementById("kia").checked) {
             document.getElementById('kiaHidden').disabled = true;
+        }
+    </script>
+    <script>
+        console.log(document.getElementById("IMDEdit").value)
+        console.log(document.getElementById("KIAEdit").value)
+        if (document.getElementById("IMDEdit").value == "true"){
+            console.log("Masuk");
+            document.getElementById('IMDEdit').checked = true;
+        }if (document.getElementById("KIAEdit").value == "true"){
+            console.log("Masuk2");
+            document.getElementById('KIAEdit').checked = true;
         }
     </script>
     <!-- PWA -->

@@ -38,11 +38,11 @@ public class UserModel implements Serializable {
     private String name;
 
     @NotNull
-    @Column(name="email",nullable = false)
+    @Column(name="email",nullable = false, unique = true)
     private String email;
 
     @NotNull
-    @Column(name="phone",nullable = false)
+    @Column(name="phone",nullable = false, unique = true)
     private String phone;
 
     @NotNull

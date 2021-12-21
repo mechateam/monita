@@ -25,10 +25,14 @@ public class UserServiceImpl implements UserService {
         if (userDb.findByUsername(user.getUsername()) != null){
             return null;
         }
-        System.out.println("password sblm di encrypt "+ user.getPassword());
+        if (userDb.findByEmail(user.getEmail()) != null){
+            return null;
+        }
+        if (userDb.findByPhone(user.getPhone()) != null){
+            return null;
+        }
         String pass = encrypt(user.getPassword());
         user.setPassword(pass);
-        System.out.println("password sblm di encrypt "+ user.getPassword());
         userDb.save(user);
         return user;
     }
@@ -86,6 +90,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean changePassword(UserModel user, String oldPassword, String newPassword) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        System.out.println("Ini user" + user.getUsername());
+        System.out.println("Ini password" + user.getPassword());
 
         if (passwordEncoder.matches(oldPassword, user.getPassword())) {
             user.setPassword(encrypt(newPassword));

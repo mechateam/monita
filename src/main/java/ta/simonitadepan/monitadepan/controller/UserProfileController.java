@@ -1,5 +1,6 @@
 package ta.simonitadepan.monitadepan.controller;
 
+import org.apache.naming.factory.webservices.ServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,7 @@ import ta.simonitadepan.monitadepan.model.FaskesModel;
 import ta.simonitadepan.monitadepan.model.UserModel;
 import ta.simonitadepan.monitadepan.service.BalitaService;
 import ta.simonitadepan.monitadepan.service.FaskesService;
+import ta.simonitadepan.monitadepan.service.ServerProperties;
 import ta.simonitadepan.monitadepan.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,9 @@ public class UserProfileController {
 
     @Autowired
     BalitaService balitaService;
+
+    @Autowired
+    ServerProperties serverProperties;
 
     @GetMapping("/profil")
     public String getProfilPage(Model model){
@@ -43,7 +48,14 @@ public class UserProfileController {
         else{
             model.addAttribute("empty","Harap tambah anak atau pilih anak");
         }
-        model.addAttribute("noTelpFaskes",faskes.getPhone());
+
+        String nomorTelp = faskes.getPhone();
+        if (nomorTelp.startsWith("0")){
+            nomorTelp.substring(1);
+        }
+        nomorTelp = "+62" + nomorTelp;
+
+        model.addAttribute("noTelpFaskes",nomorTelp);
         return "page-profil";
     }
 
@@ -56,6 +68,8 @@ public class UserProfileController {
 
     @GetMapping("/profil/ubah/{username}")
     public String getFormUbahProfil (Model model){
+        model.addAttribute("listKelurahan",serverProperties.getKelurahan());
+
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
         return "ubah-profil";
@@ -68,10 +82,8 @@ public class UserProfileController {
     }
 
     @GetMapping("/profil/ubah-password")
-    public String getFormUbahPassword (@ModelAttribute UserModel user, Model model){
-        if (!user.getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
-            return "redirect:/profil/";
-        }
+    public String getFormUbahPassword (Model model){
+        UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
         model.addAttribute("user", user);
         return "ubah-sandi";
@@ -86,12 +98,9 @@ public class UserProfileController {
             RedirectAttributes redirectAttributes,
             HttpServletRequest request
     ){
-        UserModel userModel = userService.getUserByUsername(user.getUsername());
+        UserModel userModel = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if(!(user.getPassword().equals(rePassword))){
-            System.out.println(user.getPassword());
-            System.out.println(rePassword);
-            System.out.println("masuk");
             model.addAttribute("message", "Konfirmasi Password Baru tidak sesuai ");
             return "redirect:/profil/ubah-password/";
         }
@@ -107,7 +116,8 @@ public class UserProfileController {
             System.out.println("konf : "+ rePassword);
 
             model.addAttribute("user",user);
-            return "page-home";
+            redirectAttributes.addFlashAttribute("passSuccess","Password Berhasil Diubah");
+            return "redirect:/profil/";
         }
 
         model.addAttribute("message", "Password Lama tidak sesuai ");
