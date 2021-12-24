@@ -99,6 +99,7 @@ public class PerkembanganController {
             redirectAttributes.addFlashAttribute("msgCreateEr", "Anda belum menambahkan balita, harap tambah balita!");
             return "redirect:/balita";
         }
+        System.out.println(result);
         List<String> diagnosisTipe = perkembanganBalitaService.processDiagnosisTipe(balita, Integer.valueOf(resultGH), Integer.valueOf(resultGK), Integer.valueOf(resultB), Integer.valueOf(resultS));
         List<String> diagnosisList = perkembanganBalitaService.processDiagnosis(Integer.valueOf(result));
         PeriodePerkembanganModel periode = periodePerkembanganService.getCurrentPeriodeBalita(balita);

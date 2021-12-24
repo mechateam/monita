@@ -55,7 +55,7 @@
                     <div class="skill-data">
                         <!-- Skill Name -->
                         <div class="skill-name d-flex align-items-center justify-content-between">
-                            <p class="mb-1">Pertanyaan Terjawab</p><small class="mb-1"><span id="progressText" style="color: red" th:text="'0/' + ${sizeQuestion}"></span></small>
+                            <p class="mb-1">Pertanyaan</p><small class="mb-1"><span id="progressText" style="color: red" th:text="'1/' + ${sizeQuestion}"></span></small>
                         </div>
                         <!-- Progress -->
                         <div class="progress" style="height: 4px;">
@@ -75,21 +75,18 @@
                         <input class="form-check-input" name="choice" value="Ya" type="radio" id="radioYa" required>
                         <label class="form-check-label" for="radioYa">Ya</label>
                     </div>
-                    <svg class="bi bi-person text-primary" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                    </svg>
+                    <i class="bi bi-check-circle-fill" style="color: green"></i>
                 </div>
                 <div class="single-plan-check shadow-sm active-effect">
                     <div class="form-check mb-0">
                         <input class="form-check-input" name="choice" value="Tidak" type="radio" id="radioTidak">
                         <label class="form-check-label" for="radioTidak">Tidak</label>
                     </div>
-                    <svg class="bi bi-person text-primary" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                    </svg>
+                    <i class="bi bi-x-circle-fill" style="color: red"></i>
                 </div>
                 <button class="btn btn-primary w-100" id="buttonNext" th:onClick= "checkAdder()" >Berikutnya</button>
-                <button class="btn btn-success w-100" style="display: none;" id="buttonModal" onClick= "toSubmit()" data-bs-toggle="modal" data-bs-target="#modalSave">Simpan</button>
+<!--                <button class="btn btn-success w-100" style="display: none;" id="buttonModal" onClick= "toSubmit()" data-bs-toggle="modal" data-bs-target="#modalSave">Simpan</button>-->
+                <button class="btn btn-success w-100" style="display: none;" id="buttonModal" onClick= "toSubmit()">Simpan</button>
             </div>
         </div>
     </div>
