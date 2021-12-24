@@ -87,7 +87,7 @@
           <div class="card-body p-5">
             <div class="row g-3">
               <div th:if="${isi}" class="col-6 border-end">
-                <a href="/pertumbuhan/"><div class="feature-card mx-auto text-center">
+                <a href="/pertumbuhan"><div class="feature-card mx-auto text-center">
                   <p>Pertumbuhan</p>
                   <h2 th:text="${diagnosis}"></h2>
                   <p th:text="${tinggi} + ' cm | '+ ${berat}+ ' Kg'"></p>
@@ -95,14 +95,14 @@
               </div>
 
               <div th:unless="${isi}" class="col-6 border-end">
-                <a href="/pertumbuhan/"><div class="feature-card mx-auto text-center">
+                <a href="/pertumbuhan"><div class="feature-card mx-auto text-center">
                   <p>Pertumbuhan</p>
                   <h2>Belum mengisi pertumbuhan bulan ini</h2>
                 </div> </a>
               </div>
 
               <div th:if="${perkembangan_sudah == null}" class="col-6">
-                <a href="/perkembangan/"><div class="feature-card mx-auto text-center">
+                <a href="/perkembangan"><div class="feature-card mx-auto text-center">
                   <p>Perkembangan</p>
                   <h2 th:text="${perkembangan.diagnosis}"></h2>
                   <p th:text="${perkembangan.deskripsi_diagnosis}"></p>
@@ -110,7 +110,7 @@
                 </div></a>
               </div>
             <div th:unless="${perkembangan_sudah == null}" class="col-6">
-            <a href="/perkembangan/"><div class="feature-card mx-auto text-center">
+            <a href="/perkembangan"><div class="feature-card mx-auto text-center">
               <p>Perkembangan</p>
               <h2 th:text="${perkembangan_sudah}"></h2>
             </div></a>
@@ -126,14 +126,14 @@
           <div class="card-body">
             <div class="row">
               <div th:if="${imunisasi_sudah == null}" class="col justify-content-start">
-              <a href="/imunisasi/"><div class="feature-card mx-auto text-center">
+              <a href="/imunisasi"><div class="feature-card mx-auto text-center">
                 <h4 th:text="${imunisasi.name}"></h4>
                 <p th:text="'Untuk periode/umur ' + ${imunisasi.periode} + ' bulan'"></p>
                 <p th:text="${imunisasi.deskripsi}"></p>
               </div></a>
             </div>
               <div th:unless="${imunisasi_sudah == null}" class="col justify-content-start">
-                <a href="/imunisasi/"><div class="feature-card mx-auto text-center">
+                <a href="/imunisasi"><div class="feature-card mx-auto text-center">
                   <p th:text="${imunisasi_sudah}"></p>
                 </div></a>
               </div>

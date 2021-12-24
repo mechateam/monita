@@ -26,6 +26,8 @@
                 <div class="page-heading">
                     <h6 class="mb-0">Daftar Balita</h6>
                 </div>
+                <!-- Navbar Toggler-->
+                <div><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
             </div>
         </div>
     </div>
@@ -132,8 +134,8 @@
                                                 <input th:value="*{name}" class="form-control" id="inputName" type="text" placeholder="Nama Lengkap" name="name" required>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label" for="inputBirthDate">Tanggal Lahir</label>
-                                                <input th:value="*{birth_date}" class="form-control" id="inputBirthDate" type="date" placeholder="Tanggal Lahir" name="birth_date" disabled>
+                                                <label class="form-label" for="inputBirthDateUpdate">Tanggal Lahir</label>
+                                                <input type="date" th:value="*{birth_date}" class="form-control" id="inputBirthDateUpdate" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="inputGenderUpdate">Jenis Kelamin</label>
@@ -144,10 +146,8 @@
                                                 <input th:value="*{nik}" class="form-control" id="inputNik" type="text" placeholder="NIK" name="nik">
                                             </div>
                                             <div class="input-group mb-3">
-                                                <!--                            <label class="form-label" for="beratBadanLahir">Berat Badan Lahir</label>-->
-                                                <input th:value="*{berat_badan_lahir}" placeholder="Berat badan lahir" class="form-control" id="beratBadanLahir" type="text" name="berat_badan_lahir">
-                                                <!--                            <label class="form-label" for="tinggiBadanLahir">Tinggi Badan Lahir</label>-->
-                                                <input th:value="*{tinggi_badan_lahir}" placeholder="Tinggi badan lahir"  class="form-control" id="tinggiBadanLahir" type="text" name="tinggi_badan_lahir">
+                                                <input th:value="*{berat_badan_lahir}" placeholder="Berat badan lahir (Dalam KG)" class="form-control" id="beratBadanLahir" type="text" name="berat_badan_lahir">
+                                                <input th:value="*{tinggi_badan_lahir}" placeholder="Tinggi badan lahir (Dalam CM)"  class="form-control" id="tinggiBadanLahir" type="text" name="tinggi_badan_lahir">
                                             </div>
                                             <div class="form-group">
                                                 <input th:value="*{imd == 0} ? 'false' : 'true'" id="IMDEdit" type="checkbox" name="imd">
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn m-1 btn-dark btn-circle bi-plus btn-primary position-sticky" type="button" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></a>
+                    <button class="btn-circle btn-lg bi-plus" style="background-color: #338A94; color: white" data-bs-toggle="modal" data-bs-target="#bottomAlignModal"></button>
                 </div>
             </div>
         </div>
@@ -219,15 +219,15 @@
                 <form th:action="@{/balita}" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="form-label" for="inputName">Nama Lengkap</label>
+                            <label class="form-label" for="inputName">Nama Lengkap</label><span style="color: red">*</span>
                             <input class="form-control" id="inputName" type="text" placeholder="Nama Lengkap" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="inputBirthDate">Tanggal Lahir</label>
+                            <label class="form-label" for="inputBirthDate">Tanggal Lahir</label><span style="color: red">*</span>
                             <input class="form-control" id="inputBirthDate" type="date" placeholder="Tanggal Lahir" name="birth_date" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="inputGender">Jenis Kelamin</label>
+                            <label class="form-label" for="inputGender">Jenis Kelamin</label><span style="color: red">*</span>
                             <select name="gender" class="form-control" id="inputGender" required>
                                 <option selected value =""> -- Pilih Jenis Kelamin -- </option>
                                 <option th:value=0 th:text="Perempuan"></option>
@@ -238,11 +238,12 @@
                             <label class="form-label" for="inputNik">NIK</label>
                             <input class="form-control" id="inputNik" type="text" placeholder="NIK" name="nik">
                         </div>
-                        <div class="input-group mb-3">
-<!--                            <label class="form-label" for="beratBadanLahir">Berat Badan Lahir</label>-->
-                            <input placeholder="Berat badan lahir" class="form-control" id="beratBadanLahir" type="text" name="berat_badan_lahir" required>
-<!--                            <label class="form-label" for="tinggiBadanLahir">Tinggi Badan Lahir</label>-->
-                            <input placeholder="Tinggi badan lahir"  class="form-control" id="tinggiBadanLahir" type="text" name="tinggi_badan_lahir" required>
+                        <div class="form-group">
+                            <label class="form-label" for="beratBadanLahir">Berat dan Tinggi Badan Lahir</label><span style="color: red">*</span>
+                            <div class="input-group mb-3">
+                                <input placeholder="Berat badan lahir (Dalam KG)" class="form-control" id="beratBadanLahir" type="text" name="berat_badan_lahir" required>
+                                <input placeholder="Tinggi badan lahir (Dalam CM)"  class="form-control" id="tinggiBadanLahir" type="text" name="tinggi_badan_lahir" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input id="IMD" type="checkbox" name="imd" value="true">
@@ -251,7 +252,6 @@
                             <input id="kia" type="checkbox" name="kia" value="true">
                             <input id="kiaHidden" type="hidden" name="kia" value="false">
                             <label class="form-label" for="kia">Sudah memiliki buku KIA</label>
-
                         </div>
                     </div>
                     <div class="modal-footer">

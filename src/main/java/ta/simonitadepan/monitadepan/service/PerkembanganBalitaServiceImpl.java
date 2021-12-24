@@ -61,16 +61,20 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
             if (p.getTipe().equals("Bicara dan Bahasa")) {B++;}
             if (p.getTipe().equals("Sosialisasi dan Kemandirian")) {S++;}
         }
-        if (countGH == 0) {resultDiagnosisTipe.set(0, "Tidak ada penilaian gerak halus pada periode ini");}
-        if (countGK == 0) {resultDiagnosisTipe.set(1, "Tidak ada penilaian gerak kasar pada periode ini");}
-        if (countB == 0) {resultDiagnosisTipe.set(2, "Tidak ada penilaian bicara dan bahasa pada periode ini");}
-        if (countS == 0) {resultDiagnosisTipe.set(3, "Tidak ada penilaian sosialisasi dan kemandirian pada periode ini");}
-        if (countGH != 0 || countGK != 0 || countB !=0 || countS !=0) {
-            resultDiagnosisTipe.set(0, countGH==GH ? "Baik" : "Perhatian");
-            resultDiagnosisTipe.set(1, countGK==GK ? "Baik" : "Perhatian");
-            resultDiagnosisTipe.set(2, countB==B ? "Baik" : "Perhatian");
-            resultDiagnosisTipe.set(3, countS==S ? "Baik" : "Perhatian");
-        }
+        if (GH == 0) {resultDiagnosisTipe.set(0, "Tidak ada penilaian gerak halus pada periode ini");}
+        if (GH != 0) {resultDiagnosisTipe.set(0, countGH==GH ? "Baik" : "Perhatian");}
+        if (GK == 0) {resultDiagnosisTipe.set(1, "Tidak ada penilaian gerak kasar pada periode ini");}
+        if (GK != 0) {resultDiagnosisTipe.set(1, countGK==GK ? "Baik" : "Perhatian");}
+        if (B == 0) {resultDiagnosisTipe.set(2, "Tidak ada penilaian bicara dan bahasa pada periode ini");}
+        if (B != 0) {resultDiagnosisTipe.set(2, countB==B ? "Baik" : "Perhatian");}
+        if (S == 0) {resultDiagnosisTipe.set(3, "Tidak ada penilaian sosialisasi dan kemandirian pada periode ini");}
+        if (S != 0) {resultDiagnosisTipe.set(3, countS==S ? "Baik" : "Perhatian");}
+//        if (GH != 0 || GK != 0 || B !=0 || S !=0) {
+//            resultDiagnosisTipe.set(0, countGH==GH ? "Baik" : "Perhatian");
+//            resultDiagnosisTipe.set(1, countGK==GK ? "Baik" : "Perhatian");
+//            resultDiagnosisTipe.set(2, countB==B ? "Baik" : "Perhatian");
+//            resultDiagnosisTipe.set(3, countS==S ? "Baik" : "Perhatian");
+//        }
         return resultDiagnosisTipe;
     }
 
