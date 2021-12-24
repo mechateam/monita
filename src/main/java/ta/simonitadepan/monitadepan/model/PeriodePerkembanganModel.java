@@ -14,7 +14,7 @@ public class PeriodePerkembanganModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_periode;
+    private Long idPeriode;
 
     @NotNull
     @Column(name = "periode",nullable = false)
@@ -30,12 +30,12 @@ public class PeriodePerkembanganModel {
     @JsonIgnore
     private List<PerkembanganBalitaModel> listPerkembangan;
 
-    public Long getId_periode() {
-        return id_periode;
+    public Long getIdPeriode() {
+        return idPeriode;
     }
 
-    public void setId_periode(Long id_periode) {
-        this.id_periode = id_periode;
+    public void setIdPeriode(Long idPeriode) {
+        this.idPeriode = idPeriode;
     }
 
     public String getPeriode() {

@@ -127,7 +127,9 @@
                                         <h5 class="modal-title" id="bottomAlignModalUpdateLabel">Ubah Data Anak</h5><br>
                                         <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form th:action="@{/balita/edit/} + ${balita.id_balita}" th:object="${balita}" method="POST">
+                                    <form th:action="@{/balita/edit} " th:object="${balita}" method="POST">
+                                        <input th:value="*{id_balita}" type="hidden" name="id_balita">
+                                        <input th:value="*{id_pengguna}" type="hidden" name="id_pengguna">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label class="form-label" for="inputName">Nama Lengkap</label>

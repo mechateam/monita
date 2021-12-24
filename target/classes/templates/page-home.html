@@ -89,7 +89,7 @@
               <div th:if="${isi}" class="col-6 border-end">
                 <a href="/pertumbuhan"><div class="feature-card mx-auto text-center">
                   <p>Pertumbuhan</p>
-                  <h2 th:text="${diagnosis}"></h2>
+                  <h5 th:text="${diagnosis}"></h5>
                   <p th:text="${tinggi} + ' cm | '+ ${berat}+ ' Kg'"></p>
                 </div> </a>
               </div>
@@ -97,14 +97,14 @@
               <div th:unless="${isi}" class="col-6 border-end">
                 <a href="/pertumbuhan"><div class="feature-card mx-auto text-center">
                   <p>Pertumbuhan</p>
-                  <h2>Belum mengisi pertumbuhan bulan ini</h2>
+                  <h5>Belum mengisi pertumbuhan bulan ini</h5>
                 </div> </a>
               </div>
 
               <div th:if="${perkembangan_sudah == null}" class="col-6">
                 <a href="/perkembangan"><div class="feature-card mx-auto text-center">
                   <p>Perkembangan</p>
-                  <h2 th:text="${perkembangan.diagnosis}"></h2>
+                  <h5 th:text="${perkembangan.diagnosis}"></h5>
                   <p th:text="${perkembangan.deskripsi_diagnosis}"></p>
                   <p th:text="${perkembangan.diagnosis_gerak_halus + ' | '+ perkembangan.diagnosis_gerak_kasar + ' | '+ perkembangan.diagnosis_bicara_bahasa + ' | '+ perkembangan.diagnosis_sosialisasi}"></p>
                 </div></a>
@@ -112,7 +112,7 @@
             <div th:unless="${perkembangan_sudah == null}" class="col-6">
             <a href="/perkembangan"><div class="feature-card mx-auto text-center">
               <p>Perkembangan</p>
-              <h2 th:text="${perkembangan_sudah}"></h2>
+              <h5 th:text="${perkembangan_sudah}"></h5>
             </div></a>
           </div>
             </div>
