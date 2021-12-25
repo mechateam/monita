@@ -96,8 +96,8 @@
                                             <!-- Detail Balita -->
                                             <p th:text="${balita.gender == 0} ? 'Perempuan' : 'Laki-laki'" class="sale-price"></p><p th:text="${listAge[iter.index]}"></p>
                                             <!-- Add Button-->
-                                            <a class="btn m-1 btn-round btn-primary"  data-bs-toggle="modal" th:attr="data-bs-target='#bottomAlignModalUpdate'+${iter.index}">Ubah</a>
                                             <a class="btn m-1 btn-round btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#modalDelete'+${iter.index}">Hapus</a>
+                                            <a class="btn m-1 btn-round" style="background-color: #338A94; color: #FFFFFF"  data-bs-toggle="modal" th:attr="data-bs-target='#bottomAlignModalUpdate'+${iter.index}">Ubah</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="inputBirthDateUpdate">Tanggal Lahir</label>
-                                                <input type="date" th:value="*{birth_date}" class="form-control" id="inputBirthDateUpdate" disabled>
+                                                <input type="text" th:value="*{birth_date}" class="form-control" id="inputBirthDateUpdate" disabled>
+                                                <input type="hidden" th:value="*{birth_date}" class="form-control" id="inputBirthDateUpdate" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="inputGenderUpdate">Jenis Kelamin</label>

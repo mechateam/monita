@@ -24,21 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3590195d-8b5a-4334-8489-a99bccf0f0e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/BalitaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/BalitaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PerkembanganController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PerkembanganController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PertumbuhanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/controller/PertumbuhanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PeriodePerkembanganModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PeriodePerkembanganModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PerkembanganBalitaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PerkembanganBalitaModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PertanyaanPerkembanganModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/model/PertanyaanPerkembanganModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/PeriodePerkembanganDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/repository/PeriodePerkembanganDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PeriodePerkembanganServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PertanyaanPerkembanganServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ta/simonitadepan/monitadepan/service/PertanyaanPerkembanganServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home-perkembangan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home-perkembangan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home-pertumbuhan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home-pertumbuhan.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-balita.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-profil.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
