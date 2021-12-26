@@ -27,13 +27,6 @@ function checkAdder() {
 }
 
 function add() {
-    if(counterQuestion==9) {
-        if ((document.getElementById('radioYa').onclick) || (document.getElementById('radioTidak').onkeypress)) {
-            document.getElementById('buttonModal').setAttribute('data-bs-toggle', 'modal');
-            document.getElementById('buttonModal').setAttribute('data-bs-target', '#modalSave');
-        }
-    }
-
     if(document.getElementById('radioYa').checked) {
         counterYa++;
         const tipe = tmpMap[tmp[counterQuestion]];
@@ -44,13 +37,6 @@ function add() {
         if (tipe == 'Sosialisasi dan Kemandirian') {sosialisasi++}
     }
 }
-
-// if(counterQuestion==9) {
-//     if ((document.getElementById('radioYa').onkeypress) || (document.getElementById('radioTidak').onkeypress)) {
-//         document.getElementById('buttonModal').setAttribute('data-bs-toggle', 'modal');
-//         document.getElementById('buttonModal').setAttribute('data-bs-target', '#modalSave');
-//     }
-// }
 
 function toSubmit() {
     if ((document.getElementById('radioYa').checked) || (document.getElementById('radioTidak').checked)) {

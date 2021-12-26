@@ -69,12 +69,6 @@ public class PerkembanganBalitaServiceImpl implements PerkembanganBalitaService 
         if (B != 0) {resultDiagnosisTipe.set(2, countB==B ? "Baik" : "Perhatian");}
         if (S == 0) {resultDiagnosisTipe.set(3, "Tidak ada penilaian sosialisasi dan kemandirian pada periode ini");}
         if (S != 0) {resultDiagnosisTipe.set(3, countS==S ? "Baik" : "Perhatian");}
-//        if (GH != 0 || GK != 0 || B !=0 || S !=0) {
-//            resultDiagnosisTipe.set(0, countGH==GH ? "Baik" : "Perhatian");
-//            resultDiagnosisTipe.set(1, countGK==GK ? "Baik" : "Perhatian");
-//            resultDiagnosisTipe.set(2, countB==B ? "Baik" : "Perhatian");
-//            resultDiagnosisTipe.set(3, countS==S ? "Baik" : "Perhatian");
-//        }
         return resultDiagnosisTipe;
     }
 
