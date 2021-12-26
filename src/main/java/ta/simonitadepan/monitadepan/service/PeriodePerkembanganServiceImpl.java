@@ -25,6 +25,11 @@ public class PeriodePerkembanganServiceImpl implements PeriodePerkembanganServic
     }
 
     @Override
+    public PeriodePerkembanganModel getPeriodeById(Long id){
+        return periodePerkembanganDb.getById(id);
+    }
+
+    @Override
     public PeriodePerkembanganModel getCurrentPeriodeBalita(BalitaModel balita) {
         int ageMonth = balitaService.calculateAge(balita.getBirth_date()).get("tahun")*12 + balitaService.calculateAge(balita.getBirth_date()).get("bulan");
         if (ageMonth <= 3) {

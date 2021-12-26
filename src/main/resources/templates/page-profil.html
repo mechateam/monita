@@ -78,7 +78,7 @@
                 <div class="icon-wrapper"><i class="bi bi-moon"></i></div>Night Mode<i><input class="justify-content-end bi form-check form-switch form-check-input form-check-success" id="darkSwitch" type="checkbox"></i></i>
             </div>
         </div>
-        <button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal">Keluar Akun</button>
+        <button class="btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">Keluar Akun</button>
     </div>
 
     <div class="modal fade" id="bootstrapBasicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,6 +94,25 @@
                 <div class="modal-footer">
                     <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
                     <a href="/logout" class="btn btn-sm btn-danger">Keluar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body ">
+                    <div class="d-flex justify-content-center align-items-center my-3">
+                        <h6 class="modal-title text-center" id="modalDeleteLabel">Keluar Akun</h6>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center my-3">
+                        <p class="mb-0 text-center">Apakah anda yakin akan logout dari akun anda?</p>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <button class="btn btn-sm btn-secondary" style="width: 150px; margin-right: 10px;" data-bs-dismiss="modal">Batal</button>
+                        <a href="/logout" class="btn btn-sm btn-danger" style="width: 150px;">Keluar</a>
+                    </div>
                 </div>
             </div>
         </div>

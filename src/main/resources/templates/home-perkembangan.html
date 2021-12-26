@@ -88,7 +88,8 @@
                 <div class="col-12">
                     <div class="card single-product-card">
                         <div class="card-body mx-auto">
-                            <h4 th:text="${msg}"class="mb-4 d-flex"></h4>
+                            <h5 th:text="${msg}"class="mb-4 d-flex"></h5>
+                            <h6 th:if="${berikutnya}" th:text="${berikutnya}" class="mb-4 d-flex"></h6>
                             <div class="mx-auto align-content-center">
                                 <img th:src="@{/img/core-img/bayi.png}">
                             </div>
@@ -117,6 +118,7 @@
                                     <div class="card-content px-4 py-2">
                                         <a th:text="${perkembangan.idPeriode.periode}" class="product-title d-block text-truncate mt-0" th:href="@{/perkembangan/detail/} + ${perkembangan.id_perkembangan}"></a>
                                         <p class="sale-price" th:text="'Waktu Pengisian: ' + ${perkembangan.input_date}"></p>
+                                        <a class="btn btn-outline-primary" th:href="@{/perkembangan/detail/} + ${perkembangan.id_perkembangan}">Lihat</a>
                                     </div>
                                 </div>
                             </div>

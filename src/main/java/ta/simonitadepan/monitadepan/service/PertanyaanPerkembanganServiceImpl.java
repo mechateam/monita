@@ -25,6 +25,6 @@ public class PertanyaanPerkembanganServiceImpl implements PertanyaanPerkembangan
 
     public List<PertanyaanPerkembanganModel> getAllPertanyaanByBalita(BalitaModel balita) {
         PeriodePerkembanganModel periode = periodePerkembanganService.getCurrentPeriodeBalita(balita);
-        return pertanyaanPerkembanganDb.getPertanyaanPerkembanganModelByPeriode(periode.getId_periode());
+        return pertanyaanPerkembanganDb.getPertanyaanPerkembanganModelByPeriode(periode.getIdPeriode());
     }
 }

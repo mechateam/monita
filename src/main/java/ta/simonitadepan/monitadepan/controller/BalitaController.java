@@ -71,18 +71,14 @@ BalitaController {
         return "redirect:/balita";
     }
 
-    @PostMapping("/edit/{id_balita}")
+    @PostMapping("/edit")
     private String editBalita(
-            @PathVariable Long id_balita,
             @ModelAttribute BalitaModel balita,
             Model model,
             RedirectAttributes redirectAttributes
     ){
         UserModel user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (balita.getId_pengguna().getUsername() != user.getUsername()) {
-            redirectAttributes.addFlashAttribute("msgUpdateEr", "Data Balita Gagal Diubah!!");
-            return "redirect:/balita";
-        }
+
         model.addAttribute("balita", balita);
         try{
             balitaService.updateBalita(balita);

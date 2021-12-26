@@ -57,7 +57,7 @@ public class PerkembanganBalitaModel {
     private BalitaModel idBalita;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_periode",referencedColumnName = "id_periode",nullable = false)
+    @JoinColumn(name = "id_periode",referencedColumnName = "idPeriode",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PeriodePerkembanganModel idPeriode;

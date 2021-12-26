@@ -9,4 +9,5 @@ import java.util.List;
 public interface PeriodePerkembanganService {
     List<PeriodePerkembanganModel> getAllPeriode();
     PeriodePerkembanganModel getCurrentPeriodeBalita(BalitaModel balita);
+    PeriodePerkembanganModel getPeriodeById(Long id);
 }

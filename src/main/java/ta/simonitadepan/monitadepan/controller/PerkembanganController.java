@@ -45,6 +45,12 @@ public class PerkembanganController {
         }
         
         if (balitaService.hasFilledPerkembangan(balita) == true){
+            Long idPerkembanganNow = periodePerkembanganService.getCurrentPeriodeBalita(balita).getIdPeriode();
+            PeriodePerkembanganModel berikutnya =periodePerkembanganService.getPeriodeById(idPerkembanganNow+1);
+
+            if (berikutnya != null){
+                model.addAttribute("berikutnya","Jadwal input berikutnya ketika balita berusia: "+ berikutnya.getPeriode());
+            }
             model.addAttribute("msg", "Selamat, anda sudah mengisi Data Perkembangan untuk rentang usia bulan ini");
         }
         else{

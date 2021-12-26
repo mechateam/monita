@@ -14,7 +14,9 @@ import ta.simonitadepan.monitadepan.service.ServerProperties;
 import ta.simonitadepan.monitadepan.service.UserService;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/pertumbuhan")
@@ -42,6 +44,17 @@ public class PertumbuhanController {
         }
 
         if (balitaService.hasFilledPertumbuhan(balita) == true){
+            Map<String,Integer> umur= balitaService.calculateAge(balita.getBirth_date());
+            Integer tahun = umur.get("tahun");
+            Integer bulan = umur.get("bulan");
+            if (umur.get("bulan") == 11){
+                tahun+=1;
+                bulan=0;
+            }
+            else{
+                bulan+=1;
+            }
+            model.addAttribute("berikutnya","Jadwal input berikutnya ketika balita berusia: "+tahun+" tahun "+bulan+" bulan");
             model.addAttribute("msg", "Selamat, anda sudah mengisi Data Pertumbuhan bulan ini");
         }
         else{
